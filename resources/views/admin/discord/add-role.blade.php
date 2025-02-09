@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="days" class="form-label">Tanggal tambah role</label>
+                        <label for="days" class="form-label">Tanggal Expires</label>
                         <input type="date" class="form-control @error('days') is-invalid @enderror" id="days"
                             name="days" value="{{ old('days') }}" required>
                         @error('days')

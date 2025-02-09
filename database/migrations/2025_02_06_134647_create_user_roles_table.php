@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('discord_id'); // ID pengguna Discord
             $table->string('role_id'); // ID role Discord
-            $table->timestamp('add_at')->nullable(); // Tanggal kedaluwarsa role
+            $table->timestamp('expires_at')->nullable(); // Tanggal kedaluwarsa role
             $table->timestamps();
 
             $table->foreignId('user_id')->onDelete('cascade');

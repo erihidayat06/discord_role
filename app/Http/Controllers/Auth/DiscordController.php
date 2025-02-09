@@ -145,6 +145,12 @@ class DiscordController extends Controller
 
     public function addRole(Request $request)
     {
+        // Join otomatis ke server Discord
+        $guild_id = env('DISCORD_GUILD_ID'); // ID Server Discord
+        $bot_token = env('DISCORD_BOT_TOKEN'); // Bot Token
+
+
+
         // Validasi input dari request
         $request->validate([
             'discord_id' => 'required|string',
@@ -152,14 +158,17 @@ class DiscordController extends Controller
             'days' => 'required|min:1',
         ]);
 
+        Http::withHeaders([
+            'Authorization' => "Bot $bot_token",
+            'Content-Type' => 'application/json',
+        ])->put("https://discord.com/api/v10/guilds/{$guild_id}/members/{$request->discord_id}/roles/{$request->role_id}");
+
         UserRole::create([
             'user_id' => $request->discord_id,
             'discord_id' => $request->discord_id,
             'role_id' => $request->role_id,
-            'add_at' => $request->days,
+            'expires_at' => $request->days,
         ]);
-
-
 
         // Jika gagal menambahkan role, tampilkan pesan error
         return redirect('/discord/data-role/view')->with('success', 'Data berhasil disimpan');
@@ -210,7 +219,7 @@ class DiscordController extends Controller
 
             return [
                 'id' => $userId,
-                'tanggal_aktif' => $userRole->add_at,
+                'tanggal_aktif' => $userRole->expires_at,
                 'username' => $userData['username'] ?? 'Unknown',
                 'discriminator' => $userData['discriminator'] ?? '0000',
                 'avatar' => isset($userData['avatar'])
@@ -239,7 +248,7 @@ class DiscordController extends Controller
             'user_id' => $request->discord_id,
             'discord_id' => $request->discord_id,
             'role_id' => $request->role_id,
-            'add_at' => $request->days,
+            'expires_at' => $request->days,
         ]);
 
 
@@ -294,6 +303,7 @@ class DiscordController extends Controller
 
         $users = collect($get_users->json())->keyBy('user.id'); // Simpan data user berdasarkan ID mereka
 
+
         // Gabungkan data dari database dengan data API
         $formattedUsers = $user_roles->map(function ($userRole) use ($users, $discord_roles) {
             $userId = $userRole;
@@ -301,10 +311,9 @@ class DiscordController extends Controller
             $discordUser = $users->get($userId->user_id, []);
 
             $userData = $discordUser['user'] ?? [];
-
             return [
                 'id' => $userId->id,
-                'tanggal_aktif' => $userId->add_at,
+                'tanggal_aktif' => $userId->expires_at,
                 'username' => $userData['username'] ?? 'Unknown', // Jika user tidak ditemukan di API, gunakan 'Unknown'
                 'discriminator' => $userData['discriminator'] ?? '0000',
                 'avatar' => isset($userData['avatar'])
@@ -314,6 +323,7 @@ class DiscordController extends Controller
                 'database_role' => $discord_roles[$userRole->role_id] ?? 'Tidak Ada Role', // Ambil role name dari API Discord berdasarkan role_id di database
             ];
         });
+
 
 
         return view('admin.discord.data-user', compact('formattedUsers'));

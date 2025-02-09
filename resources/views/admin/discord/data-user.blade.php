@@ -28,7 +28,7 @@
                                     <th>Username</th>
                                     <th>Roles (Discord)</th>
                                     <th>Role (Database)</th>
-                                    <th>Tanggal Aktif</th>
+                                    <th>Tanggal expires</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -38,7 +38,7 @@
                                 @foreach ($formattedUsers as $user)
                                     <tr>
                                         <td><img src="{{ $user['avatar'] }}" width="50"></td>
-                                        <td>{{ $user['username'] }}#{{ $user['discriminator'] }}</td>
+                                        <td>{{ $user['username'] }}</td>
                                         <td>{{ implode(', ', $user['roles']) }}</td>
                                         <td>{{ $user['database_role'] }}</td>
                                         <td>{{ date('d F Y', strtotime($user['tanggal_aktif'])) }}</td>

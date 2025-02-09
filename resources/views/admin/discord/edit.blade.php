@@ -79,9 +79,10 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="days" class="form-label">Tanggal tambah role</label>
+                        <label for="days" class="form-label">Tanggal Expires</label>
                         <input type="date" class="form-control @error('days') is-invalid @enderror" id="days"
-                            name="days" value="{{ date('Y-m-d', strtotime(old('days', $userRole->add_at))) }}" required>
+                            name="days" value="{{ date('Y-m-d', strtotime(old('days', $userRole->expires_at))) }}"
+                            required>
                         @error('days')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -125,7 +126,7 @@
                 // Disable role yang sudah dimiliki user
                 $("#role_id option").each(function() {
                     var roleName = $(this).attr("data-role-name");
-                    if (userRoles.includes(roleName)) {
+                    if (!userRoles.includes(roleName)) {
                         $(this).prop("disabled", true);
                     }
                 });
