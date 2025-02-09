@@ -28,7 +28,7 @@
                                     <th>Username</th>
                                     <th>Roles (Discord)</th>
                                     <th>Role (Database)</th>
-                                    <th>Tanggal expires</th>
+                                    <th>Tanggal Expires</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>

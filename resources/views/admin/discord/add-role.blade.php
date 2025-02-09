@@ -128,12 +128,12 @@
                 // Reset semua option agar tidak ada sisa dari pilihan sebelumnya
                 $("#role_id option").prop("disabled", false);
 
-                if (roleArray.length > 0) {
-                    roleArray.forEach(role => {
-                        // Jika option dengan value role.id sudah ada, maka disable
-                        $("#role_id option[value='" + role.id + "']").prop("disabled", true);
-                    });
-                }
+                // if (roleArray.length > 0) {
+                //     roleArray.forEach(role => {
+                //         // Jika option dengan value role.id sudah ada, maka disable
+                //         $("#role_id option[value='" + role.id + "']").prop("disabled", true);
+                //     });
+                // }
 
                 // **Tambahkan kembali untuk menampilkan role di #user_roles**
                 var roleHtml = roleArray.length > 0 ?
