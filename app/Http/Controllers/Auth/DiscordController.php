@@ -175,6 +175,29 @@ class DiscordController extends Controller
     }
 
 
+    public function addRoleMultipleCreate()
+    {
+        $guild_id = env('DISCORD_GUILD_ID'); // ID Server Discord
+        $bot_token = env('DISCORD_BOT_TOKEN'); // Bot Token
+        // Ambil daftar role dari Discord
+        $get_roles = Http::withHeaders([
+            'Authorization' => "Bot $bot_token",
+            'Content-Type' => 'application/json',
+        ])->get("https://discord.com/api/v10/guilds/{$guild_id}/roles");
+
+        // Pastikan respons berhasil
+        if ($get_roles->failed()) {
+            return redirect()->back()->withErrors(['error' => 'Gagal mengambil data role dari Discord.']);
+        }
+
+
+
+        return view('admin.discord.add-role-multiple', ['roles' => $get_roles->json()]);
+    }
+
+
+
+
     public function editRoleUSer(Request $request, UserRole $userRole)
     {
         $guild_id = env('DISCORD_GUILD_ID'); // ID Server Discord

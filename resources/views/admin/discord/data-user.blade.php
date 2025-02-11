@@ -19,6 +19,8 @@
                         <h5 class="card-title">Data Role User</h5>
 
                         <a href="/discord/add-role/view" class="btn btn-sm btn-primary mt-3 mb-3">Add Role User</a>
+                        <a href="/discord/add-role/multiple/create" class="btn btn-sm btn-warning mt-3 mb-3">Add Role
+                            User</a>
 
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
