@@ -149,8 +149,6 @@ class DiscordController extends Controller
         $guild_id = env('DISCORD_GUILD_ID'); // ID Server Discord
         $bot_token = env('DISCORD_BOT_TOKEN'); // Bot Token
 
-
-
         // Validasi input dari request
         $request->validate([
             'discord_id' => 'required|string',

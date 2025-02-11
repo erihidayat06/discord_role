@@ -30,8 +30,8 @@ Route::middleware(['is_admin', 'auth', 'add_role'])->group(function () {
     Route::put('/discord/update/role/{userRole:id}', [DiscordController::class, 'update']);
     Route::delete('/discord/delete/{userRole:id}', [DiscordController::class, 'delete']);
     Route::post('/discord/add-role', [DiscordController::class, 'addRole'])->name('discord.addRole');
-    Route::get('/discord/add-role/multiple/create', [DiscordController::class, 'addRoleMultipleCreate'])->name('discord.addRole');
-    Route::post('/discord/add-role/multiple', [GetUsersController::class, 'addRoleMultiple'])->name('discord.addRole');
+    Route::get('/discord/add-role/multiple/create', [DiscordController::class, 'addRoleMultipleCreate']);
+    Route::post('/discord/add-role/multiple', [GetUsersController::class, 'addRoleMultiple']);
     Route::get('/get-discord-users', [GetUsersController::class, 'getUsersByRole']);
 });
 
