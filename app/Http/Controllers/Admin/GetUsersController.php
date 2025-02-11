@@ -66,14 +66,16 @@ class GetUsersController extends Controller
 
         $data = [];
         foreach ($request->discord_id as $key => $discordId) {
-            $data[] = [
-                'discord_id' => $discordId,
-                'user_id' => $discordId,
-                'role_id' => $request->role_id,
-                'expires_at' => $request->expires_at[$key] ?? null,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ];
+            if ($request->expires_at[$key] != null) {
+                $data[] = [
+                    'discord_id' => $discordId,
+                    'user_id' => $discordId,
+                    'role_id' => $request->role_id,
+                    'expires_at' => $request->expires_at[$key] ?? null,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+            }
         }
 
         UserRole::insert($data);
