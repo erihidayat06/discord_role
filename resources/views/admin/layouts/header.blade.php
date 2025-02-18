@@ -58,7 +58,7 @@
     });
 </script>
 
-<script>
+{{-- <script>
     $(document).ready(function() {
         // Tampilkan loading saat halaman mulai dimuat
         $('#loading-overlay').removeClass('d-none');
@@ -68,4 +68,4 @@
             $('#loading-overlay').addClass('d-none');
         });
     });
-</script>
+</script> --}}
