@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\Guild;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Laravel\Socialite\Facades\Socialite;
+use Ramsey\Uuid\Guid\Guid;
 
 class DiscordController extends Controller
 {
@@ -19,7 +21,7 @@ class DiscordController extends Controller
     public function index()
     {
         // Ambil token dan guild ID dari .env
-        $guild_id = env('DISCORD_GUILD_ID');
+        $guild_id = pilih_guild();
         $bot_token = env('DISCORD_BOT_TOKEN');
         // Ambil daftar role dari API Discord
         $get_roles = Http::withHeaders([
@@ -68,6 +70,9 @@ class DiscordController extends Controller
         });
 
 
+        $guild = Guild::where('id_guild', pilih_guild())->get()->first()->expires;
+
+
 
         $response = Http::withHeaders([
             'Authorization' => 'Bot ' . $bot_token,
@@ -75,7 +80,7 @@ class DiscordController extends Controller
 
         if ($response->successful()) {
             $roles = $response->json();
-            return view('admin.discord.add-role', ['roles' => $roles, 'users' => $formattedUsers]); // Mengembalikan daftar role dalam format JSON
+            return view('admin.discord.add-role', ['roles' => $roles, 'users' => $formattedUsers, 'guild' => $guild]); // Mengembalikan daftar role dalam format JSON
         } else {
             Log::error('Discord API error: ' . $response->body());
             return null;
@@ -86,7 +91,8 @@ class DiscordController extends Controller
 
     public function handleProviderCallback()
     {
-        $discordUser = Socialite::driver('discord')->user();
+        $discordUser = Socialite::driver('discord')->stateless()->user();
+
 
         // Menyusun data pengguna
         $discord_id = $discordUser->getId();
@@ -122,7 +128,7 @@ class DiscordController extends Controller
         auth()->login($user);
 
         // Join otomatis ke server Discord
-        $guild_id = env('DISCORD_GUILD_ID'); // ID Server Discord
+        $guild_id = pilih_guild(); // ID Server Discord
         $bot_token = env('DISCORD_BOT_TOKEN'); // Bot Token
 
         $response = Http::withHeaders([
@@ -135,7 +141,7 @@ class DiscordController extends Controller
         // Cek apakah request berhasil
         if ($response->failed()) {
             $errorMessage = 'Gagal masuk ke server Discord: ' . $response->body();
-            return redirect('/')->withErrors(['error' => $errorMessage]);
+            return redirect(auth()->user()->is_admin == false ? '/' : '/discord/data-role/view')->withErrors(['error' => $errorMessage]);
         }
 
         return redirect(auth()->user()->is_admin == false ? '/' : '/discord/data-role/view')->with('success', 'Login dan bergabung ke server berhasil!');
@@ -146,7 +152,7 @@ class DiscordController extends Controller
     public function addRole(Request $request)
     {
         // Join otomatis ke server Discord
-        $guild_id = env('DISCORD_GUILD_ID'); // ID Server Discord
+        $guild_id = pilih_guild(); // ID Server Discord
         $bot_token = env('DISCORD_BOT_TOKEN'); // Bot Token
 
         // Validasi input dari request
@@ -166,6 +172,7 @@ class DiscordController extends Controller
             'discord_id' => $request->discord_id,
             'role_id' => $request->role_id,
             'expires_at' => $request->days,
+            'id_guild' => pilih_guild(),
         ]);
 
         // Jika gagal menambahkan role, tampilkan pesan error
@@ -175,7 +182,7 @@ class DiscordController extends Controller
 
     public function addRoleMultipleCreate()
     {
-        $guild_id = env('DISCORD_GUILD_ID'); // ID Server Discord
+        $guild_id = pilih_guild(); // ID Server Discord
         $bot_token = env('DISCORD_BOT_TOKEN'); // Bot Token
         // Ambil daftar role dari Discord
         $get_roles = Http::withHeaders([
@@ -188,9 +195,9 @@ class DiscordController extends Controller
             return redirect()->back()->withErrors(['error' => 'Gagal mengambil data role dari Discord.']);
         }
 
+        $guild = Guild::where('id_guild', pilih_guild())->get()->first()->expires;
 
-
-        return view('admin.discord.add-role-multiple', ['roles' => $get_roles->json()]);
+        return view('admin.discord.add-role-multiple', ['roles' => $get_roles->json(), 'guild' => $guild]);
     }
 
 
@@ -198,11 +205,11 @@ class DiscordController extends Controller
 
     public function editRoleUSer(Request $request, UserRole $userRole)
     {
-        $guild_id = env('DISCORD_GUILD_ID'); // ID Server Discord
+        $guild_id = pilih_guild(); // ID Server Discord
         $bot_token = env('DISCORD_BOT_TOKEN'); // Bot Token
 
         // Ambil semua user dari database (UserRole)
-        $user_roles = UserRole::latest()->get();
+        $user_roles = UserRole::where('id_guild', $guild_id)->latest()->get();
 
         // Ambil daftar role dari Discord
         $get_roles = Http::withHeaders([
@@ -253,7 +260,9 @@ class DiscordController extends Controller
             ];
         });
 
-        return view('admin.discord.edit', compact('formattedUsers', 'userRole', 'roles'));
+        $guild = Guild::where('id_guild', pilih_guild())->get()->first()->expires;
+
+        return view('admin.discord.edit', compact('formattedUsers', 'userRole', 'roles', 'guild'));
     }
 
     public function update(Request $request, UserRole $userRole)
@@ -291,12 +300,12 @@ class DiscordController extends Controller
 
     public function roleUser()
     {
-        $guild_id = env('DISCORD_GUILD_ID'); // ID Server Discord
+        $guild_id = pilih_guild(); // ID Server Discord
         $bot_token = env('DISCORD_BOT_TOKEN'); // Bot Token
 
 
         // Ambil semua user dari database (UserRole)
-        $user_roles = UserRole::latest()->get(); // Ambil semua data tanpa keyBy()
+        $user_roles = UserRole::where('id_guild', $guild_id)->latest()->get();
 
         // Ambil daftar role dari API Discord
         $get_roles = Http::withHeaders([

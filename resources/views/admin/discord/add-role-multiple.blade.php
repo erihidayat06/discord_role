@@ -37,7 +37,9 @@
                                 <th>#</th>
                                 <th>Username</th>
                                 <th>Discord ID</th>
-                                <th>Tanggal Expire</th>
+                                @if ($guild)
+                                    <th>Tanggal Expire</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody id="userTable"></tbody>
@@ -62,7 +64,9 @@
                     $.ajax({
                         url: "/get-discord-users",
                         type: "GET",
-                        data: { role_id: roleId },
+                        data: {
+                            role_id: roleId
+                        },
                         success: function(response) {
                             loadingIndicator.text("")
                             tbody.empty();
@@ -73,17 +77,25 @@
                                             <td>${index + 1}</td>
                                             <td class="username">${user.username ?? 'Unknown'}</td>
                                             <td>${user.id ?? 'N/A'} <input type="hidden" value="${user.id ?? 'N/A'}" name="discord_id[]"></td>
+                                             @if ($guild)
                                             <td><input type="date" name="expires_at[]" class="form-control"></td>
+                                            @else
+                                            <td><input type="hidden" name="expires_at[]" class="form-control" value="{{ now()->addDay()->toDateTimeString() }}"></td>
+                                            @endif
                                         </tr>`
                                     );
                                 });
                             } else {
-                                tbody.html('<tr><td colspan="4">Tidak ada anggota dengan role ini.</td></tr>');
+                                tbody.html(
+                                    '<tr><td colspan="4">Tidak ada anggota dengan role ini.</td></tr>'
+                                );
                             }
                         },
                         error: function() {
                             loadingIndicator.text("");
-                            tbody.html('<tr><td colspan="4" class="text-danger">Gagal mengambil data.</td></tr>');
+                            tbody.html(
+                                '<tr><td colspan="4" class="text-danger">Gagal mengambil data.</td></tr>'
+                            );
                         }
                     });
                 } else {
@@ -95,7 +107,8 @@
             $("#searchInput").on("keyup", function() {
                 var value = $(this).val().toLowerCase();
                 $("#userTable tr").filter(function() {
-                    $(this).toggle($(this).find(".username").text().toLowerCase().indexOf(value) > -1)
+                    $(this).toggle($(this).find(".username").text().toLowerCase().indexOf(value) > -
+                        1)
                 });
             });
         });

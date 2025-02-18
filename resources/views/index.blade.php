@@ -1,31 +1,98 @@
 @extends('layouts.main')
 @section('content')
     <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
-
+    <section id="hero" class="hero section bg-color">
         <div class="container">
             <div class="row gy-4">
-                <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
-                    <h1>Modul Belajar Investasi & Trading Crypto Terlengkap</h1>
-                    <p>Panduan Lengkap untuk Memahami, Menganalisis, dan Mengoptimalkan Investasi Crypto Anda</p>
-                    <div class="d-flex">
-                        <a href="/login/discord" class="btn-get-started">Gabung discord</a>
-                        <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8"
-                            class="glightbox btn-watch-video d-flex align-items-center"><i
-                                class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                <div class="col-lg-12 text-center order-2 order-lg-1 d-flex flex-column justify-content-center "
+                    data-aos="zoom-out">
+                    <h1 class="text-white">Modul Belajar Investasi & Trading Crypto Terlengkap</h1>
+                    <p class="text-white">Ada Lebih Ratusan Member Telah Bergabung Disini!! Sekarang Kaliann Join Bersama
+                        Pelajar Lainnya </p>
+                    <div class="text-center">
+                        <a href="/login/discord" class="btn-get-started"><i class="bi bi-chevron-double-right"></i> Gabung
+                            discord <i class="bi bi-chevron-double-left"></i></a>
+                        {{-- <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8"
+                            class="glightbox btn-watch-video d-flex align-items-center text-white"><i
+                                class="bi bi-play-circle"></i><span>Watch Video</span></a> --}}
                     </div>
                 </div>
-                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="/assets2/img/hero-img.png" class="img-fluid animated" alt="">
-                </div>
+                {{-- <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
+                    <img src="/assets/img/logo-main.png" class="img-fluid animated" alt="">
+                </div> --}}
             </div>
         </div>
 
     </section><!-- /Hero Section -->
 
+    <section class="section bg-main">
+        <div class="container">
+            <div class="card col-lg-5 mx-auto shadow custom-shadow module-border-wrap">
+                <a href="https://api.whatsapp.com/send/?phone=%2B6285179663069&text=Halo+Kelas+Bulanan+Akademi+Crypto+Masih+Ada%3F&type=phone_number&app_absent=0"
+                    class="d-flex justify-content-center">
+                    <div class="card-body text-center">
+                        <div class="row align-items-center">
+                            <div class="col-1">
+                                <i class="bi bi-whatsapp fs-1 ms-4 text-success"></i>
+                            </div>
+                            <div class="col-10">
+                                <h3 class="text-dark"> WhatsApp</h3>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
+
+
+
+    <section class="section bg-main text-center">
+        <img class="img-bg module-border-wrap"
+            src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739554405994_7888550"
+            alt="">
+    </section>
+    <section class="section bg-main text-center">
+        <img class="img-bg module-border-wrap"
+            src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739606763264_6861670"
+            alt="">
+    </section>
+    <section class="section bg-main text-center">
+        <img class="img-bg module-border-wrap"
+            src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/13-02-2025/1739454844767_1913151"
+            alt="">
+    </section>
+    <section class="section bg-main">
+        <div class="container">
+            <div class="card col-lg-5 mx-auto shadow custom-shadow">
+                <a href="https://belajarsatupersen.xyz/belajarsatupersen.id/LPn99wE" class="d-flex justify-content-center">
+                    <div class="card-body text-center ">
+                        <div class="row align-items-center">
+
+                            <h3 class="text-dark"> Saya Mau Belajar</h3>
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-main text-center">
+        <img class="img-bg module-border-wrap"
+            src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739554469006_2126920"
+            alt="">
+    </section>
+    <section class="section bg-main text-center">
+        <img class="img-bg module-border-wrap"
+            src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/12-02-2025/1739307282480_5799265"
+            alt="">
+    </section>
+
+
+    {{-- <!-- Contact Section -->
+    <section id="contact" class="contact section bg-main">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
@@ -69,9 +136,9 @@
                             frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
-                </div>
+                </div> --}}
 
-                {{-- <div class="col-lg-7">
+    {{-- <div class="col-lg-7">
                     <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
                         data-aos-delay="200">
                         <div class="row gy-4">
@@ -107,10 +174,10 @@
                         </div>
                     </form>
                 </div><!-- End Contact Form --> --}}
-
+    {{--
             </div>
 
         </div>
 
-    </section><!-- /Contact Section -->
+    </section><!-- /Contact Section --> --}}
 @endsection

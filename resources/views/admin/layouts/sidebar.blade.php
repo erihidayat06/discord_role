@@ -9,6 +9,12 @@
                  <span>Role Data</span>
              </a>
          </li><!-- End Dashboard Nav -->
+         <li class="nav-item">
+             <a class="nav-link {{ Request::is('guild*') ? '' : 'collapsed' }}" href="/guild">
+                 <i class="bi bi-grid"></i>
+                 <span>Guild</span>
+             </a>
+         </li><!-- End Dashboard Nav -->
          {{-- <li class="nav-item">
              <a class="nav-link {{ Request::is('discord/data-role/view*') ? '' : 'collapsed' }}"
                  href="/discord/data-role/view">

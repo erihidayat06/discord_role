@@ -20,7 +20,7 @@ class AddRole
     public function handle($request, Closure $next)
     {
         // Ambil token dan guild ID dari .env
-        $guild_id = env('DISCORD_GUILD_ID');
+        $guild_id = pilih_guild();
         $bot_token = env('DISCORD_BOT_TOKEN');
 
         // Ambil user dengan role terbaru berdasarkan user_id dan role_id

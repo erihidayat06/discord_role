@@ -13,12 +13,12 @@ class GetUsersController extends Controller
     public function getUsersByRole(Request $request)
     {
 
-        $guildId = env('DISCORD_GUILD_ID'); // ID Server Discord
+        $guildId = pilih_guild(); // ID Server Discord
         $botToken = env('DISCORD_BOT_TOKEN');
         $roleId = $request->query('role_id');
 
         // 🔹 Ambil daftar discord_id yang sudah ada di database berdasarkan role_id
-        $existingUserIds = UserRole::where('role_id', $roleId)
+        $existingUserIds = UserRole::where('role_id', $roleId)->where('id_guild', $guildId)
             ->pluck('discord_id') // Ambil hanya discord_id
             ->toArray(); // Konversi ke array untuk pencarian cepat
 
@@ -71,6 +71,7 @@ class GetUsersController extends Controller
                     'discord_id' => $discordId,
                     'user_id' => $discordId,
                     'role_id' => $request->role_id,
+                    'id_guild' => pilih_guild(),
                     'expires_at' => $request->expires_at[$key] ?? null,
                     'created_at' => now(),
                     'updated_at' => now(),

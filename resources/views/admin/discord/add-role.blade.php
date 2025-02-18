@@ -72,14 +72,18 @@
                         @enderror
                     </div>
 
-                    <div class="mb-3">
-                        <label for="days" class="form-label">Tanggal Expires</label>
-                        <input type="date" class="form-control @error('days') is-invalid @enderror" id="days"
-                            name="days" value="{{ old('days') }}" required>
-                        @error('days')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                    @if ($guild)
+                        <div class="mb-3">
+                            <label for="days" class="form-label">Tanggal Expires</label>
+                            <input type="date" class="form-control @error('days') is-invalid @enderror" id="days"
+                                name="days" value="{{ old('days') }}" required>
+                            @error('days')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    @else
+                        <input type="hidden" name="days" value="{{ now()->addDay()->toDateTimeString() }}">
+                    @endif
 
                     <button type="submit" class="btn btn-primary" id="tambah">Tambah Role</button>
                 </form>

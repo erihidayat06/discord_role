@@ -78,15 +78,20 @@
                         @enderror
                     </div>
 
-                    <div class="mb-3">
-                        <label for="days" class="form-label">Tanggal Expires</label>
-                        <input type="date" class="form-control @error('days') is-invalid @enderror" id="days"
-                            name="days" value="{{ date('Y-m-d', strtotime(old('days', $userRole->expires_at))) }}"
-                            required>
-                        @error('days')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                    @if ($guild)
+                        <div class="mb-3">
+                            <label for="days" class="form-label">Tanggal Expires</label>
+                            <input type="date" class="form-control @error('days') is-invalid @enderror" id="days"
+                                name="days" value="{{ date('Y-m-d', strtotime(old('days', $userRole->expires_at))) }}"
+                                required>
+                            @error('days')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    @else
+                        <input type="hidden" name="days"
+                            value="{{ date('Y-m-d', strtotime(old('days', $userRole->expires_at))) }}">
+                    @endif
 
                     <button type="submit" class="btn btn-success" id="update">Update Role</button>
                 </form>

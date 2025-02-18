@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\GetUsersController;
+use App\Http\Controllers\Admin\GuildController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\RedirectController;
@@ -33,6 +34,8 @@ Route::middleware(['is_admin', 'auth', 'add_role'])->group(function () {
     Route::get('/discord/add-role/multiple/create', [DiscordController::class, 'addRoleMultipleCreate']);
     Route::post('/discord/add-role/multiple', [GetUsersController::class, 'addRoleMultiple']);
     Route::get('/get-discord-users', [GetUsersController::class, 'getUsersByRole']);
+    Route::resource('/guild', GuildController::class);
+    Route::post('/update-guild/ubah', [GuildController::class, 'updateGuild']);
 });
 
 Route::middleware(['guest', 'add_role'])->group(function () {
@@ -41,3 +44,4 @@ Route::middleware(['guest', 'add_role'])->group(function () {
     Route::get('/auth/discord', [DiscordController::class, 'redirect'])->name('discord.login');
 });
 Route::post('/logout', [DiscordController::class, 'logout'])->name('logout');
+Route::get('/logout/admin', [DiscordController::class, 'logout'])->name('logout');

@@ -28,6 +28,7 @@
 
     <!-- Main CSS File -->
     <link href="/assets2/css/main.css" rel="stylesheet">
+    <link href="/assets2/css/style.css" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: Arsha
