@@ -37,6 +37,57 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+    <style>
+        .bg-color {
+            background-image: radial-gradient(circle at 50% -10%,
+                    #8c4397 0%,
+                    #66327b 10%,
+                    #40205b 30%,
+                    #000000 60%,
+                    #000000 85%,
+                    #000000 100%);
+        }
+
+        .custom-shadow {
+            box-shadow: 5px 10px 15px #9a25e36c !important;
+            /* Warna ungu dengan transparansi */
+        }
+
+        .bg-main {
+            background-color: #000008;
+        }
+
+        .bg-transparan {
+            background-color: #ffffff00 !important;
+        }
+
+        body {
+            background-image: radial-gradient(circle at 43.84% -20.44%,
+                    #8c4397 0,
+                    #66327b 16.67%,
+                    #40205b 33.33%,
+                    #1b0c38 50%,
+                    #000018 66.67%,
+                    #000000 83.33%,
+                    #000000 100%);
+        }
+
+        .module-border-wrap {
+            border-width: 3px;
+            border-style: solid;
+            border-image: linear-gradient(to bottom right,
+                    var(--accent-color) 0%,
+                    var(--accent-color) 30%,
+                    rgba(0, 0, 0, 0) 50%,
+                    var(--accent-color) 100%) 1;
+        }
+
+        .img-bg {
+            width: 70%;
+            margin: auto;
+        }
+    </style>
 </head>
 
 <body class="index-page">
