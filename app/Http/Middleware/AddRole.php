@@ -25,26 +25,25 @@ class AddRole
 
         // Ambil user dengan role terbaru berdasarkan user_id dan role_id
         $users = UserRole::select('id', 'user_id', 'role_id', 'discord_id', 'expires_at')
-            ->orderByDesc('expires_at') // Urutkan berdasarkan expires_at yang paling baru
-            ->get()
-            ->unique(fn($user) => $user->user_id . '-' . $user->role_id); // Ambil user unik berdasarkan user_id dan role_id
+            ->whereNotNull('expires_at') // Pastikan expires_at ada
+            ->orderBy('user_id') // Urutkan berdasarkan user_id terlebih dahulu
+            ->orderBy('role_id') // Urutkan berdasarkan role_id
+            ->orderByDesc('expires_at') // Ambil data dengan expires_at terbaru
+            ->distinct('user_id', 'role_id') // Ambil hanya data yang unik berdasarkan user_id dan role_id
+            ->get();
 
         foreach ($users as $user) {
             // Pastikan expires_at tidak null sebelum dibandingkan dengan now()
-            if (!$user->expires_at || Carbon::parse($user->expires_at)->greaterThan(now())) {
-                continue; // Lewati user yang belum kedaluwarsa
+            if (Carbon::parse($user->expires_at)->lessThan(now())) {
+                // Pastikan discord_id dan role_id tidak kosong sebelum menghapus role
+                if ($user->discord_id && $user->role_id) {
+                    // Kirim request DELETE ke API Discord
+                    Http::withHeaders([
+                        'Authorization' => "Bot $bot_token",
+                        'Content-Type' => 'application/json',
+                    ])->delete("https://discord.com/api/v10/guilds/{$guild_id}/members/{$user->discord_id}/roles/{$user->role_id}");
+                }
             }
-
-            // Pastikan discord_id dan role_id tidak kosong sebelum menghapus role
-            if (!$user->discord_id || !$user->role_id) {
-                continue;
-            }
-
-            // Kirim request DELETE ke API Discord
-            Http::withHeaders([
-                'Authorization' => "Bot $bot_token",
-                'Content-Type' => 'application/json',
-            ])->delete("https://discord.com/api/v10/guilds/{$guild_id}/members/{$user->discord_id}/roles/{$user->role_id}");
         }
 
         return $next($request);

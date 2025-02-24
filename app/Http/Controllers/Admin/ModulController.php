@@ -53,86 +53,26 @@ class ModulController extends Controller
      */
     public function store(Request $request)
     {
-        Log::info('Request diterima: ', $request->all());
-
+        // Validasi input
         $request->validate([
             'judul' => 'required|string|max:255',
-            'video' => 'required|mimes:mp4',
+            'video' => 'required|string', // Terima ID video
         ]);
-
-        Log::info('Validasi berhasil.');
-
-        $client = new Client();
         $libraryId = env('BUNNY_STREAM_LIBRARY_ID');
-        $apiKey = env('BUNNY_STREAM_API_KEY');
 
-        // Upload video ke Bunny Stream
-        $file = $request->file('video');
-        $fileName = time() . '_' . $file->getClientOriginalName();
+        // Ambil ID video dari request
+        $videoUrl = "https://iframe.mediadelivery.net/embed/$libraryId/$request->video";
 
-        Log::info('File video ditemukan: ', [
-            'fileName' => $fileName,
-            'size' => $file->getSize(),
-            'mime' => $file->getMimeType(),
+
+        // Step 2: Simpan judul dan URL video ke database
+        Modul::create([
+            'judul' => $request->judul,
+            'slug' => Str::slug($request->judul) . '-' . time(),
+            'video' => $videoUrl, // Simpan URL video
+            'kelas_id' => $request->kelas_id
         ]);
 
-        try {
-            // Step 1: Buat video di Bunny Stream
-            Log::info('Mengirim permintaan untuk membuat video di Bunny Stream...');
-            // Generate slug dari judul + timestamp
-            $slug = Str::slug($request->judul) . '-' . time();
-
-
-            $response = $client->post("https://video.bunnycdn.com/library/$libraryId/videos", [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'AccessKey' => $apiKey,
-                ],
-                'json' => [
-                    'title' => $slug,
-                    'collectionId' => null, // Optional
-                ],
-            ]);
-
-            $videoData = json_decode($response->getBody(), true);
-            Log::info('Response dari Bunny Stream (Pembuatan Video): ', $videoData);
-
-            $videoId = $videoData['guid'] ?? null;
-
-            if (!$videoId) {
-                Log::error('Gagal membuat video di Bunny Stream.', ['response' => $videoData]);
-                return back()->with('error', 'Gagal membuat video di Bunny Stream.');
-            }
-
-            // Step 2: Upload file ke Bunny Stream
-            Log::info('Mengupload file ke Bunny Stream...', ['videoId' => $videoId]);
-
-            $uploadResponse = $client->put("https://video.bunnycdn.com/library/$libraryId/videos/$videoId", [
-                'headers' => [
-                    'AccessKey' => $apiKey,
-                    'Content-Type' => 'application/octet-stream',
-                ],
-                'body' => fopen($file->getPathname(), 'r'),
-            ]);
-
-            Log::info('Upload selesai!', ['statusCode' => $uploadResponse->getStatusCode()]);
-
-
-            // Simpan ke database
-            Modul::create([
-                'judul' => $request->judul,
-                'slug' => $slug,
-                'kelas_id' => $request->kelas_id,
-                'video' => "https://iframe.mediadelivery.net/embed/$libraryId/$videoId",
-            ]);
-
-            Log::info('Video berhasil disimpan ke database.');
-
-            return redirect()->back()->with('success', 'Video berhasil diunggah ke Bunny Stream!');
-        } catch (\Exception $e) {
-            Log::error('Terjadi kesalahan:', ['message' => $e->getMessage()]);
-            return back()->with('error', 'Terjadi kesalahan saat mengunggah video.');
-        }
+        return redirect("/kelas/$request->kelas_id")->with('success', 'Video berhasil diunggah!');
     }
 
 
@@ -159,44 +99,27 @@ class ModulController extends Controller
      */
     public function update(Request $request, Modul $modul)
     {
+        // Validasi input
         $request->validate([
             'judul' => 'required|string|max:255',
-            'video' => 'nullable|mimes:mp4,mov,avi,wmv',
+            'video' => 'required|string', // Terima ID video
         ]);
 
-        // Mulai Transaksi
-        DB::beginTransaction();
+        $libraryId = env('BUNNY_STREAM_LIBRARY_ID');
 
-        try {
-            // Buat slug dengan angka berdasarkan jam, menit, detik
-            $slug = Str::slug($request->judul) . '-' . date('dHis');
-            // Simpan judul
-            $modul->judul = $request->judul;
-            $modul->slug = $slug;
+        // Ambil ID video dari request
+        $videoUrl = "https://iframe.mediadelivery.net/embed/$libraryId/$request->video";
 
-            // Cek apakah ada video baru yang diunggah
-            if ($request->hasFile('video')) {
-                // Hapus video lama jika ada
-                if ($modul->video && Storage::disk('public')->exists($modul->video)) {
-                    Storage::disk('public')->delete($modul->video);
-                }
+        // Step 2: Update data video dan judul ke database
+        $modul->update([
+            'judul' => $request->judul,
+            'slug' => Str::slug($request->judul) . '-' . time(),
+            'video' => $videoUrl, // Update URL video
+        ]);
 
-                // Upload video baru
-                $videoPath = $request->file('video')->store('modul', 'public');
-                $modul->video = $videoPath;
-            }
-
-            // Simpan perubahan
-            $modul->save();
-
-            DB::commit();
-
-            return redirect('/kelas/' . $modul->kelas_id)->with(['success' => 'Modul berhasil diperbarui!']);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json(['error' => 'Gagal memperbarui modul! ' . $e->getMessage()], 500);
-        }
+        return redirect("/kelas/$modul->kelas_id")->with('success', 'Modul berhasil diperbarui!');
     }
+
 
     /**
      * Remove the specified resource from storage.

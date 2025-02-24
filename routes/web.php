@@ -3,6 +3,7 @@
 use App\Models\Modul;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\KursusController;
@@ -76,7 +77,11 @@ Route::middleware(['auth', 'add_role'])->group(
 
 
 Route::middleware(['guest', 'add_role'])->group(function () {
-    Route::get('login/discord', [RedirectController::class, 'redirectToProvider']);
+    Route::get('/login/discord', [RedirectController::class, 'redirectToProvider']);
     Route::get('/auth/discord/callback', [DiscordController::class, 'handleProviderCallback']);
     Route::get('/auth/discord', [DiscordController::class, 'redirect'])->name('discord.login');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
