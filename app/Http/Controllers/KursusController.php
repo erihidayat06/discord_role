@@ -135,7 +135,7 @@ class KursusController extends Controller
         Log::error("Video Request: " . $filename);
 
         // Path ke dalam storage/modul/
-        $path = 'modul/' . $filename;
+        $path = $filename;
 
         // Cek apakah file ada
         if (!Storage::exists($path)) {

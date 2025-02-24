@@ -98,10 +98,10 @@
         <p class="fw-bold">{{ $showModul->judul }}</p>
 
 
-        <video id="player" playsinline controls autoplay data-poster="/path/to/poster.jpg">
-            <source src="{{ URL::signedRoute('video.secure', ['filename' => substr($showModul->video, 6)]) }}"
-                type="video/mp4" />
-        </video>
+        <iframe src="{{ $showModul->video }}?autoplay=1&watermark={{ urlencode(env('BUNNY_STREAM_WATERMARK_URL')) }}"
+            width="100%" height="500" allow="autoplay; fullscreen" frameborder="0" allowfullscreen>
+        </iframe>
+
     </div>
 
     <script>

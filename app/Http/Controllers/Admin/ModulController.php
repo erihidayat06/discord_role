@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Modul;
 
+use GuzzleHttp\Client;
+use Cloudinary\Cloudinary;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,6 +29,16 @@ class ModulController extends Controller
      */
     public function create()
     {
+        // $cloudinary = [
+        //     'cloud' => [
+        //         'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+        //         'api_key'    => env('CLOUDINARY_API_KEY'),
+        //         'api_secret' => env('CLOUDINARY_API_SECRET'),
+        //     ],
+        // ];
+
+        // dd($cloudinary);
+
         if (empty(request('kelas'))) {
             return redirect()->back();
         } else {
@@ -40,82 +52,88 @@ class ModulController extends Controller
      */
     public function store(Request $request)
     {
+        Log::info('Request diterima: ', $request->all());
+
         $request->validate([
             'judul' => 'required|string|max:255',
-            'video' => 'required|mimes:mp4,mov,avi,wmv',
+            'video' => 'required|mimes:mp4',
         ]);
 
-        if ($request->hasFile('video')) {
-            // Mulai Transaksi
-            DB::beginTransaction();
+        Log::info('Validasi berhasil.');
 
-            // Inisialisasi variabel
-            $videoPath = null;
-            $watermarkedVideoPath = null;
+        $client = new Client();
+        $libraryId = env('BUNNY_STREAM_LIBRARY_ID');
+        $apiKey = env('BUNNY_STREAM_API_KEY');
 
-            try {
-                // Upload Video Asli
-                $videoPath = $request->file('video')->store('modul', 'public');
+        // Upload video ke Bunny Stream
+        $file = $request->file('video');
+        $fileName = time() . '_' . $file->getClientOriginalName();
 
-                // Tentukan path watermark
-                $watermarkImagePath = public_path('assets/img/logo-main.png');
+        Log::info('File video ditemukan: ', [
+            'fileName' => $fileName,
+            'size' => $file->getSize(),
+            'mime' => $file->getMimeType(),
+        ]);
 
-                // Tentukan path untuk video yang sudah di-watermark
-                $watermarkedVideoPath = 'modul/watermarked_' . basename($videoPath);
+        try {
+            // Step 1: Buat video di Bunny Stream
+            Log::info('Mengirim permintaan untuk membuat video di Bunny Stream...');
+            // Generate slug dari judul + timestamp
+            $slug = Str::slug($request->judul) . '-' . time();
 
-                // Proses Watermark menggunakan FFmpeg
-                $ffmpegCommand = "ffmpeg -i " . storage_path('app/public/' . $videoPath) .
-                    " -i $watermarkImagePath -filter_complex \"overlay=W-w-10:H-h-10\" " .
-                    storage_path('app/public/' . $watermarkedVideoPath);
 
-                // Jalankan perintah FFmpeg
-                exec($ffmpegCommand);
+            $response = $client->post("https://video.bunnycdn.com/library/$libraryId/videos", [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'AccessKey' => $apiKey,
+                ],
+                'json' => [
+                    'title' => $slug,
+                    'collectionId' => null, // Optional
+                ],
+            ]);
 
-                // Perkecil ukuran video (dengan kualitas 80%)
-                $compressedVideoPath = 'modul/compressed_' . basename($videoPath);
-                $ffmpegCompressCommand = "ffmpeg -i " . storage_path('app/public/' . $watermarkedVideoPath) .
-                    " -vcodec libx264 -crf 23 " .
-                    storage_path('app/public/' . $compressedVideoPath);
+            $videoData = json_decode($response->getBody(), true);
+            Log::info('Response dari Bunny Stream (Pembuatan Video): ', $videoData);
 
-                // Jalankan perintah kompresi
-                exec($ffmpegCompressCommand);
+            $videoId = $videoData['guid'] ?? null;
 
-                // Buat slug dengan angka berdasarkan jam, menit, detik
-                $slug = Str::slug($request->judul) . '-' . date('dHis');
-
-                // Simpan informasi video ke database
-                Modul::create([
-                    'judul' => $request->judul,
-                    'slug' => $slug,
-                    'video' =>  $compressedVideoPath, // Simpan video yang sudah dikompresi
-                    'kelas_id' => $request->kelas_id,
-                ]);
-
-                // Commit Transaksi
-                DB::commit();
-
-                // Hapus video asli dan yang sudah di-watermark dari storage setelah digunakan
-                Storage::disk('public')->delete($videoPath);
-                Storage::disk('public')->delete($watermarkedVideoPath);
-
-                return redirect('/kelas/' . $request->kelas_id)
-                    ->with('success', 'Video berhasil diunggah dengan watermark!');
-            } catch (\Exception $e) {
-                // Jika gagal, kembalikan transaksi
-                DB::rollBack();
-
-                // Hapus file yang sudah terupload jika ada
-                if ($videoPath && Storage::disk('public')->exists($videoPath)) {
-                    Storage::disk('public')->delete($videoPath);
-                }
-
-                // Redirect dengan pesan error
-                return back()->with('error', 'Gagal mengunggah video: ' . $e->getMessage());
+            if (!$videoId) {
+                Log::error('Gagal membuat video di Bunny Stream.', ['response' => $videoData]);
+                return back()->with('error', 'Gagal membuat video di Bunny Stream.');
             }
-        }
 
-        return redirect('/kelas/' . $request->kelas_id)->with('error', 'Gagal mengunggah video.');
+            // Step 2: Upload file ke Bunny Stream
+            Log::info('Mengupload file ke Bunny Stream...', ['videoId' => $videoId]);
+
+            $uploadResponse = $client->put("https://video.bunnycdn.com/library/$libraryId/videos/$videoId", [
+                'headers' => [
+                    'AccessKey' => $apiKey,
+                    'Content-Type' => 'application/octet-stream',
+                ],
+                'body' => fopen($file->getPathname(), 'r'),
+            ]);
+
+            Log::info('Upload selesai!', ['statusCode' => $uploadResponse->getStatusCode()]);
+
+
+            // Simpan ke database
+            Modul::create([
+                'judul' => $request->judul,
+                'slug' => $slug,
+                'kelas_id' => $request->kelas_id,
+                'video' => "https://iframe.mediadelivery.net/embed/$libraryId/$videoId",
+            ]);
+
+            Log::info('Video berhasil disimpan ke database.');
+
+            return redirect()->back()->with('success', 'Video berhasil diunggah ke Bunny Stream!');
+        } catch (\Exception $e) {
+            Log::error('Terjadi kesalahan:', ['message' => $e->getMessage()]);
+            return back()->with('error', 'Terjadi kesalahan saat mengunggah video.');
+        }
     }
+
 
 
 

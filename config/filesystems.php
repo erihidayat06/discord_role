@@ -56,6 +56,26 @@ return [
             'throw' => false,
         ],
 
+        'cloudinary' => [
+            'driver'    => 'cloudinary',
+            'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+            'api_key'    => env('CLOUDINARY_API_KEY'),
+            'api_secret' => env('CLOUDINARY_API_SECRET'),
+            'secure'     => true,
+        ],
+
+        'disks' => [
+            'wasabi' => [
+                'driver' => 's3',
+                'key' => env('WASABI_KEY'),
+                'secret' => env('WASABI_SECRET'),
+                'region' => env('WASABI_REGION'),
+                'bucket' => env('WASABI_BUCKET'),
+                'endpoint' => env('WASABI_ENDPOINT'),
+            ],
+        ],
+
+
     ],
 
     /*
