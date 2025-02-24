@@ -25,9 +25,9 @@ class AddRole
 
         // Ambil user dengan role terbaru berdasarkan user_id dan role_id
         $users = UserRole::select('id', 'user_id', 'role_id', 'discord_id', 'expires_at')
-            ->latest('created_at') // Ambil data terbaru
+            ->orderByDesc('expires_at') // Urutkan berdasarkan expires_at yang paling baru
             ->get()
-            ->unique(fn($user) => $user->user_id . '-' . $user->role_id); // Hilangkan duplikat berdasarkan user_id dan role_id
+            ->unique(fn($user) => $user->user_id . '-' . $user->role_id); // Ambil user unik berdasarkan user_id dan role_id
 
         foreach ($users as $user) {
             // Pastikan expires_at tidak null sebelum dibandingkan dengan now()
@@ -45,14 +45,6 @@ class AddRole
                 'Authorization' => "Bot $bot_token",
                 'Content-Type' => 'application/json',
             ])->delete("https://discord.com/api/v10/guilds/{$guild_id}/members/{$user->discord_id}/roles/{$user->role_id}");
-
-            // // Logging jika ada kesalahan
-            // if ($response->failed()) {
-            //     \Log::error("Gagal menghapus role di Discord untuk user: {$user->discord_id}", [
-            //         'role_id' => $user->role_id,
-            //         'response' => $response->body(),
-            //     ]);
-            // }
         }
 
         return $next($request);
