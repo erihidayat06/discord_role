@@ -82,6 +82,6 @@ Route::middleware(['guest', 'add_role'])->group(function () {
     Route::get('/auth/discord', [DiscordController::class, 'redirect'])->name('discord.login');
 });
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
