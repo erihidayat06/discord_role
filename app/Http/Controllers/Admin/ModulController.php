@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -205,9 +206,22 @@ class ModulController extends Controller
         DB::beginTransaction();
 
         try {
-            // Hapus video dari storage jika ada
-            if ($modul->video && Storage::disk('public')->exists($modul->video)) {
-                Storage::disk('public')->delete($modul->video);
+            $libraryId = env('BUNNY_STREAM_LIBRARY_ID');
+            $apiKey = env('BUNNY_STREAM_API_KEY');
+
+            // Cek apakah video ada di Bunny Stream
+            if ($modul->video) {
+                // Ambil video ID dari URL (format: https://iframe.mediadelivery.net/embed/{libraryId}/{videoId})
+                $videoId = basename(parse_url($modul->video, PHP_URL_PATH));
+
+                // Hapus video dari Bunny Stream API
+                $response = Http::withHeaders([
+                    'AccessKey' => $apiKey,
+                ])->delete("https://video.bunnycdn.com/library/$libraryId/videos/$videoId");
+
+                if ($response->failed()) {
+                    throw new \Exception('Gagal menghapus video dari Bunny Stream: ' . $response->body());
+                }
             }
 
             // Hapus modul dari database
@@ -215,7 +229,7 @@ class ModulController extends Controller
 
             DB::commit();
 
-            return redirect('/kelas/' . $modul->kelas_id)->with('success', 'Modul berhasil dihapus!');
+            return redirect('/kelas/' . $modul->kelas_id)->with('success', 'Modul dan video berhasil dihapus!');
         } catch (\Exception $e) {
             DB::rollBack();
             return back()->with('error', 'Gagal menghapus modul! ' . $e->getMessage());
