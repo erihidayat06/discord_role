@@ -1,7 +1,10 @@
 <?php
 
-use App\Models\Choose;
 use App\Models\Guild;
+use App\Models\Kelas;
+use App\Models\Modul;
+use App\Models\Choose;
+use App\Models\Kategori;
 
 if (!function_exists('pilih_guild')) {
     function pilih_guild()
@@ -35,5 +38,15 @@ if (!function_exists('guild')) {
         $guilds = Guild::latest()->get();
 
         return $guilds;
+    }
+}
+
+if (!function_exists('kategori')) {
+    function kategori()
+    {
+
+        $kategori = Kategori::latest()->get();
+
+        return $kategori;
     }
 }
