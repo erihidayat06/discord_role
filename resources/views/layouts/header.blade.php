@@ -63,7 +63,13 @@
                     </li>
 
                     <li>
-                        <a class="btn-getstarted p-2 ms-2 btn btn-secondary" href="/register">Sign Up</a>
+                        <a class="btn-getstarted p-2 ms-2 btn btn-secondary" href="/register">
+                            @if (auth()->check() && auth()->user()->expired)
+                                Sign Up
+                            @else
+                                1 day trial
+                            @endif
+                        </a>
 
                     </li>
 

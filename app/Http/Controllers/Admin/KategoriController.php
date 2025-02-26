@@ -13,7 +13,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $kategoris = Kategori::latest()->get();
+        $kategoris = Kategori::orderBy('order', 'asc')->get();
+
         return view('admin.kategori.index', compact('kategoris'));
     }
 
@@ -77,5 +78,38 @@ class KategoriController extends Controller
         $kategori->delete();
 
         return redirect()->back()->with('success', 'Kategori berhasil dihapus');
+    }
+
+
+    public function moveUp($id)
+    {
+        $kategori = Kategori::findOrFail($id);
+        $previous = Kategori::where('order', '<', $kategori->order)
+            ->orderBy('order', 'desc')
+            ->first();
+
+        if ($previous) {
+            $tempOrder = $kategori->order;
+            $kategori->update(['order' => $previous->order]);
+            $previous->update(['order' => $tempOrder]);
+        }
+
+        return response()->json(['success' => true]);
+    }
+
+    public function moveDown($id)
+    {
+        $kategori = Kategori::findOrFail($id);
+        $next = Kategori::where('order', '>', $kategori->order)
+            ->orderBy('order', 'asc')
+            ->first();
+
+        if ($next) {
+            $tempOrder = $kategori->order;
+            $kategori->update(['order' => $next->order]);
+            $next->update(['order' => $tempOrder]);
+        }
+
+        return response()->json(['success' => true]);
     }
 }

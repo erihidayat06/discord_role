@@ -3,8 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Index - Belajar satu persen</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Favicons -->
+    <link href="/assets/img/logo.png" rel="icon">
+    <link href="/assets/img/logo.png" rel="apple-touch-icon">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
@@ -86,6 +93,19 @@
             /* Efek sedikit mengecil saat diklik */
             box-shadow: none;
             /* Pastikan tidak ada shadow atau perubahan lain yang menyebabkan perubahan warna */
+
+        }
+
+        .form-control {
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+        .form-control:focus {
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
         }
     </style>
 
