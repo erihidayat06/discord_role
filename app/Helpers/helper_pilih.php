@@ -45,7 +45,7 @@ if (!function_exists('kategori')) {
     function kategori()
     {
 
-        $kategori = Kategori::latest()->get();
+        $kategori = Kategori::orderBy('order', 'asc')->get();
 
         return $kategori;
     }
