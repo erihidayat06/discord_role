@@ -14,6 +14,7 @@ use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\RedirectController;
 use App\Http\Controllers\Admin\GetUsersController;
 use App\Http\Controllers\Admin\KategoriController;
+use App\Http\Controllers\Admin\LanggananController;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /*
@@ -29,7 +30,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 Route::get('/', function () {
     return view('index');
-});
+})->middleware('prevent.if.active');
 
 Route::middleware(['is_admin', 'auth', 'add_role'])->group(function () {
     Route::get('/discord/data-role/view', [DiscordController::class, 'roleUser']);
@@ -46,7 +47,7 @@ Route::middleware(['is_admin', 'auth', 'add_role'])->group(function () {
     Route::get('/get-discord-users', [GetUsersController::class, 'getUsersByRole']);
     Route::resource('/guild', GuildController::class);
     Route::post('/update-guild/ubah', [GuildController::class, 'updateGuild']);
-    Route::post('/logout', [DiscordController::class, 'logout'])->name('logout');
+
     Route::get('/logout/admin', [DiscordController::class, 'logout'])->name('logout.admin');
 
     // Kategori
@@ -58,30 +59,37 @@ Route::middleware(['is_admin', 'auth', 'add_role'])->group(function () {
     ]);
     Route::get('/kelas/{kelas_id}/video/{id}', [KelasController::class, 'lihatVideo'])->name('lihat.video');
 
-    Route::resource('/modul', ModulController::class);
+    Route::resource('/kelas/modul', ModulController::class);
     // Route::post('/modul/store/', [ModulController::class, 'store'])->name('modul.store');
     Route::get('/video/{id}', [ModulController::class, 'showVideo'])->name('video.show');
+
+    Route::get('/langganan', [LanggananController::class, 'index']);
+    Route::patch('/admin/langganan/update-expired/{id}', [LanggananController::class, 'updateExpired'])
+        ->name('admin.langganan.updateExpired');
 });
 
-Route::middleware(['auth', 'add_role'])->group(
+Route::post('/logout', [DiscordController::class, 'logout'])->name('logout')->middleware('auth');
+
+
+
+Route::middleware(['auth', 'add_role', 'check.subscription'])->group(
     function () {
         Route::get('/kursus', [KursusController::class, 'index']);
         Route::get('/kursus/{kelas:slug}', [KursusController::class, 'show']);
         Route::get('/kursus/{slug}/modul/{slug_modul}', [KursusController::class, 'showModul'])->name('modul.view');
         Route::post('/modul/{slug}/{slug_modul}/next', [KursusController::class, 'nextModul'])->name('modul.next');
-
-
         Route::get('/secure-video/{filename}', [KursusController::class, 'secureVideo'])->name('video.secure');
+        Route::post('/logout/discord', [KursusController::class, 'logout']);
     }
 );
 
 
-Route::middleware(['guest', 'add_role'])->group(function () {
+Route::middleware(['add_role'])->group(function () {
     Route::get('/login/discord', [RedirectController::class, 'redirectToProvider']);
     Route::get('/auth/discord/callback', [DiscordController::class, 'handleProviderCallback']);
     Route::get('/auth/discord', [DiscordController::class, 'redirect'])->name('discord.login');
 });
 
-// Auth::routes();
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -21,7 +21,7 @@
                             </div>
                         @endif
 
-                        <form id="uploadForm" action="/modul" method="POST">
+                        <form id="uploadForm" action="/kelas/modul" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Judul Modul</label>

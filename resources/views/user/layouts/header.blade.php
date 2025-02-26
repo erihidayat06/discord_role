@@ -34,9 +34,45 @@
                 </a>
             </li><!-- End Search Icon-->
 
+
+            @if (auth()->user()->discord_active == 0)
+                <li><a href="/login/discord" class="text-white">Login discord</a></li>
+            @else
+                <li class="nav-item dropdown pe-3 text-white">
+
+                    <a class="nav-link nav-profile d-flex align-items-center text-white pe-0 ms-2" href="#"
+                        data-bs-toggle="dropdown">
+
+                        <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->user()->discord_name }}</span>
+                    </a><!-- End Profile Image Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header ">
+                            <h6 class="text-white">{{ auth()->user()->discord_name }}</h6>
+
+                        </li>
+
+
+                        <li>
+
+                            <form action="/logout/discord" method="POST">
+                                @csrf
+
+                                <button type="submit" class="dropdown-item d-flex align-items-center" href="#">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Logout Discord</span>
+                                </button>
+                            </form>
+                        </li>
+
+                    </ul><!-- End Profile Dropdown Items -->
+                </li><!-- End Profile Nav -->
+            @endif
+
+
             <li class="nav-item dropdown pe-3 text-white">
 
-                <a class="nav-link nav-profile d-flex align-items-center text-white pe-0" href="#"
+                <a class="nav-link nav-profile d-flex align-items-center text-white pe-0 ms-2" href="#"
                     data-bs-toggle="dropdown">
 
                     <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->user()->name }}</span>
@@ -48,7 +84,12 @@
 
                     </li>
 
+                    @if (auth()->user()->is_admin)
+                        <li><a class="dropdown-item" href="/discord/data-role/view">Manage Roles</a></li>
+                    @endif
+
                     <li>
+
                         <form action="/logout" method="POST">
                             @csrf
 

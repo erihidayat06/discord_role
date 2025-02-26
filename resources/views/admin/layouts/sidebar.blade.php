@@ -30,17 +30,22 @@
          </li><!-- End Dashboard Nav --> --}}
 
          <li class="nav-item">
-             <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-                 <i class="bi bi-collection-play-fill"></i><span>Kelas/Modul</span><i
-                     class="bi bi-chevron-down ms-auto"></i>
+             <a class="nav-link {{ Request::is('kelas*') || Request::has('kategori') ? '' : 'collapsed' }}"
+                 data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                 <i class="bi bi-collection-play-fill"></i>
+                 <span>Kelas/Modul</span>
+                 <i class="bi bi-chevron-down ms-auto"></i>
              </a>
-             <ul id="charts-nav" class="nav-content {{ Request::is('kelas*') ? '' : 'collapsed' }}"
+             <ul id="charts-nav"
+                 class="nav-content collapse {{ Request::is('kelas*') || Request::has('kategori') ? 'show' : '' }}"
                  data-bs-parent="#sidebar-nav">
+
                  <li>
-                     <a href="/kelas" class="{{ Request::is('kelas') && !Request::has('kategori') ? 'active' : '' }}">
+                     <a href="/kelas" class="{{ Request::is('kelas*') && !Request::has('kategori') ? 'active' : '' }}">
                          <i class="bi bi-circle"></i><span>Semua Kelas</span>
                      </a>
                  </li>
+
                  @foreach (kategori() as $kategori)
                      <li>
                          <a href="/kelas?kategori={{ $kategori->id }}"
@@ -50,7 +55,16 @@
                      </li>
                  @endforeach
              </ul>
-         </li><!-- End Charts Nav -->
+         </li>
+
+         <li class="nav-heading">Pengaturan User</li>
+         <li class="nav-item">
+             <a class="nav-link {{ Request::is('langganan*') ? '' : 'collapsed' }}" href="/langganan">
+                 <i class="bi bi-bookmarks"></i>
+                 <span>Langganan User</span>
+             </a>
+         </li><!-- End Dashboard Nav -->
+
 
      </ul>
 

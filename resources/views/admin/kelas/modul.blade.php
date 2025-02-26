@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Datatables modul</h5>
 
-                        <a href="/modul/create?kelas={{ $kelas->id }}" class="btn btn-sm btn-primary mt-3">Tambah
+                        <a href="/kelas/modul/create?kelas={{ $kelas->id }}" class="btn btn-sm btn-primary mt-3">Tambah
                             modul</a>
 
                         <!-- Table with stripped rows -->
@@ -51,9 +51,9 @@
 
                                         <td class="text-center">
                                             <div class="d-flex justify-content-center">
-                                                <a href="{{ url('/modul/' . $modul->id . '/edit') }}"
+                                                <a href="{{ url('/kelas/modul/' . $modul->id . '/edit') }}"
                                                     class="btn btn-warning btn-sm ms-2">Edit</a>
-                                                <form action="{{ url('/modul/' . $modul->id) }}" method="POST"
+                                                <form action="{{ url('/kelas/modul/' . $modul->id) }}" method="POST"
                                                     class="ms-2">
                                                     @csrf
                                                     @method('DELETE')

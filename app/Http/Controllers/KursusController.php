@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kelas;
 use App\Models\Look;
+use App\Models\User;
+use App\Models\Kelas;
 use App\Models\Modul;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -152,5 +155,22 @@ class KursusController extends Controller
             'Cache-Control' => 'no-store, no-cache, must-revalidate, max-age=0',
             'Pragma' => 'no-cache',
         ]);
+    }
+
+
+    public function logout()
+    {
+        $guild_id = 1274717645236862976;
+        $bot_token = env('DISCORD_BOT_TOKEN');
+        $user_id = auth()->user()->discord_id;
+
+        User::where('id', auth()->user()->id)->update(['discord_active' => 0]);
+
+        Http::withHeaders([
+            'Authorization' => "Bot $bot_token",
+            'Content-Type' => 'application/json',
+        ])->delete("https://discord.com/api/v10/guilds/{$guild_id}/members/{$user_id}/roles/1287469825974603806");
+
+        return redirect()->back()->with('success', 'discord logout');
     }
 }

@@ -78,6 +78,10 @@
             align-items: center;
         }
 
+        .dropdown-item:hover {
+            background-color: #2a2f33 !important;
+        }
+
         .loading-spinner {
             width: 50px;
             height: 50px;

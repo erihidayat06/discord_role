@@ -93,45 +93,79 @@ class DiscordController extends Controller
     {
         $discordUser = Socialite::driver('discord')->stateless()->user();
 
-
-        // Menyusun data pengguna
+        // Menyusun data pengguna dari Discord
         $discord_id = $discordUser->getId();
         $name = $discordUser->getName();
         $avatar = $discordUser->getAvatar();
         $email = $discordUser->getEmail();
         $token = $discordUser->token;
 
-        // Cek apakah user dengan discord_id sudah ada
-        $user = User::where('discord_id', $discord_id)->first();
+        // Jika user sudah login, tambahkan discord_id ke akun yang sedang login
+        if (Auth::check()) {
+            $user = Auth::user();
+            $guild_id = 1274717645236862976;
+            $bot_token = env('DISCORD_BOT_TOKEN');
+            $user_id = auth()->user()->discord_id;
+            $role_id = '1287469825974603806'; // Role yang akan diberikan
+            Http::withHeaders([
+                'Authorization' => "Bot $bot_token",
+                'Content-Type' => 'application/json',
+            ])->put("https://discord.com/api/v10/guilds/{$guild_id}/members/{$user_id}/roles/{$role_id}");
 
-        if ($user) {
-            // Jika user sudah ada, update data avatar & token
+
+            // Jika discord_id sudah digunakan di akun lain, kosongkan dulu
+            User::where('discord_id', $discord_id)->where('id', '!=', $user->id)->update(['discord_id' => null]);
+
+            // Update akun yang sedang login
             $user->update([
+                'discord_id' => $discord_id,
                 'avatar' => $avatar,
                 'token' => $token,
+                'discord_name' => $name,
+                'discord_active' => true,
                 'updated_at' => now(),
             ]);
         } else {
-            // Jika user belum ada, buat user baru
-            $user = User::create([
-                'discord_id' => $discord_id,
-                'name' => $name,
-                'avatar' => $avatar,
-                'email' => $email,
-                'token' => $token,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+            // Jika user belum login, cek apakah sudah ada berdasarkan email
+            $user = User::where('email', $email)
+                ->orWhere('discord_id', $discord_id)
+                ->first();
+
+
+            if ($user) {
+                // Jika sudah ada, update akun dengan discord_id baru
+                $user->update([
+                    'discord_id' => $discord_id,
+                    'avatar' => $avatar,
+                    'token' => $token,
+                    'discord_name' => $name,
+                    'discord_active' => true,
+                    'updated_at' => now(),
+                ]);
+            } else {
+                // Jika belum ada, buat akun baru
+                $user = User::create([
+                    'discord_id' => $discord_id,
+                    'discord_name' => $name,
+                    'avatar' => $avatar,
+                    'email' => $email,
+                    'token' => $token,
+                    'discord_active' => true,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
+
+            // Login user ke Laravel setelah dibuat atau diperbarui
+            auth()->login($user);
         }
 
-        // Login user ke Laravel
-        auth()->login($user);
-
         // Join otomatis ke server Discord
-        $guild_id = pilih_guild(); // ID Server Discord
+        $guild_id = env('DISCORD_GUILD_ID'); // ID Server Discord
         $bot_token = env('DISCORD_BOT_TOKEN'); // Bot Token
 
-        $response = Http::withHeaders([
+
+        $joinResponse = Http::withHeaders([
             'Authorization' => "Bot $bot_token",
             'Content-Type' => 'application/json',
         ])->asJson()->put("https://discord.com/api/v10/guilds/{$guild_id}/members/{$discord_id}", [
@@ -139,13 +173,17 @@ class DiscordController extends Controller
         ]);
 
         // Cek apakah request berhasil
-        if ($response->failed()) {
-            $errorMessage = 'Gagal masuk ke server Discord: ' . $response->body();
-            return redirect(auth()->user()->is_admin == false ? '/' : '/discord/data-role/view')->withErrors(['error' => $errorMessage]);
+        if ($joinResponse->failed()) {
+            $errorMessage = 'Gagal masuk ke server Discord: ' . $joinResponse->body();
+            return redirect(auth()->user()->is_admin == false ? '/' : '/discord/data-role/view')
+                ->withErrors(['error' => $errorMessage]);
         }
 
-        return redirect(auth()->user()->is_admin == false ? '/' : '/discord/data-role/view')->with('success', 'Login dan bergabung ke server berhasil!');
+        return redirect(auth()->user()->is_admin == false ? '/' : '/discord/data-role/view')
+            ->with('success', 'Login dan bergabung ke server berhasil, role ditambahkan!');
     }
+
+
 
 
 
@@ -172,6 +210,7 @@ class DiscordController extends Controller
             'discord_id' => $request->discord_id,
             'role_id' => $request->role_id,
             'expires_at' => $request->days,
+            'discord_active' => true,
             'id_guild' => pilih_guild(),
         ]);
 

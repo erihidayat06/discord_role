@@ -40,8 +40,8 @@
                     <li class="dropdown "><a href="#"> <img
                                 src="{{ auth()->user()->avatar ?? 'https://cdn.discordapp.com/embed/avatars/0.png' }}"
                                 alt="Avatar" class="rounded-circle me-2" width="30" height="30">
-                            <span>{{ auth()->user()->name }}</span> <i
-                                class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <span>{{ auth()->user()->name ?? auth()->user()->discord_name }}</span>
+                            <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             @if (auth()->user()->is_admin)
                                 <li><a class="dropdown-item" href="/discord/data-role/view">Manage Roles</a></li>
@@ -59,10 +59,14 @@
                     </li>
                 @else
                     <li>
-                        <a class="btn-getstarted p-2 ms-2" href="/login/discord">
-                            Login Discord
-                        </a>
+                        <a class=" p-2 ms-2" href="/login">Login</a>
                     </li>
+
+                    <li>
+                        <a class="btn-getstarted p-2 ms-2 btn btn-secondary" href="/register">Sign Up</a>
+
+                    </li>
+
                 @endif
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

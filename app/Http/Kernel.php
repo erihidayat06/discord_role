@@ -68,6 +68,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'is_admin' => \App\Http\Middleware\IsAdmin::class,
         'add_role' => \App\Http\Middleware\AddRole::class,
+        'check.subscription' => \App\Http\Middleware\CheckSubscription::class,
+        'prevent.if.active' => \App\Http\Middleware\PreventIfActive::class,
     ];
 
     protected function schedule(Schedule $schedule)
