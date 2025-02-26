@@ -30,7 +30,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 Route::get('/', function () {
     return view('index');
-})->middleware('prevent.if.active');
+})->middleware('prevent.if.active', 'add_role');
 
 Route::middleware(['is_admin', 'auth'])->group(function () {
     Route::get('/discord/data-role/view', [DiscordController::class, 'roleUser']);
