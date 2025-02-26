@@ -1,9 +1,13 @@
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center bg-dark text-white" data-bs-theme="dark">
     <div class="d-flex align-items-center justify-content-between">
-        <a href="/kursus/{{ $kelas->slug }}"><i class="bi bi-arrow-left-circle-fill text-white"></i></a>
+        <a href='{{ isset($prevModul) || isset($nextModul) ? "/kursus/$kelas->slug" : '/kursus' }}'><i
+                class="bi bi-arrow-left-circle-fill text-white"></i></a>
         <a href="/kursus" class="logo d-flex align-items-center ms-2 d-none d-lg-flex">
             <img src="/assets/img/logo-main.png" alt="">
+        </a>
+        <a href="/kursus" class="logo d-flex align-items-center ms-2 d-block d-lg-none">
+            <img src="/assets/img/logo.png" alt="">
         </a>
 
         {{-- <i class="bi bi-list toggle-sidebar-btn text-white  d-none d-lg-flex"></i> --}}
@@ -62,7 +66,7 @@
             <!-- Tombol Kembali -->
             @if (!empty($prevModul))
                 <a href="{{ route('modul.view', ['slug' => $kelas->slug, 'slug_modul' => $prevModul->slug]) }}"
-                    class="btn btn-prev">
+                    class="btn btn-prev fw-bold">
                     <i class="bi bi-arrow-left"></i> Kembali
                 </a>
             @endif
@@ -70,20 +74,23 @@
             <!-- Tombol Selesai & Lanjut -->
             @if (!empty($nextModul))
                 <a href="{{ route('modul.view', ['slug' => $kelas->slug, 'slug_modul' => $nextModul->slug, 'slugSaatIni' => $showModul->slug]) }}"
-                    class="btn btn-next d-flex justify-content-center">
-                    <span class="d-none d-lg-block">Selesai &</span> Lanjut <i class="bi bi-arrow-right"></i>
+                    class="btn btn-next d-flex justify-content-center fw-bold">
+                    <span class="d-none d-lg-block">Complete &</span> Next <i class="bi bi-arrow-right"></i>
                 </a>
             @else
                 <a href="{{ route('modul.view', ['slug' => $kelas->slug, 'slug_modul' => $showModul->slug, 'slugSaatIni' => $showModul->slug]) }}"
                     class="btn btn-next">
-                    Selesai
+                    Finished
                 </a>
             @endif
         </div>
     @endif
 
 
-    <i class="bi bi-list toggle-sidebar-btn text-white  d-flex d-lg-none"></i>
+
+    <i class="bi bi-list toggle-sidebar-btn text-white d-lg-none" style="right: 5px"></i>
+
+
 
 
     @if (!isset($prevModul) && !isset($nextModul))

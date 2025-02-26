@@ -1,7 +1,14 @@
 <div class="container">
     <ul class=" d-md-none p-0" style="margin-top: 70px">
         <li class="list-group-item">
-            <a class=" text-white {{ Request::is('discord*') ? 'active' : '' }}" href="/discord/data-role/view">
+            <a class="nav-link p-2 text-white fw-bold {{ Request::is('kursus') && !request('nama_kategori') ? 'active' : '' }}"
+                href="/kursus">
+                <span>New & For You</span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a class=" nav-link text-white p-2 {{ Request::is('kursus') && request('nama_kategori') == 'All Classes' ? 'active' : '' }}"
+                href="/kursus?nama_kategori=All Classes">
                 <span>All Classes</span>
             </a>
         </li><!-- End Dashboard Nav -->
@@ -10,7 +17,8 @@
 
         @foreach (kategori() as $kategori)
             <li class="list-group-item mt-3">
-                <a class=" text-white {{ Request::is('discord*') ? 'active' : '' }}" href="/discord/data-role/view">
+                <a class="nav-link text-white p-2 {{ Request::is('kursus') && request('kategori') == $kategori->id ? 'active' : '' }}"
+                    href="/kursus?kategori={{ $kategori->id }}&nama_kategori={{ $kategori->nm_kategori }}">
                     <span>{{ $kategori->nm_kategori }}</span>
                 </a>
             </li><!-- End Dashboard Nav -->
