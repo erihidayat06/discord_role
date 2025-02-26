@@ -32,7 +32,7 @@ Route::get('/', function () {
     return view('index');
 })->middleware('prevent.if.active');
 
-Route::middleware(['is_admin', 'auth', 'add_role'])->group(function () {
+Route::middleware(['is_admin', 'auth'])->group(function () {
     Route::get('/discord/data-role/view', [DiscordController::class, 'roleUser']);
     Route::get('/discord/add-role/view', [DiscordController::class, 'index']);
     Route::get('/discord/edit/view/{userRole}', [DiscordController::class, 'editRoleUser'])
@@ -72,7 +72,7 @@ Route::post('/logout', [DiscordController::class, 'logout'])->name('logout')->mi
 
 
 
-Route::middleware(['auth', 'add_role', 'check.subscription'])->group(
+Route::middleware(['auth',  'check.subscription'])->group(
     function () {
         Route::get('/kursus', [KursusController::class, 'index']);
         Route::get('/kursus/{kelas:slug}', [KursusController::class, 'show']);
@@ -84,7 +84,7 @@ Route::middleware(['auth', 'add_role', 'check.subscription'])->group(
 );
 
 
-Route::middleware(['add_role'])->group(function () {
+Route::middleware([])->group(function () {
     Route::get('/login/discord', [RedirectController::class, 'redirectToProvider']);
     Route::get('/auth/discord/callback', [DiscordController::class, 'handleProviderCallback']);
     Route::get('/auth/discord', [DiscordController::class, 'redirect'])->name('discord.login');
