@@ -24,15 +24,15 @@ class LanggananController extends Controller
     {
         $user = User::findOrFail($id);
 
-        if (!$request->has('days')) {
-            return response()->json(['error' => 'Days value is required'], 400);
+        if (!$request->has('expired_date')) {
+            return response()->json(['error' => 'Expired date is required'], 400);
         }
 
-        $newExpiredDate = Carbon::now()->addDays($request->days);
+        $newExpiredDate = $request->expired_date ? Carbon::parse($request->expired_date) : null;
 
-        // Jika expired 0, nonaktifkan Discord dan hapus role
-        if ($request->days == 0) {
-            $user->expired = null; // Atau bisa set ke tanggal sekarang
+        // Jika expired dihapus atau di-set null, nonaktifkan Discord dan hapus role
+        if (is_null($newExpiredDate)) {
+            $user->expired = null;
             $user->discord_active = false;
             $user->save();
 
@@ -45,7 +45,7 @@ class LanggananController extends Controller
 
         return response()->json([
             'message' => 'Expired updated successfully!',
-            'new_expired' => $user->expired,
+            'new_expired' => $user->expired ? $user->expired->toDateString() : null,
             'discord_active' => $user->discord_active
         ]);
     }

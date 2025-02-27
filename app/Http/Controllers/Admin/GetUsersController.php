@@ -17,6 +17,8 @@ class GetUsersController extends Controller
         $botToken = env('DISCORD_BOT_TOKEN');
         $roleId = $request->query('role_id');
 
+
+
         // 🔹 Ambil daftar discord_id yang sudah ada di database berdasarkan role_id
         $existingUserIds = UserRole::where('role_id', $roleId)->where('id_guild', $guildId)
             ->pluck('discord_id') // Ambil hanya discord_id

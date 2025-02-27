@@ -14,7 +14,7 @@
                                 <th>Discord ID</th>
                                 <th>Nama</th>
                                 <th>Email</th>
-                                <th>Expired (hari)</th>
+                                <th>Expired (Tanggal)</th>
                                 <th>Discord Active</th>
                             </tr>
                         </thead>
@@ -24,31 +24,22 @@
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $user->discord_id }}</td>
                                     <td>{{ $user->name }}</td>
-
-
                                     <td>{{ $user->email }}</td>
-
                                     <td>
-                                        <input type="number" class="expired-input form-control"
-                                            data-user-id="{{ $user->id }}" data-expired="{{ $user->expired }}"
-                                            value="{{ \Carbon\Carbon::now()->diffInDays($user->expired) }}" min="0">
+                                        <input type="date" class="expired-input form-control"
+                                            data-user-id="{{ $user->id }}"
+                                            value="{{ \Carbon\Carbon::parse($user->expired)->format('Y-m-d') }}">
                                     </td>
-
-
-
-
-
                                     <td>
                                         <span
                                             class="badge discord-active-badge {{ $user->discord_active ? 'bg-success' : 'bg-danger' }}">
                                             {{ $user->discord_active ? 'Aktif' : 'Tidak Aktif' }}
                                         </span>
                                     </td>
-
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="8" class="text-center">Tidak ada data pengguna</td>
+                                    <td colspan="6" class="text-center">Tidak ada data pengguna</td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -68,38 +59,24 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             let expiredInputs = document.querySelectorAll(".expired-input");
-            let updateTimeout; // Debounce timeout
+            let updateTimeout;
 
             expiredInputs.forEach(function(input) {
-                let expiredDateStr = input.getAttribute("data-expired");
-                let expiredDate = new Date(expiredDateStr + "T00:00:00");
-                let today = new Date();
-                let timeDiff = expiredDate - today;
-                let daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-
-                input.value = daysLeft > 0 ? daysLeft : 0;
-
                 input.addEventListener("input", function() {
-                    clearTimeout(updateTimeout); // Hapus timeout sebelumnya untuk debounce
+                    clearTimeout(updateTimeout);
 
                     updateTimeout = setTimeout(() => {
                         let userId = this.dataset.userId;
-                        let newDays = parseInt(this.value) || 0;
-
-                        if (newDays < 0) {
-                            this.value = 0;
-                            newDays = 0;
-                        }
+                        let newDate = this.value;
 
                         let csrfToken = document.querySelector('meta[name="csrf-token"]')
                             ?.content || '';
-
                         if (!csrfToken) {
                             console.error("CSRF Token tidak ditemukan!");
                             return;
                         }
 
-                        input.classList.add("loading"); // Aktifkan loading efek
+                        input.classList.add("loading");
 
                         fetch(`/admin/langganan/update-expired/${userId}`, {
                                 method: "PATCH",
@@ -108,24 +85,20 @@
                                     "X-CSRF-TOKEN": csrfToken
                                 },
                                 body: JSON.stringify({
-                                    days: newDays
+                                    expired_date: newDate
                                 })
                             })
                             .then(response => response.json())
                             .then(data => {
                                 console.log("Response dari server:", data);
-
-                                // Ubah warna jika sukses atau gagal
                                 input.style.backgroundColor = data.success ? "#d4edda" :
                                     "#f8d7da";
 
                                 setTimeout(() => {
                                     input.style.backgroundColor = "";
-                                    input.classList.remove(
-                                        "loading"); // Matikan loading efek
+                                    input.classList.remove("loading");
                                 }, 1000);
 
-                                // 🔹 Update badge status Discord Active
                                 let badge = input.closest("tr").querySelector(
                                     ".discord-active-badge");
                                 if (badge) {
@@ -143,15 +116,14 @@
                             })
                             .catch(error => {
                                 console.error("Error:", error);
-                                input.style.backgroundColor =
-                                    "#f8d7da"; // Warna merah jika gagal
+                                input.style.backgroundColor = "#f8d7da";
 
                                 setTimeout(() => {
                                     input.style.backgroundColor = "";
                                     input.classList.remove("loading");
                                 }, 1000);
                             });
-                    }, 500); // Delay 500ms agar tidak spam request
+                    }, 500);
                 });
             });
         });
