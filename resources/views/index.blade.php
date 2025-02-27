@@ -1,5 +1,15 @@
 @extends('layouts.main')
 @section('content')
+    <style>
+        .bg-primary {
+            color: white;
+            background: linear-gradient(to top, #4e0d94, #6a11cb, #ac43e4) !important;
+        }
+
+        .bg-primary:hover {
+            color: white !important;
+        }
+    </style>
     <!-- Hero Section -->
     <section id="hero" class="hero section bg-color">
         <div class="container">
@@ -25,6 +35,24 @@
 
     </section><!-- /Hero Section -->
 
+
+    <section class="section bg-main">
+        <div class="container col-lg-4">
+            <a href=""></a>
+            <div class="card">
+                <img src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739566164551_9962437"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Kelas Bulanan Akademi Crypto 1 Bulan</h5>
+                    <p class="card-text fw-bold">IDR 98,000</p>
+                    <p class="card-text text-decoration-line-through text-dark-emphasis fw-bold">IDR 2,000,000</p>
+                    <a href="https://belajarsatupersen.xyz/belajarsatupersen.id/LPn99wE" target="_balnk"
+                        class="btn bg-primary bg-gradient  col-lg-12 fw-bold">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="section bg-main">
         <div class="container">
             <div class="card col-lg-5 mx-auto shadow custom-shadow module-border-wrap">
@@ -43,25 +71,38 @@
                 </a>
             </div>
         </div>
+        <div class="col-lg-5 mt-5 mx-auto">
+            <p class="   fw-bold text-center">71% Murid Akademi Crypto berhasil melipatgandakan portofolionya
+                dalam waktu
+                3 bulan
+                menggunakan strategi kita.
+            </p>
+        </div>
     </section>
 
 
 
 
     <section class="section bg-main text-center">
-        <img class="img-bg module-border-wrap"
-            src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739554405994_7888550"
-            alt="">
+        <div class="col-lg-5 mx-auto">
+            <img class="img-bg module-border-wrap"
+                src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739554405994_7888550"
+                alt="">
+        </div>
     </section>
     <section class="section bg-main text-center">
-        <img class="img-bg module-border-wrap"
-            src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739606763264_6861670"
-            alt="">
+        <div class="col-lg-5 mx-auto">
+            <img class="img-bg module-border-wrap"
+                src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739606763264_6861670"
+                alt="">
+        </div>
     </section>
     <section class="section bg-main text-center">
-        <img class="img-bg module-border-wrap"
-            src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/13-02-2025/1739454844767_1913151"
-            alt="">
+        <div class="col-lg-5 mx-auto">
+            <img class="img-bg module-border-wrap"
+                src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/13-02-2025/1739454844767_1913151"
+                alt="">
+        </div>
     </section>
     <section class="section bg-main">
         <div class="container">
@@ -80,14 +121,18 @@
     </section>
 
     <section class="section bg-main text-center">
-        <img class="img-bg module-border-wrap"
-            src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739554469006_2126920"
-            alt="">
+        <div class="col-lg-5 mx-auto">
+            <img class="img-bg module-border-wrap"
+                src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739554469006_2126920"
+                alt="">
+        </div>
     </section>
     <section class="section bg-main text-center">
-        <img class="img-bg module-border-wrap"
-            src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/12-02-2025/1739307282480_5799265"
-            alt="">
+        <div class="col-lg-5 mx-auto">
+            <img class="img-bg module-border-wrap"
+                src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/12-02-2025/1739307282480_5799265"
+                alt="">
+        </div>
     </section>
 
 

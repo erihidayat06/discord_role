@@ -1,4 +1,109 @@
 <header id="header" class="header d-flex align-items-center fixed-top">
+    <style>
+        @keyframes glitch {
+
+            0%,
+            66% {
+                transform: translate(0, 0);
+                clip-path: none;
+                filter: none;
+            }
+
+            67% {
+                clip-path: inset(2% 0 3% 0);
+                transform: translate(-2px, -1px);
+                filter: hue-rotate(5deg);
+            }
+
+            72% {
+                clip-path: inset(5% 0 2% 0);
+                transform: translate(2px, 1px);
+                filter: hue-rotate(-5deg);
+            }
+
+            78% {
+                clip-path: inset(1% 0 4% 0);
+                transform: translate(-3px, 0);
+            }
+
+            85% {
+                clip-path: inset(3% 0 1% 0);
+                transform: translate(3px, 0);
+            }
+
+            100% {
+                transform: translate(0, 0);
+                clip-path: none;
+                filter: none;
+            }
+        }
+
+        @keyframes glitch-rgb {
+
+            0%,
+            66%,
+            100% {
+                opacity: 0;
+                transform: translate(0, 0);
+            }
+
+            67% {
+                opacity: 0.5;
+                transform: translate(2px, 0);
+            }
+
+            72% {
+                opacity: 0.5;
+                transform: translate(-2px, 0);
+            }
+
+            78% {
+                opacity: 0.4;
+                transform: translate(1px, 0);
+            }
+
+            85% {
+                opacity: 0.4;
+                transform: translate(-1px, 0);
+            }
+        }
+
+        .logo {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .logo img {
+            display: block;
+            position: relative;
+            animation: glitch 6s infinite steps(1, jump-end);
+        }
+
+        .logo::before,
+        .logo::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("/assets/img/logo-main.png") no-repeat center;
+            background-size: contain;
+            opacity: 0;
+            mix-blend-mode: screen;
+            z-index: -1;
+            animation: glitch-rgb 6s infinite steps(1, jump-end);
+        }
+
+        .logo::before {
+            filter: hue-rotate(240deg);
+        }
+
+        .logo::after {
+            filter: hue-rotate(120deg);
+        }
+    </style>
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
         <a href="index.html" class="logo d-flex align-items-center me-auto">

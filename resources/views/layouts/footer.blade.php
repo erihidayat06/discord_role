@@ -4,7 +4,7 @@
          <div class="row gy-4">
              <div class="col-lg-4 col-md-6 footer-about">
                  <a href="index.html" class="d-flex align-items-center">
-                     <span class="sitename">Arsha</span>
+                     <img src="/assets/img/logo-main.png" alt="" width="50%">
                  </a>
                  <div class="footer-contact pt-3">
                      <p>A108 Adam Street</p>
