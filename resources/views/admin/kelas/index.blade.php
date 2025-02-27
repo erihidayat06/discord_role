@@ -21,11 +21,11 @@
                 <div class="card position-relative">
                     <!-- Tombol Naik & Turun di Pojok Kiri Atas -->
                     <div class="position-absolute top-0 start-0 m-2 d-flex">
-                        <form action="{{ url('/kelas/' . $kelas->id . '/down') }}" method="POST">
+                        <form action="{{ url('/kebawah/kelas/' . $kelas->id . '/down') }}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-sm btn-primary">⬆</button>
                         </form>
-                        <form action="{{ url('/kelas/' . $kelas->id . '/up') }}" method="POST" class="me-1">
+                        <form action="{{ url('/keatas/kelas/' . $kelas->id . '/up') }}" method="POST" class="me-1">
                             @csrf
                             <button type="submit" class="btn btn-sm btn-secondary ms-2">⬇</button>
                         </form>

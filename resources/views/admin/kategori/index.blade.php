@@ -38,14 +38,14 @@
                                         <td class="text-center">
                                             <div class="d-flex justify-content-center">
                                                 <!-- Form untuk tombol naik -->
-                                                <form action="{{ url('/kategori/' . $kategori->id . '/up') }}"
+                                                <form action="{{ url('/keatas/kategori/' . $kategori->id . '/up') }}"
                                                     method="POST" class="me-1">
                                                     @csrf
                                                     <button type="submit" class="btn btn-primary btn-sm">⬆</button>
                                                 </form>
 
                                                 <!-- Form untuk tombol turun -->
-                                                <form action="{{ url('/kategori/' . $kategori->id . '/down') }}"
+                                                <form action="{{ url('/kebawah/kategori/' . $kategori->id . '/down') }}"
                                                     method="POST" class="me-1">
                                                     @csrf
                                                     <button type="submit" class="btn btn-secondary btn-sm">⬇</button>
