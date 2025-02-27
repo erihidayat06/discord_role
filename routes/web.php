@@ -58,8 +58,8 @@ Route::middleware(['is_admin', 'auth'])->group(function () {
         'kelas' => 'kelas'
     ]);
     Route::get('/kelas/{kelas_id}/video/{id}', [KelasController::class, 'lihatVideo'])->name('lihat.video');
-    Route::post('/kelas/{id}/up', [KelasController::class, 'moveUp'])->name('kelas.moveUp');
-    Route::post('/kelas/{id}/down', [KelasController::class, 'moveDown'])->name('kelas.moveDown');
+    Route::post('/keatas/kelas/{id}/up', [KelasController::class, 'moveUp'])->name('kelas.moveUp');
+    Route::post('/kebawah/kelas/{id}/down', [KelasController::class, 'moveDown'])->name('kelas.moveDown');
     Route::post('/kelas/subkelas/{kelas:id}', [KelasController::class, 'subKelas'])->name('kelas.moveDown');
 
     Route::resource('/kelas/modul', ModulController::class);
@@ -69,8 +69,8 @@ Route::middleware(['is_admin', 'auth'])->group(function () {
     Route::get('/langganan', [LanggananController::class, 'index']);
     Route::patch('/admin/langganan/update-expired/{id}', [LanggananController::class, 'updateExpired'])
         ->name('admin.langganan.updateExpired');
-    Route::post('/kategori/{id}/up', [KategoriController::class, 'moveUp'])->name('kategori.moveUp');
-    Route::post('/kategori/{id}/down', [KategoriController::class, 'moveDown'])->name('kategori.moveDown');
+    Route::post('/keatas/kategori/{id}/up', [KategoriController::class, 'moveUp'])->name('kategori.moveUp');
+    Route::post('/kebawah/kategori/{id}/down', [KategoriController::class, 'moveDown'])->name('kategori.moveDown');
 });
 
 Route::post('/logout', [DiscordController::class, 'logout'])->name('logout')->middleware('auth');
