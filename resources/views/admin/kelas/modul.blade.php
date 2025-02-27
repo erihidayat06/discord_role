@@ -23,6 +23,70 @@
                         <a href="/kelas/modul/create?kelas={{ $kelas->id }}" class="btn btn-sm btn-primary mt-3">Tambah
                             modul</a>
 
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-sm btn-danger mt-3" data-bs-toggle="modal"
+                            data-bs-target="#subKelasModal">
+                            Tambah sub kelas
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="subKelasModal" tabindex="-1" aria-labelledby="subKelasModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="subKelasModalLabel">Modal title</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <form action="/kelas/subkelas/{{ $kelas->id }}" method="POST">
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div id="subKelasContainer">
+                                                <div class="input-group mb-2">
+                                                    @php
+                                                        $subKelas = $kelas->sub_kelas
+                                                            ? json_decode($kelas->sub_kelas, true)
+                                                            : [];
+                                                    @endphp
+                                                    @if (empty($subKelas))
+                                                        <div class="input-group mb-2">
+                                                            <input type="text" class="form-control" name="sub_kelas[]"
+                                                                placeholder="Nama Sub Kelas" required>
+                                                            <button type="button"
+                                                                class="btn btn-danger remove-sub-kelas">Hapus</button>
+                                                        </div>
+                                                    @else
+                                                        @foreach ($subKelas as $sub)
+                                                            <div class="input-group mb-2">
+                                                                <input type="text" class="form-control"
+                                                                    name="sub_kelas[]" value="{{ $sub }}"
+                                                                    placeholder="Nama Sub Kelas" required>
+                                                                <button type="button"
+                                                                    class="btn btn-danger remove-sub-kelas">Hapus</button>
+                                                            </div>
+                                                        @endforeach
+                                                    @endif
+
+
+
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-success add-sub-kelas">Tambah Sub
+                                                Kelas</button>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Keluar</button>
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
                             <thead>
@@ -75,4 +139,26 @@
             </div>
         </div>
     </section>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.add-sub-kelas').addEventListener('click', function() {
+                let container = document.getElementById('subKelasContainer');
+                let newInput = document.createElement('div');
+                newInput.classList.add('input-group', 'mb-2');
+                newInput.innerHTML = `
+            <input type="text" class="form-control" name="sub_kelas[]" placeholder="Nama Sub Kelas" required>
+            <button type="button" class="btn btn-danger remove-sub-kelas">Hapus</button>
+        `;
+                container.appendChild(newInput);
+            });
+
+            document.addEventListener('click', function(event) {
+                if (event.target.classList.contains('remove-sub-kelas')) {
+                    event.target.closest('.input-group').remove();
+                }
+            });
+        });
+    </script>
 @endsection

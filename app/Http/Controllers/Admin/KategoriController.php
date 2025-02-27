@@ -94,7 +94,7 @@ class KategoriController extends Controller
             $previous->update(['order' => $tempOrder]);
         }
 
-        return response()->json(['success' => true]);
+        return back();
     }
 
     public function moveDown($id)
@@ -110,6 +110,6 @@ class KategoriController extends Controller
             $next->update(['order' => $tempOrder]);
         }
 
-        return response()->json(['success' => true]);
+        return back();
     }
 }

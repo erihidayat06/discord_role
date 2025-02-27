@@ -40,7 +40,7 @@ class KelasController extends Controller
         $validatedData = $request->validate([
             'judul' => 'required|string|max:255',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'kategori_id' => 'required|exists:kategoris,id',
+            'kategori_id' => 'nullable|exists:kategoris,id',
         ]);
 
         // Buat slug dengan angka berdasarkan jam, menit, detik
@@ -93,7 +93,7 @@ class KelasController extends Controller
         $validatedData = $request->validate([
             'judul' => 'required|string|max:255',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'kategori_id' => 'required|exists:kategoris,id',
+            'kategori_id' => 'nullable|exists:kategoris,id',
         ]);
 
         // Cek apakah ada gambar baru yang diupload
@@ -141,5 +141,54 @@ class KelasController extends Controller
             return redirect()->back()->with('error', 'Video tidak ditemukan.');
         }
         return view('admin.modul.view', ['video' => $video, 'kelas_id' => $kelas_id]);
+    }
+
+    public function moveUp($id)
+    {
+        $kelas = Kelas::findOrFail($id);
+        $previous = Kelas::where('created_at', '<', $kelas->created_at)
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        if ($previous) {
+            $tempTime = $kelas->created_at;
+            $kelas->update(['created_at' => $previous->created_at->subSecond()]);
+            $previous->update(['created_at' => $tempTime->addSecond()]);
+        }
+
+        return back();
+    }
+
+    public function moveDown($id)
+    {
+        $kelas = Kelas::findOrFail($id);
+        $next = Kelas::where('created_at', '>', $kelas->created_at)
+            ->orderBy('created_at', 'asc')
+            ->first();
+
+        if ($next) {
+            $tempTime = $kelas->created_at;
+            $kelas->update(['created_at' => $next->created_at->addSecond()]);
+            $next->update(['created_at' => $tempTime->subSecond()]);
+        }
+
+        return back();
+    }
+
+
+
+    public function subKelas(Request $request, Kelas $kelas)
+    {
+        $request->validate([
+            'sub_kelas' => 'nullable|array',  // Pastikan sub_kelas adalah array
+            'sub_kelas.*' => 'nullable|string' // Validasi tiap item dalam array
+        ]);
+
+        // Simpan sebagai JSON di kolom `sub_kelas` (pastikan kolom ini bertipe JSON atau TEXT di database)
+        $kelas->update([
+            'sub_kelas' => json_encode($request->sub_kelas)
+        ]);
+
+        return back()->with('success', 'Berhasil menambahkan sub kelas');
     }
 }

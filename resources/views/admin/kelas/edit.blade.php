@@ -53,7 +53,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Kategori</label>
                                 <select class="form-select @error('kategori_id') is-invalid @enderror" name="kategori_id">
-                                    <option value="">Pilih Kategori</option>
+                                    <option value="">Kosong kategori</option>
                                     @foreach ($kategoris as $kategori)
                                         <option value="{{ $kategori->id }}"
                                             {{ old('kategori_id', $kelas) == $kategori->id ? 'selected' : '' }}>

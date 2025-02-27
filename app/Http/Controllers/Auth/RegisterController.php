@@ -68,7 +68,6 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'no_tlp' => $data['no_tlp'],
-            'expired' => now()->addDay(),
             'password' => Hash::make($data['password']),
         ]);
     }

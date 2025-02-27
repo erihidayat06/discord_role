@@ -1,6 +1,5 @@
 @extends('admin.layouts.main')
 
-
 @section('content')
     <div class="pagetitle">
         <h1>Data Tables kategori</h1>
@@ -31,19 +30,32 @@
                                     <th scope="col" class="text-center">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody id="kategoriTable">
+                            <tbody>
                                 @foreach ($kategoris->sortBy('order') as $kategori)
-                                    <tr data-id="{{ $kategori->id }}">
+                                    <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $kategori->nm_kategori }}</td>
                                         <td class="text-center">
                                             <div class="d-flex justify-content-center">
-                                                <button class="btn btn-primary btn-sm me-1 move-up"
-                                                    data-id="{{ $kategori->id }}">⬆</button>
-                                                <button class="btn btn-secondary btn-sm me-1 move-down"
-                                                    data-id="{{ $kategori->id }}">⬇</button>
+                                                <!-- Form untuk tombol naik -->
+                                                <form action="{{ url('/kategori/' . $kategori->id . '/up') }}"
+                                                    method="POST" class="me-1">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-primary btn-sm">⬆</button>
+                                                </form>
+
+                                                <!-- Form untuk tombol turun -->
+                                                <form action="{{ url('/kategori/' . $kategori->id . '/down') }}"
+                                                    method="POST" class="me-1">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-secondary btn-sm">⬇</button>
+                                                </form>
+
+                                                <!-- Tombol Edit -->
                                                 <a href="{{ url('/kategori/' . $kategori->id . '/edit') }}"
                                                     class="btn btn-warning btn-sm me-1">Edit</a>
+
+                                                <!-- Form untuk tombol Delete -->
                                                 <form action="{{ url('/kategori/' . $kategori->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -57,52 +69,10 @@
                             </tbody>
                         </table>
 
-
-                        <!-- End Table with stripped rows -->
-
                     </div>
                 </div>
 
             </div>
         </div>
     </section>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Tombol naik
-            $(".move-up").click(function() {
-                let row = $(this).closest("tr");
-                let id = $(this).data("id");
-
-                $.ajax({
-                    url: "/kategori/" + id + "/up",
-                    type: "POST",
-                    data: {
-                        _token: "{{ csrf_token() }}"
-                    },
-                    success: function() {
-                        row.prev().before(row);
-                    }
-                });
-            });
-
-            // Tombol turun
-            $(".move-down").click(function() {
-                let row = $(this).closest("tr");
-                let id = $(this).data("id");
-
-                $.ajax({
-                    url: "/kategori/" + id + "/down",
-                    type: "POST",
-                    data: {
-                        _token: "{{ csrf_token() }}"
-                    },
-                    success: function() {
-                        row.next().after(row);
-                    }
-                });
-            });
-        });
-    </script>
 @endsection
