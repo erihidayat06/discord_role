@@ -149,6 +149,7 @@
                             <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             @if (auth()->user()->is_admin)
+                                <li><a class="dropdown-item" href="/kursus">Lihat Kursus</a></li>
                                 <li><a class="dropdown-item" href="/discord/data-role/view">Manage Roles</a></li>
                             @endif
                             <li>

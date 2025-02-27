@@ -39,10 +39,12 @@
 
 
                                     <td>
-                                        <span class="badge {{ $user->discord_active ? 'bg-success' : 'bg-danger' }}">
+                                        <span
+                                            class="badge discord-active-badge {{ $user->discord_active ? 'bg-success' : 'bg-danger' }}">
                                             {{ $user->discord_active ? 'Aktif' : 'Tidak Aktif' }}
                                         </span>
                                     </td>
+
                                 </tr>
                             @empty
                                 <tr>
@@ -66,6 +68,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             let expiredInputs = document.querySelectorAll(".expired-input");
+            let updateTimeout; // Debounce timeout
 
             expiredInputs.forEach(function(input) {
                 let expiredDateStr = input.getAttribute("data-expired");
@@ -76,61 +79,79 @@
 
                 input.value = daysLeft > 0 ? daysLeft : 0;
 
-                input.addEventListener("keyup", function() {
-                    let userId = this.dataset.userId;
-                    let newDays = parseInt(this.value) || 0;
+                input.addEventListener("input", function() {
+                    clearTimeout(updateTimeout); // Hapus timeout sebelumnya untuk debounce
 
-                    if (newDays < 0) {
-                        this.value = 0;
-                        newDays = 0;
-                    }
+                    updateTimeout = setTimeout(() => {
+                        let userId = this.dataset.userId;
+                        let newDays = parseInt(this.value) || 0;
 
-                    let csrfToken = document.querySelector('meta[name="csrf-token"]')?.content ||
-                        '';
+                        if (newDays < 0) {
+                            this.value = 0;
+                            newDays = 0;
+                        }
 
-                    if (!csrfToken) {
-                        console.error("CSRF Token tidak ditemukan!");
-                        return;
-                    }
+                        let csrfToken = document.querySelector('meta[name="csrf-token"]')
+                            ?.content || '';
 
-                    input.classList.add("loading"); // 🔹 Aktifkan loading efek
+                        if (!csrfToken) {
+                            console.error("CSRF Token tidak ditemukan!");
+                            return;
+                        }
 
+                        input.classList.add("loading"); // Aktifkan loading efek
 
-                    fetch(`/admin/langganan/update-expired/${userId}`, {
-                            method: "PATCH",
-                            headers: {
-                                "Content-Type": "application/json",
-                                "X-CSRF-TOKEN": csrfToken
-                            },
-                            body: JSON.stringify({
-                                days: newDays
+                        fetch(`/admin/langganan/update-expired/${userId}`, {
+                                method: "PATCH",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    "X-CSRF-TOKEN": csrfToken
+                                },
+                                body: JSON.stringify({
+                                    days: newDays
+                                })
                             })
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log("Response dari server:", data);
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log("Response dari server:", data);
 
-                            // 🔹 Warna Hijau jika sukses
-                            input.style.backgroundColor = data.success ? "#d4edda" : "#f8d7da";
+                                // Ubah warna jika sukses atau gagal
+                                input.style.backgroundColor = data.success ? "#d4edda" :
+                                    "#f8d7da";
 
-                            setTimeout(() => {
-                                input.style.backgroundColor = "";
-                                input.classList.remove(
-                                    "loading"); // 🔹 Matikan loading efek
+                                setTimeout(() => {
+                                    input.style.backgroundColor = "";
+                                    input.classList.remove(
+                                        "loading"); // Matikan loading efek
+                                }, 1000);
 
-                            }, 1000);
-                        })
-                        .catch(error => {
-                            console.error("Error:", error);
-                            input.style.backgroundColor =
-                                "#f8d7da"; // 🔴 Warna merah jika gagal
+                                // 🔹 Update badge status Discord Active
+                                let badge = input.closest("tr").querySelector(
+                                    ".discord-active-badge");
+                                if (badge) {
+                                    if (data.discord_active) {
+                                        badge.classList.remove("bg-danger");
+                                        badge.classList.add("bg-success");
+                                        badge.textContent = "Aktif";
+                                    } else {
+                                        badge.classList.remove("bg-success");
+                                        badge.classList.add("bg-danger");
+                                        badge.textContent = "Tidak Aktif";
+                                    }
+                                }
 
-                            setTimeout(() => {
-                                input.style.backgroundColor = "";
-                                input.classList.remove("loading");
+                            })
+                            .catch(error => {
+                                console.error("Error:", error);
+                                input.style.backgroundColor =
+                                    "#f8d7da"; // Warna merah jika gagal
 
-                            }, 1000);
-                        });
+                                setTimeout(() => {
+                                    input.style.backgroundColor = "";
+                                    input.classList.remove("loading");
+                                }, 1000);
+                            });
+                    }, 500); // Delay 500ms agar tidak spam request
                 });
             });
         });

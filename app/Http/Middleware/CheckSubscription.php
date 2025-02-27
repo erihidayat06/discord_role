@@ -24,12 +24,12 @@ class CheckSubscription
 
         $user = Auth::user();
 
-        // Jika expired kosong atau sudah lewat, redirect ke /
-        if (!$user->expired || Carbon::parse($user->expired)->isPast()) {
+        // Jika user bukan admin dan expired kosong atau sudah lewat, redirect ke /
+        if (!$user->is_admin && (!$user->expired || Carbon::parse($user->expired)->isPast())) {
             return redirect('/');
         }
 
-        // Jika belum expired, lanjutkan ke halaman kursus
+        // Jika user admin atau belum expired, lanjutkan ke halaman kursus
         return $next($request);
     }
 }
