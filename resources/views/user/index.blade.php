@@ -7,7 +7,7 @@
             /* Gunakan persentase agar fleksibel */
             max-width: 350px;
             /* Batasi lebar maksimum */
-            height: 170px;
+            height: 200px;
             /* Default height */
             object-fit: cover;
             /* Agar gambar tidak terdistorsi */
@@ -38,7 +38,7 @@
             /* Gunakan persentase agar fleksibel */
             max-width: 550px;
             /* Batasi lebar maksimum */
-            height: 250px;
+            height: 300px;
             /* Default height */
             object-fit: cover;
             /* Agar gambar tidak terdistorsi */
@@ -77,7 +77,7 @@
                 <div class="col-lg-6 position-relative">
                     <a href="/kursus/{{ $kelases->first()->slug }}">
                         <img src="{{ asset('storage/') . '/' . $kelases->first()->gambar }}"
-                            class="object-fit-cover border rounded img-card-satu" alt="">
+                            class="object-fit-cover border border-0 rounded img-card-satu" alt="">
 
                         <!-- Teks di bawah kanan dengan background -->
                         <div class="position-absolute bottom-0 end-0 bg-dark text-white px-3 py-1 rounded m-3">
@@ -92,16 +92,16 @@
 
     <section class="mt-5">
         @empty(request('nama_kategori'))
-            <h4 class="fw-bold">All Classes </h4>
+            <h5 class="fw-bold mb-3">All Classes </h5>
         @else
-            <h4 class="fw-bold">{{ request('nama_kategori') }} </h4>
+            <h5 class="fw-bold mb-5">{{ request('nama_kategori') }} </h5>
         @endempty
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach ($kelases as $kelas)
                 <div class="col ">
                     <a href="/kursus/{{ $kelas->slug }}" class="text-decoration-none text-white ">
-                        <div class="position-relative border rounded overflow-hidden">
+                        <div class="position-relative border border-0  rounded overflow-hidden">
                             <img src="{{ asset('storage/') . '/' . $kelas->gambar }}" alt="{{ $kelas->judul }}"
                                 class="object-fit-cover img-card">
 
@@ -111,7 +111,7 @@
                                 {{ count($kelas->moduls) }} Lessons
                             </div>
                         </div>
-                        <h5 class="fw-bold mt-2">{{ $kelas->judul }}</h5>
+                        <h6 class="fw-bold mt-2">{{ $kelas->judul }}</h6>
                     </a>
                 </div>
             @endforeach

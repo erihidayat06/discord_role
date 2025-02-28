@@ -105,7 +105,7 @@
 
         #main {
             margin-top: 60px;
-            padding: 20px 150px;
+            padding: 20px 50px 20px 100px;
             transition: all 0.3s;
         }
 
