@@ -18,7 +18,15 @@ class KursusController extends Controller
     public function index()
     {
 
-        $kelases =  Kelas::latest()->kategori(request('kategori'))->search(request('query'))->get();
+        $kelases = Kelas::latest()
+            ->when(request('kategori'), function ($query, $kategori) {
+                return $query->kategori($kategori);
+            })
+            ->when(request('query'), function ($query, $search) {
+                return $query->search($search);
+            })
+            ->get();
+
         return view('user.index', ['kelases' => $kelases]);
     }
 
