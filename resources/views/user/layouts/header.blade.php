@@ -18,22 +18,25 @@
         <a href="/kursus" class="logo ">
             <img src="/assets/img/logo.png" alt="">
         </a>
-        {{-- <i class="bi bi-list toggle-sidebar-btn text-white d-none d-md-block"></i> --}}
-        <div class="search-bar bg-dark text-white p-0 m-0 ">
-            <form class="search-form d-flex align-items-center" method="GET" action="/kursus">
-                <!-- Hidden input untuk kategori dan nama_kategori -->
-                <input type="hidden" name="kategori" value="{{ request('kategori') }}">
-                <input type="hidden" name="nama_kategori" value="{{ request('nama_kategori') }}">
 
-                <!-- Input untuk pencarian -->
-                <input type="text" name="query" class="text-white form-control me-2" placeholder="Search..."
-                    title="Enter search keyword" value="{{ request('query') }}">
+        @if (Request::is('kursus*'))
+            {{-- <i class="bi bi-list toggle-sidebar-btn text-white d-none d-md-block"></i> --}}
+            <div class="search-bar bg-dark text-white p-0 m-0 ">
+                <form class="search-form d-flex align-items-center" method="GET" action="/kursus">
+                    <!-- Hidden input untuk kategori dan nama_kategori -->
+                    <input type="hidden" name="kategori" value="{{ request('kategori') }}">
+                    <input type="hidden" name="nama_kategori" value="{{ request('nama_kategori') }}">
 
-                <button type="submit" title="Search" class="btn btn-light">
-                    <i class="bi bi-search text-white"></i>
-                </button>
-            </form>
-        </div>
+                    <!-- Input untuk pencarian -->
+                    <input type="text" name="query" class="text-white form-control me-2" placeholder="Search..."
+                        title="Enter search keyword" value="{{ request('query') }}">
+
+                    <button type="submit" title="Search" class="btn btn-light">
+                        <i class="bi bi-search text-white"></i>
+                    </button>
+                </form>
+            </div>
+        @endif
     </div><!-- End Logo -->
 
 
@@ -50,12 +53,13 @@
                     font-weight: bold;
                 }
             </style>
-
-            <li class="nav-item d-block d-lg-none text-white">
-                <a class="nav-link-2 nav-icon search-bar-toggle " href="#">
-                    <i class="bi bi-search text-white"></i>
-                </a>
-            </li><!-- End Search Icon-->
+            @if (Request::is('kursus*'))
+                <li class="nav-item d-block d-lg-none text-white">
+                    <a class="nav-link-2 nav-icon search-bar-toggle " href="#">
+                        <i class="bi bi-search text-white"></i>
+                    </a>
+                </li><!-- End Search Icon-->
+            @endif
 
             <li class="nav-item d-none d-lg-block">
                 <a class="nav-link-2 text-white {{ Request::is('kursus*') ? 'active' : '' }}"
@@ -63,7 +67,7 @@
                     Kursus
                 </a>
             </li>
-            <li class="nav-item ms-2 d-none d-lg-block">
+            <li class="nav-item ms-4 d-none d-lg-block">
                 <a class="nav-link-2 text-white {{ Request::is('research*') ? 'active' : '' }}"
                     href="{{ url('/research') }}">
                     Research
@@ -71,7 +75,7 @@
             </li>
 
             <li>
-                <a class="d-block d-lg-none ms-2" type="button" data-bs-toggle="offcanvas"
+                <a class="d-block d-lg-none ms-4" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
                         class="bi bi-justify fs-3 text-white"></i></a>
 
@@ -171,7 +175,7 @@
 
 
             @if (auth()->user()->discord_active == 0)
-                <li><a href="/login/discord" class="text-white d-none d-md-block ms-2">Login discord</a></li>
+                <li><a href="/login/discord" class="text-white d-none d-md-block ms-4">Login discord</a></li>
             @else
                 <li class="nav-item dropdown pe-3 text-white">
 
@@ -208,7 +212,7 @@
 
             <li class="nav-item dropdown pe-3 text-white">
 
-                <a class="nav-link nav-profile d-flex align-items-center text-white pe-0 ms-2 d-none d-lg-block"
+                <a class="nav-link nav-profile d-flex align-items-center text-white pe-0 ms-4 d-none d-lg-block"
                     href="#" data-bs-toggle="dropdown">
 
                     <span class=" dropdown-toggle ps-2">{{ auth()->user()->name }}</span>

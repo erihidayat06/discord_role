@@ -1,72 +1,71 @@
 @extends('user.layouts.main')
 
 @section('content')
-    @empty(request('kategori') or request('nama_kategori'))
+    <style>
+        .img-card {
+            width: 100%;
+            /* Gunakan persentase agar fleksibel */
+            max-width: 350px;
+            /* Batasi lebar maksimum */
+            height: 170px;
+            /* Default height */
+            object-fit: cover;
+            /* Agar gambar tidak terdistorsi */
+            border-radius: 8px;
+            /* Tambahkan sedikit rounding */
+        }
+
+        @media (max-width: 1199px) {
+            .img-card {
+                height: 200px;
+                /* Tinggi yang lebih sesuai untuk layar kecil */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .img-card {
+                height: 180px;
+                /* Sesuaikan lagi untuk layar lebih kecil */
+                max-width: 100%;
+                /* Supaya tidak melebihi lebar parent */
+            }
+        }
+
+
+        /* satu */
+        .img-card-satu {
+            width: 100%;
+            /* Gunakan persentase agar fleksibel */
+            max-width: 550px;
+            /* Batasi lebar maksimum */
+            height: 250px;
+            /* Default height */
+            object-fit: cover;
+            /* Agar gambar tidak terdistorsi */
+            border-radius: 8px;
+            /* Tambahkan sedikit rounding */
+        }
+
+        @media (max-width: 1199px) {
+            .img-card-satu {
+                height: 200px;
+                /* Tinggi yang lebih sesuai untuk layar kecil */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .img-card-satu {
+                height: 180px;
+                /* Sesuaikan lagi untuk layar lebih kecil */
+                max-width: 100%;
+                /* Supaya tidak melebihi lebar parent */
+            }
+        }
+    </style>
+    @if (!request()->hasAny(['kategori', 'nama_kategori', 'query']))
         <div class="pagetitle">
             <h1 class="text-white">New & For You</h1>
         </div><!-- End Page Title -->
-        <style>
-            .img-card {
-                width: 100%;
-                /* Gunakan persentase agar fleksibel */
-                max-width: 350px;
-                /* Batasi lebar maksimum */
-                height: 170px;
-                /* Default height */
-                object-fit: cover;
-                /* Agar gambar tidak terdistorsi */
-                border-radius: 8px;
-                /* Tambahkan sedikit rounding */
-            }
-
-            @media (max-width: 1199px) {
-                .img-card {
-                    height: 200px;
-                    /* Tinggi yang lebih sesuai untuk layar kecil */
-                }
-            }
-
-            @media (max-width: 768px) {
-                .img-card {
-                    height: 180px;
-                    /* Sesuaikan lagi untuk layar lebih kecil */
-                    max-width: 100%;
-                    /* Supaya tidak melebihi lebar parent */
-                }
-            }
-
-
-            /* satu */
-            .img-card-satu {
-                width: 100%;
-                /* Gunakan persentase agar fleksibel */
-                max-width: 550px;
-                /* Batasi lebar maksimum */
-                height: 250px;
-                /* Default height */
-                object-fit: cover;
-                /* Agar gambar tidak terdistorsi */
-                border-radius: 8px;
-                /* Tambahkan sedikit rounding */
-            }
-
-            @media (max-width: 1199px) {
-                .img-card-satu {
-                    height: 200px;
-                    /* Tinggi yang lebih sesuai untuk layar kecil */
-                }
-            }
-
-            @media (max-width: 768px) {
-                .img-card-satu {
-                    height: 180px;
-                    /* Sesuaikan lagi untuk layar lebih kecil */
-                    max-width: 100%;
-                    /* Supaya tidak melebihi lebar parent */
-                }
-            }
-        </style>
-
         <section>
             <div class="row">
                 <div class="col-lg-6 d-flex align-items-center">
@@ -89,7 +88,7 @@
 
             </div>
         </section>
-    @endempty
+    @endif
 
     <section class="mt-5">
         @empty(request('nama_kategori'))
