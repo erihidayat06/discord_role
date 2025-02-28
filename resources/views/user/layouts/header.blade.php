@@ -171,7 +171,7 @@
 
 
             @if (auth()->user()->discord_active == 0)
-                <li><a href="/login/discord" class="text-white d-none d-md-block">Login discord</a></li>
+                <li><a href="/login/discord" class="text-white d-none d-md-block ms-2">Login discord</a></li>
             @else
                 <li class="nav-item dropdown pe-3 text-white">
 
