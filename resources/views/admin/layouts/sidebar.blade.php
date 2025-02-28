@@ -64,6 +64,13 @@
                  <span>Langganan User</span>
              </a>
          </li><!-- End Dashboard Nav -->
+         <li class="nav-heading">Pengaturan Research</li>
+         <li class="nav-item">
+             <a class="nav-link {{ Request::is('research*') ? '' : 'collapsed' }}" href="/admin/research">
+                 <i class="bi bi-graph-up"></i>
+                 <span>Research</span>
+             </a>
+         </li><!-- End Dashboard Nav -->
 
 
      </ul>

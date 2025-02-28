@@ -86,52 +86,91 @@
                             </div>
                         </div>
 
-
-                        <!-- Table with stripped rows -->
-                        <table class="table datatable">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nama modul</th>
-                                    <th scope="col">Video</th>
-                                    <th scope="col" class="text-center">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $i = 1;
-
-                                @endphp
-                                @foreach ($moduls as $modul)
+                        <!-- 📌 Menampilkan Modul tanpa Sub Kelas di Bagian Paling Atas -->
+                        @if ($moduls->whereNull('sub_kelas')->count() > 0 || $moduls->where('sub_kelas', '')->count() > 0)
+                            <h5 class="card-title">Modul Tanpa Sub Kelas</h5>
+                            <table class="table datatable">
+                                <thead>
                                     <tr>
-                                        <th scope="row">{{ $i++ }}</th>
-                                        <td>{{ $modul->judul }} </td>
-                                        <td>
-                                            <a
-                                                href="{{ route('lihat.video', ['kelas_id' => $kelas->id, 'id' => $modul->id]) }}">Lihat
-                                                video</a>
-                                        </td>
-
-
-                                        <td class="text-center">
-                                            <div class="d-flex justify-content-center">
-                                                <a href="{{ url('/kelas/modul/' . $modul->id . '/edit') }}"
-                                                    class="btn btn-warning btn-sm ms-2">Edit</a>
-                                                <form action="{{ url('/kelas/modul/' . $modul->id) }}" method="POST"
-                                                    class="ms-2">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('Apakah Anda yakin ingin menghapus modul ini?')">Delete</button>
-                                                </form>
-                                            </div>
-                                        </td>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nama Modul</th>
+                                        <th scope="col">Video</th>
+                                        <th scope="col" class="text-center">Actions</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @php $i = 1; @endphp
+                                    @foreach ($moduls->whereNull('sub_kelas')->merge($moduls->where('sub_kelas', '')) as $modul)
+                                        <tr>
+                                            <th scope="row">{{ $i++ }}</th>
+                                            <td>{{ $modul->judul }}</td>
+                                            <td>
+                                                <a
+                                                    href="{{ route('lihat.video', ['kelas_id' => $kelas->id, 'id' => $modul->id]) }}">Lihat
+                                                    video</a>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="{{ url('/kelas/modul/' . $modul->id . '/edit') }}"
+                                                        class="btn btn-warning btn-sm ms-2">Edit</a>
+                                                    <form action="{{ url('/kelas/modul/' . $modul->id) }}" method="POST"
+                                                        class="ms-2">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                            onclick="return confirm('Apakah Anda yakin ingin menghapus modul ini?')">Delete</button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <hr>
+                        @endif
 
-                        <!-- End Table with stripped rows -->
+                        <!-- 📌 Menampilkan Modul Berdasarkan Sub Kelas -->
+                        @foreach (json_decode($kelas->sub_kelas, true) ?? [] as $sub_kelas)
+                            <h5 class="card-title">{{ $sub_kelas }}</h5>
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nama Modul</th>
+                                        <th scope="col">Video</th>
+                                        <th scope="col" class="text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php $i = 1; @endphp
+                                    @foreach ($moduls->where('sub_kelas', $sub_kelas) as $modul)
+                                        <tr>
+                                            <th scope="row">{{ $i++ }}</th>
+                                            <td>{{ $modul->judul }}</td>
+                                            <td>
+                                                <a
+                                                    href="{{ route('lihat.video', ['kelas_id' => $kelas->id, 'id' => $modul->id]) }}">Lihat
+                                                    video</a>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="{{ url('/kelas/modul/' . $modul->id . '/edit') }}"
+                                                        class="btn btn-warning btn-sm ms-2">Edit</a>
+                                                    <form action="{{ url('/kelas/modul/' . $modul->id) }}" method="POST"
+                                                        class="ms-2">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                            onclick="return confirm('Apakah Anda yakin ingin menghapus modul ini?')">Delete</button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <hr>
+                        @endforeach
 
                     </div>
                 </div>

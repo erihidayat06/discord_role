@@ -38,10 +38,10 @@
     }
 
     .nav-link.active {
-        background-color: #6c757d !important;
+        background-color: #1a1c21 !important;
         /* Warna abu-abu */
         color: white !important;
-        border-radius: 5px;
+        border-radius: 50px;
     }
 </style>
 <!-- ======= Sidebar ======= -->

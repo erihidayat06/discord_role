@@ -90,13 +90,13 @@
                         <div class="accordion w-100" id="accordionMenu">
 
                             <div class="accordion-item bg-dark border-0">
-                                <a class="d-block p-2 ms-2 fw-bold {{ Request::is('kursus*') ? 'active text-info' : 'text-white' }}"
+                                <a class="d-block text-white p-2 ms-2 fw-bold {{ Request::is('kursus*') ? 'active' : '' }}"
                                     href="{{ url('/kursus') }}">
                                     Kursus
                                 </a>
                             </div>
                             <div class="accordion-item bg-dark border-0">
-                                <a class="d-block p-2 ms-2 fw-bold {{ Request::is('research*') ? 'active text-info' : 'text-white' }}"
+                                <a class="d-block text-white p-2 ms-2 fw-bold {{ Request::is('research*') ? 'active' : '' }}"
                                     href="{{ url('/research') }}">
                                     Research
                                 </a>

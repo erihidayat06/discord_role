@@ -154,6 +154,8 @@
                     </div>
                 </div>
 
+
+
                 <div class="row mb-3">
                     <div class="">
                         <div class="form-check text-white ">
@@ -166,6 +168,16 @@
                         </div>
                     </div>
                 </div>
+
+
+                <div class="row mb-3">
+                    <div class="col-md-12 text-center">
+                        <div class="cf-turnstile" data-sitekey="{{ env('CLOUDFLARE_SITE_KEY') }}"></div>
+                    </div>
+                </div>
+
+                <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 
                 <div class="row mb-0">
                     <div class="">

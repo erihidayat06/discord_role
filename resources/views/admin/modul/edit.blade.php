@@ -57,6 +57,25 @@
                                 @enderror
                             </div>
 
+                            @if (!empty($kelas->sub_kelas) && $kelas->sub_kelas !== 'null')
+                                <div class="mb-3">
+                                    <label class="form-label">Sub Kelas</label>
+                                    <select class="form-control @error('sub_kelas') is-invalid @enderror" id="sub_kelas"
+                                        name="sub_kelas">
+                                        @foreach (json_decode($kelas->sub_kelas, true) ?? [] as $sub)
+                                            <option value="{{ $sub }}"
+                                                {{ old('sub_kelas', $modul->sub_kelas) == $sub ? 'selected' : '' }}>
+                                                {{ $sub }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('sub_kelas')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            @endif
+
                             <button type="submit" class="btn btn-primary">Update Modul</button>
                         </form>
 
@@ -65,6 +84,4 @@
             </div>
         </div>
     </div>
-
-
 @endsection

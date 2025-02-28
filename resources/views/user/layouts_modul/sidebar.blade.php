@@ -166,22 +166,36 @@
 
                     <div id="collapseOne" class="accordion-collapse collapse show text-white"
                         aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <ul class="list-group list-group-flush">
-                            @foreach ($moduls as $modul)
-                                <li class="list-group-item modul-item {{ isset($showModul->slug) && $modul->slug == $showModul->slug ? 'active' : '' }}"
-                                    onclick="window.location='{{ route('modul.view', ['slug' => $kelas->slug, 'slug_modul' => $modul->slug]) }}'">
-                                    {{ $modul->judul }}
-                                </li>
-                            @endforeach
+
+                        @php
+                            $groupedModuls = $moduls->groupBy('sub_kelas');
+                        @endphp
+
+                        @foreach ($groupedModuls as $sub_kelas => $modulsGroup)
+                            <ul class="list-group list-group-flush">
+                                @if ($sub_kelas)
+                                    <li class="list-group-item modul-item text-white bg-dark">
+                                        {{ $sub_kelas }}
+                                    </li>
+                                @endisset
+                                @foreach ($modulsGroup as $modul)
+                                    <li class="list-group-item modul-item {{ isset($showModul->slug) && $modul->slug == $showModul->slug ? 'active' : '' }}"
+                                        onclick="window.location='{{ route('modul.view', ['slug' => $kelas->slug, 'slug_modul' => $modul->slug]) }}'">
+                                        {{ $modul->judul }}
+                                    </li>
+                                @endforeach
                         </ul>
-                    </div>
-
-
+                    @endforeach
 
                 </div>
-            </div>
-        </li><!-- End Dashboard Nav -->
 
-    </ul>
+
+
+
+            </div>
+        </div>
+    </li><!-- End Dashboard Nav -->
+
+</ul>
 
 </div><!-- End Sidebar-->

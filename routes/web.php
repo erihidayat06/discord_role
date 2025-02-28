@@ -15,6 +15,7 @@ use App\Http\Controllers\Auth\RedirectController;
 use App\Http\Controllers\Admin\GetUsersController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\LanggananController;
+use App\Http\Controllers\Admin\ResearchController;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /*
@@ -71,6 +72,9 @@ Route::middleware(['is_admin', 'auth'])->group(function () {
         ->name('admin.langganan.updateExpired');
     Route::post('/keatas/kategori/{id}/up', [KategoriController::class, 'moveUp'])->name('kategori.moveUp');
     Route::post('/kebawah/kategori/{id}/down', [KategoriController::class, 'moveDown'])->name('kategori.moveDown');
+
+    // research
+    Route::resource('/admin/research', ResearchController::class);
 });
 
 Route::post('/logout', [DiscordController::class, 'logout'])->name('logout')->middleware('auth');
@@ -85,6 +89,8 @@ Route::middleware(['auth',  'check.subscription'])->group(
         Route::post('/modul/{slug}/{slug_modul}/next', [KursusController::class, 'nextModul'])->name('modul.next');
         Route::get('/secure-video/{filename}', [KursusController::class, 'secureVideo'])->name('video.secure');
         Route::post('/logout/discord', [KursusController::class, 'logout']);
+
+        Route::get('/research', [ResearchController::class, 'show']);
     }
 );
 

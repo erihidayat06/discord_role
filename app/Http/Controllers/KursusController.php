@@ -68,56 +68,45 @@ class KursusController extends Controller
 
     public function showModul($slug, $slug_modul)
     {
-        $kelas = Kelas::where('slug', $slug)->with('moduls')->firstOrFail();
-        $modul = Modul::where('slug', $slug_modul)->firstOrFail();
+        $kelas = Kelas::where('slug', $slug)->firstOrFail();
 
-        // Tangkap slug modul sebelumnya jika ada
+        $modul = Modul::where('slug', $slug_modul)->firstOrFail();
         $slugSebelumnya = request('slugSaatIni');
 
-        // Ambil atau buat Look untuk user dan kelas ini
         $look = Look::firstOrCreate(
             ['kela_id' => $kelas->id, 'user_id' => auth()->id()],
-            ['modul' => json_encode([['modul' => []]])] // Awalnya kosong jika belum ada
+            ['modul' => json_encode([['modul' => []]])]
         );
 
-        // Decode JSON untuk mendapatkan daftar modul yang sudah dilihat
         $modul_terlihat = json_decode($look->modul, true) ?? [];
         $modul_list = $modul_terlihat[0]['modul'] ?? [];
 
-        // Ambil daftar slug modul yang valid dari kelas
         $modul_valid = $kelas->moduls->pluck('slug')->toArray();
 
-        // Pastikan slug sebelumnya valid dan belum ada dalam daftar
         if ($slugSebelumnya && in_array($slugSebelumnya, $modul_valid) && !in_array($slugSebelumnya, $modul_list)) {
             $modul_list[] = $slugSebelumnya;
         }
 
-        // Hapus modul yang sudah tidak valid
         $modul_list = array_values(array_intersect($modul_list, $modul_valid));
 
-        // Simpan kembali jika ada perubahan
         if (json_encode([['modul' => $modul_list]]) !== $look->modul) {
             $look->update(['modul' => json_encode([['modul' => $modul_list]])]);
         }
 
-        // Hitung progress belajar
         $total_modul = count($modul_valid);
         $modul_selesai = count($modul_list);
         $progress = ($total_modul > 0) ? round(($modul_selesai / $total_modul) * 100) : 0;
 
-        // Ambil semua modul untuk navigasi
-        $moduls = $kelas->moduls()->orderBy('id')->get();
+        $moduls = $kelas->moduls()->orderBy('sub_kelas', 'ASC')->get();
 
         // Cari index modul saat ini
-        $currentIndex = $moduls->search(fn($m) => $m->slug === request('slug_modul'));
+        $currentIndex = $moduls->search(fn($m) => $m->slug === $slug_modul);
 
-        // Tentukan modul sebelumnya dan berikutnya
         $prevModul = $currentIndex > 0 ? $moduls[$currentIndex - 1] : null;
         $nextModul = $currentIndex < $moduls->count() - 1 ? $moduls[$currentIndex + 1] : null;
 
-
         return view('user.show_modul', [
-            'moduls' => $kelas->moduls,
+            'moduls' => $moduls,
             'kelas' => $kelas,
             'showModul' => $modul,
             'progress' => $progress,
@@ -125,6 +114,7 @@ class KursusController extends Controller
             'nextModul' => $nextModul
         ]);
     }
+
 
 
 

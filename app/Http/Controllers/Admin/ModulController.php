@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\Kelas;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -28,7 +29,7 @@ class ModulController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         // $cloudinary = [
         //     'cloud' => [
@@ -40,12 +41,16 @@ class ModulController extends Controller
 
         // dd($cloudinary);
 
-        if (empty(request('kelas'))) {
-            return redirect()->back();
-        } else {
 
-            return view('admin.modul.create');
+
+        $kelasNama = $request->kelas; // Ambil nilai dari request
+        $kelas = Kelas::where('id', $kelasNama)->first(); // Cek apakah kelas ada
+
+        if (empty($kelasNama) || !$kelas) {
+            return redirect()->back()->with('error', 'Kelas tidak ditemukan atau kosong');
         }
+
+        return view('admin.modul.create', compact('kelas'));
     }
 
     /**
@@ -67,6 +72,7 @@ class ModulController extends Controller
         // Step 2: Simpan judul dan URL video ke database
         Modul::create([
             'judul' => $request->judul,
+            'sub_kelas' => $request->sub_kelas,
             'slug' => Str::slug($request->judul) . '-' . time(),
             'video' => $videoUrl, // Simpan URL video
             'kelas_id' => $request->kelas_id
@@ -91,7 +97,15 @@ class ModulController extends Controller
      */
     public function edit(Modul $modul)
     {
-        return view('admin.modul.edit', ['modul' => $modul]);
+
+        $kelasNama = $modul->kelas_id; // Ambil nilai dari request
+        $kelas = Kelas::where('id', $kelasNama)->first(); // Cek apakah kelas ada
+
+        if (empty($kelasNama) || !$kelas) {
+            return redirect()->back()->with('error', 'Kelas tidak ditemukan atau kosong');
+        }
+
+        return view('admin.modul.edit', ['modul' => $modul, 'kelas' => $kelas]);
     }
 
     /**
@@ -113,6 +127,7 @@ class ModulController extends Controller
         // Step 2: Update data video dan judul ke database
         $modul->update([
             'judul' => $request->judul,
+            'sub_kelas' => $request->sub_kelas,
             'slug' => Str::slug($request->judul) . '-' . time(),
             'video' => $videoUrl, // Update URL video
         ]);

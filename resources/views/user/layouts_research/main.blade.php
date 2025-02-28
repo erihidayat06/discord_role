@@ -81,7 +81,7 @@
         body {
             background-color: #000000 !important;
             color: white;
-            max-width: 1500px;
+            max-width: 1100px;
             /* Atur maksimal lebar body */
             margin: 0 auto;
             /* Pusatkan body */
@@ -103,11 +103,7 @@
             background-color: #000000 !important;
         }
 
-        #main {
-            margin-top: 60px;
-            padding: 20px 150px;
-            transition: all 0.3s;
-        }
+
 
         @media (max-width: 1199px) {
             #main {
@@ -135,8 +131,8 @@
 <body class=" bg-dark-main text-white">
     @include('sweetalert::alert')
     @include('user.layouts.header')
-    @include('user.layouts.sidebar')
-    <main id="main">
+    {{-- @include('user.layouts.sidebar') --}}
+    <main class="mt-5">
         <section>
             @yield('content')
         </section>

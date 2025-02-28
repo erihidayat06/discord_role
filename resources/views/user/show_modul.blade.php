@@ -106,21 +106,21 @@
     </div>
 
     <script>
-        (function() {
-            function detectDevTools(opened) {
-                if (opened) {
-                    alert("Screen recording is not allowed!");
-                    document.querySelector("iframe").src = "";
-                }
-            }
+        // (function() {
+        //     function detectDevTools(opened) {
+        //         if (opened) {
+        //             alert("Screen recording is not allowed!");
+        //             document.querySelector("iframe").src = "";
+        //         }
+        //     }
 
-            let threshold = 160;
-            setInterval(function() {
-                let widthThreshold = window.outerWidth - window.innerWidth > threshold;
-                let heightThreshold = window.outerHeight - window.innerHeight > threshold;
-                detectDevTools(widthThreshold || heightThreshold);
-            }, 500);
-        })();
+        //     let threshold = 160;
+        //     setInterval(function() {
+        //         let widthThreshold = window.outerWidth - window.innerWidth > threshold;
+        //         let heightThreshold = window.outerHeight - window.innerHeight > threshold;
+        //         detectDevTools(widthThreshold || heightThreshold);
+        //     }, 500);
+        // })();
 
         const player = new Plyr('#player');
     </script>
