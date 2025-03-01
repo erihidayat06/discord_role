@@ -60,7 +60,7 @@
                             <button type="button" class="btn-close custom-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body flex-grow-1 p-0 d-flex">
-                            <iframe id="iframe-{{ $research->id }}" class="w-100 h-100 border-0"
+                            <iframe id="iframe-{{ $research->link }}" class="w-100 h-100 border-0"
                                 sandbox="allow-scripts allow-same-origin"></iframe>
                         </div>
                     </div>
