@@ -91,14 +91,21 @@
             let itemsPerPage = 12;
             let totalItems = $(".research-item").length;
             let visibleItems = itemsPerPage;
-
             $('#searchInput').on('keyup', function() {
                 let query = $(this).val().toLowerCase();
-                $('.research-item').each(function() {
-                    let title = $(this).find('.card-title').text().toLowerCase();
-                    $(this).toggle(title.includes(query));
-                });
+
+                if (query) {
+                    $('.research-item').removeClass('d-none').each(function() {
+                        let title = $(this).find('.card-title').text().toLowerCase();
+                        $(this).toggle(title.includes(query));
+                    });
+                    $('#loadMore').hide(); // Sembunyikan tombol Load More saat pencarian
+                } else {
+                    $('.research-item').addClass('d-none').slice(0, visibleItems).removeClass('d-none');
+                    $('#loadMore').toggle(visibleItems < totalItems); // Tampilkan kembali jika perlu
+                }
             });
+
 
             $('#loadMore').on('click', function() {
                 visibleItems += itemsPerPage;

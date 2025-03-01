@@ -44,7 +44,7 @@
                     class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Kelas Bulanan Akademi Crypto 1 Bulan</h5>
-                    <p class="card-text fw-bold">IDR 98,000</p>
+                    <p class="card-text fw-bold">IDR 147,000</p>
                     <p class="card-text text-decoration-line-through text-dark-emphasis fw-bold">IDR 2,000,000</p>
                     <a href="{{ auth()->check() ? 'https://belajarsatupersen.xyz/belajarsatupersen.id/LPn99wE' : '/register' }}"
                         {{ auth()->check() ? 'target="_blank"' : '' }} class="btn bg-primary bg-gradient col-lg-12 fw-bold">
