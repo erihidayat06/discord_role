@@ -81,7 +81,7 @@
 
     @if (count($researchs) > 12)
         <div class="text-center mt-4">
-            <button id="loadMore" class="btn btn-info text-white">Load More</button>
+            <button id="loadMore" class="btn btn-dark text-white">Load More</button>
         </div>
     @endif
 
