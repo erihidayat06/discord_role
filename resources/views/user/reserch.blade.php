@@ -19,6 +19,11 @@
             width: 100%;
             height: 150px;
         }
+
+        .ndfHFb-c4YZDc-to915-LgbsSe {
+            display: none !important;
+            pointer-events: none !important;
+        }
     </style>
 
     <div class="d-flex justify-content-between align-items-center flex-wrap flex-md-nowrap" style="margin-top: 100px">
@@ -49,8 +54,8 @@
                             <button type="button" class="btn-close custom-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body flex-grow-1 p-0 d-flex">
-                            <iframe src="https://drive.google.com/file/d/{{ $research->link }}/preview"
-                                class="w-100 h-100 border-0"></iframe>
+                            <iframe src="https://drive.google.com/file/d/{{ $research->link }}/preview?embedded=true"
+                                class="w-100 h-100 border-0" sandbox="allow-scripts allow-same-origin"></iframe>
                         </div>
                     </div>
                 </div>
