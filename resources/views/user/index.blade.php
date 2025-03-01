@@ -108,7 +108,8 @@
                             <!-- Teks di bawah kanan dengan background -->
                             <div class="position-absolute bottom-0 end-0 bg-dark text-white px-3 py-1 rounded m-2"
                                 style="font-size: 12px">
-                                {{ count($kelas->moduls) }} Lessons
+                                {{ count($kelas->moduls) }}
+                                {{ $kelas->judul === 'Welcome to Akademi Crypto' ? 'Start' : 'Lessons' }}
                             </div>
                         </div>
                         <h6 class="fw-bold mt-2">{{ $kelas->judul }}</h6>
