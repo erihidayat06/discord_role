@@ -30,6 +30,16 @@
             display: none !important;
             pointer-events: none !important;
         }
+
+        /* Styling tombol close */
+        .modal-header .btn-close {
+            filter: invert(1);
+            /* Mengubah warna menjadi putih */
+            transform: scale(1.5);
+            /* Memperbesar tombol close */
+            opacity: 1;
+            /* Pastikan terlihat */
+        }
     </style>
 
     <div class="d-flex justify-content-between align-items-center flex-wrap flex-md-nowrap" style="margin-top: 100px">
@@ -42,9 +52,9 @@
 
     <div id="researchContainer" class="row row-cols-1 row-cols-md-4 g-4 mt-5">
         @foreach ($researchs as $index => $research)
-            <div class="col research-item {{ $index >= 12 ? 'd-none' : '' }}" data-bs-toggle="modal"
-                data-bs-target="#pdfModal{{ $research->id }}">
-                <a href="#" class="card bg-dark d-flex flex-column h-100">
+            <div class="col research-item {{ $index >= 12 ? 'd-none' : '' }}">
+                <a href="#" class="card bg-dark d-flex flex-column h-100" data-bs-toggle="modal"
+                    data-bs-target="#pdfModal{{ $research->id }}" data-link="{{ $research->link }}">
                     <img src="{{ asset('storage/' . $research->gambar) }}" class="card-img-top" alt="Gambar Research">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title text-white">{{ $research->judul }}</h5>
@@ -57,10 +67,10 @@
                     <div class="modal-content bg-dark d-flex flex-column">
                         <div class="modal-header p-1">
                             <h5 class="modal-title text-white">{{ $research->judul }}</h5>
-                            <button type="button" class="btn-close custom-close" data-bs-dismiss="modal"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body flex-grow-1 p-0 d-flex">
-                            <iframe id="iframe-{{ $research->link }}" class="w-100 h-100 border-0"
+                            <iframe id="iframe-{{ $research->id }}" class="w-100 h-100 border-0"
                                 sandbox="allow-scripts allow-same-origin"></iframe>
                         </div>
                     </div>
@@ -93,21 +103,23 @@
             $('#loadMore').on('click', function() {
                 visibleItems += itemsPerPage;
                 $('.research-item').slice(0, visibleItems).removeClass('d-none');
+
                 if (visibleItems >= totalItems) {
                     $('#loadMore').hide();
                 }
             });
 
-            $('.modal').on('show.bs.modal', function() {
-                let modalId = $(this).attr('id').replace('pdfModal', '');
-                let iframe = $('#iframe-' + modalId);
-                iframe.attr('src', 'https://drive.google.com/file/d/' + modalId + '/preview?embedded=true');
+            $('.modal').on('show.bs.modal', function(event) {
+                let button = $(event.relatedTarget);
+                let link = button.data('link');
+                let modal = $(this);
+                let iframe = modal.find('iframe');
+
+                iframe.attr('src', 'https://drive.google.com/file/d/' + link + '/preview?embedded=true');
             });
 
             $('.modal').on('hidden.bs.modal', function() {
-                let modalId = $(this).attr('id').replace('pdfModal', '');
-                let iframe = $('#iframe-' + modalId);
-                iframe.attr('src', '');
+                $(this).find('iframe').attr('src', '');
             });
         });
     </script>
