@@ -60,8 +60,8 @@
                             <button type="button" class="btn-close custom-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body flex-grow-1 p-0 d-flex">
-                            <iframe src="https://drive.google.com/file/d/{{ $research->link }}/preview?embedded=true"
-                                class="w-100 h-100 border-0" sandbox="allow-scripts allow-same-origin"></iframe>
+                            <iframe id="iframe-{{ $research->id }}" class="w-100 h-100 border-0"
+                                sandbox="allow-scripts allow-same-origin"></iframe>
                         </div>
                     </div>
                 </div>
@@ -96,6 +96,18 @@
                 if (visibleItems >= totalItems) {
                     $('#loadMore').hide();
                 }
+            });
+
+            $('.modal').on('show.bs.modal', function() {
+                let modalId = $(this).attr('id').replace('pdfModal', '');
+                let iframe = $('#iframe-' + modalId);
+                iframe.attr('src', 'https://drive.google.com/file/d/' + modalId + '/preview?embedded=true');
+            });
+
+            $('.modal').on('hidden.bs.modal', function() {
+                let modalId = $(this).attr('id').replace('pdfModal', '');
+                let iframe = $('#iframe-' + modalId);
+                iframe.attr('src', '');
             });
         });
     </script>
