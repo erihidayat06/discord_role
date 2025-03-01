@@ -60,7 +60,8 @@
             <li class="nav-item d-none d-lg-block">
                 <a class="nav-link-2 text-white {{ Request::is('kursus*') ? 'active' : '' }}"
                     href="{{ url('/kursus') }}">
-                    Kursus
+                    Academy
+
                 </a>
             </li>
             <li class="nav-item ms-2 d-none d-lg-block">
@@ -92,7 +93,8 @@
                             <div class="accordion-item bg-dark border-0">
                                 <a class="d-block text-white p-2 ms-2 fw-bold {{ Request::is('kursus*') ? 'active' : '' }}"
                                     href="{{ url('/kursus') }}">
-                                    Kursus
+                                    Academy
+
                                 </a>
                             </div>
                             <div class="accordion-item bg-dark border-0">
