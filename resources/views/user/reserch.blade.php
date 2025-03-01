@@ -2,22 +2,28 @@
 
 @section('content')
     <style>
-        /* Placeholder putih */
         ::placeholder {
             color: white !important;
         }
 
-        /* Menyesuaikan lebar input */
         .input-group {
             max-width: 400px;
             width: 100%;
         }
 
-        /* Menyesuaikan gambar */
         .card-img-top {
             object-fit: cover;
             width: 100%;
             height: 150px;
+        }
+
+        .card {
+            height: 100%;
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
         }
 
         .ndfHFb-c4YZDc-to915-LgbsSe {
@@ -38,11 +44,11 @@
         @foreach ($researchs as $index => $research)
             <div class="col research-item {{ $index >= 12 ? 'd-none' : '' }}" data-bs-toggle="modal"
                 data-bs-target="#pdfModal{{ $research->id }}">
-                <a href="#" class="card bg-dark">
+                <a href="#" class="card bg-dark d-flex flex-column h-100">
                     <img src="{{ asset('storage/' . $research->gambar) }}" class="card-img-top" alt="Gambar Research">
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column">
                         <h5 class="card-title text-white">{{ $research->judul }}</h5>
-                        <p class="card-text text-secondary mt-4">{{ date('M d, Y', strtotime($research->tanggal)) }}</p>
+                        <p class="card-text text-secondary mt-auto">{{ date('M d, Y', strtotime($research->tanggal)) }}</p>
                     </div>
                 </a>
             </div>
@@ -60,39 +66,22 @@
                     </div>
                 </div>
             </div>
-
-            <style>
-                /* Tombol close putih & lebih besar */
-                .custom-close {
-                    filter: invert(1);
-                    width: 30px;
-                    height: 30px;
-                }
-
-                /* Pastikan modal-body tidak overflow */
-                .modal-body {
-                    overflow: hidden;
-                }
-            </style>
         @endforeach
     </div>
 
-    {{-- Tombol Load More --}}
     @if (count($researchs) > 12)
         <div class="text-center mt-4">
             <button id="loadMore" class="btn btn-info text-white">Load More</button>
         </div>
     @endif
 
-    {{-- JavaScript untuk Pencarian dan Load More --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            let itemsPerPage = 12; // Batas awal data yang ditampilkan
+            let itemsPerPage = 12;
             let totalItems = $(".research-item").length;
             let visibleItems = itemsPerPage;
 
-            // Pencarian dengan jQuery
             $('#searchInput').on('keyup', function() {
                 let query = $(this).val().toLowerCase();
                 $('.research-item').each(function() {
@@ -101,12 +90,9 @@
                 });
             });
 
-            // Load More Functionality
             $('#loadMore').on('click', function() {
                 visibleItems += itemsPerPage;
                 $('.research-item').slice(0, visibleItems).removeClass('d-none');
-
-                // Sembunyikan tombol jika semua item sudah ditampilkan
                 if (visibleItems >= totalItems) {
                     $('#loadMore').hide();
                 }
