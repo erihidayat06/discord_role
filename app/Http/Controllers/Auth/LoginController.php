@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -68,10 +69,11 @@ class LoginController extends Controller
             return redirect('/')->with('error', 'Akun ini sedang digunakan di perangkat lain.');
         }
 
-        // Simpan session ID
-        $user->update([
-            'session_id' => $sessionId,
-        ]);
+        // Simpan session ID di database dan cookie
+        $user->update(['session_id' => $sessionId]);
+
+        // Simpan di cookie selama 1 tahun
+        Cookie::queue('user_session', $sessionId, 60 * 24 * 365);
 
         return redirect()->intended($this->redirectTo);
     }

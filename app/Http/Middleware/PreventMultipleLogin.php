@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class PreventMultipleLogin
 {
@@ -21,28 +22,30 @@ class PreventMultipleLogin
                 session()->invalidate();
                 session()->regenerateToken();
 
+                // Hapus cookie saat user logout
+                Cookie::queue(Cookie::forget('user_session'));
+
                 return redirect('/login')->with('error', 'Akun ini telah login di perangkat lain.');
-            }
-
-            // **Setel last_activity jika belum ada (saat login pertama kali)**
-            if (!$request->session()->has('last_activity')) {
-                $request->session()->put('last_activity', now());
-            } else {
-                // **Cek apakah sesi sudah expired**
-                $sessionLifetime = config('session.lifetime'); // Waktu sesi dalam menit
-                $lastActivity = session('last_activity');
-                $expiredTime = now()->subMinutes($sessionLifetime);
-
-                if ($lastActivity < $expiredTime) {
-                    $user->update(['session_id' => null]);
-                    Auth::logout();
-                    session()->invalidate();
-                    return redirect('/login')->with('error', 'Sesi Anda telah habis.');
-                }
             }
 
             // **Perbarui last_activity setiap request**
             $request->session()->put('last_activity', now());
+        } else {
+            // **Jika user tidak login, cek apakah ada cookie "user_session"**
+            $storedSessionId = Cookie::get('user_session');
+
+            if ($storedSessionId) {
+                // Cari user berdasarkan session_id
+                $user = \App\Models\User::where('session_id', $storedSessionId)->first();
+
+                if ($user) {
+                    // Hapus session_id di database karena user tidak login
+                    $user->update(['session_id' => null]);
+                }
+
+                // Hapus cookie karena sesi tidak valid lagi
+                Cookie::queue(Cookie::forget('user_session'));
+            }
         }
 
         return $next($request);
