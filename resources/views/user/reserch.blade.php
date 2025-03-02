@@ -102,9 +102,10 @@
                     $('#loadMore').hide(); // Sembunyikan tombol Load More saat pencarian
                 } else {
                     visibleItems = itemsPerPage; // Reset jumlah item yang terlihat
-                    $('.research-item').removeClass('d-none'); // Tampilkan semua item
+                    $('.research-item').addClass('d-none').slice(0, visibleItems).removeClass(
+                        'd-none'); // Kembalikan ke kondisi awal
                     $('#loadMore').toggle(visibleItems <
-                    totalItems); // Tampilkan tombol Load More jika perlu
+                        totalItems); // Tampilkan tombol Load More jika masih ada item tersembunyi
                 }
             });
 
@@ -118,6 +119,7 @@
                     $('#loadMore').hide();
                 }
             });
+
 
             $('.modal').on('show.bs.modal', function(event) {
                 let button = $(event.relatedTarget);
