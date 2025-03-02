@@ -84,7 +84,7 @@
         }
 
         .img-bg {
-            width: 70%;
+            width: 100%;
             margin: auto;
         }
     </style>

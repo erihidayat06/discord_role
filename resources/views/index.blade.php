@@ -86,30 +86,32 @@
 
 
 
-    <section class="section bg-main text-center">
-        <div class="col-lg-5 mx-auto">
+    <section class=" bg-main text-center">
+        <div class="col-lg-5 container mx-auto">
+            <img class="img-bg module-border-wrap"
+                src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/02-03-2025/1740850002427_7540093"
+                alt="">
+        </div>
+    </section>
+
+    <section class=" bg-main text-center">
+        <div class="col-lg-5 container mx-auto">
             <img class="img-bg module-border-wrap"
                 src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739554405994_7888550"
                 alt="">
         </div>
     </section>
-    <section class="section bg-main text-center">
-        <div class="col-lg-5 mx-auto">
-            <img class="img-bg module-border-wrap"
-                src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739606763264_6861670"
-                alt="">
-        </div>
-    </section>
-    <section class="section bg-main text-center">
-        <div class="col-lg-5 mx-auto">
+
+    <section class=" bg-main text-center">
+        <div class="col-lg-5 container mx-auto">
             <img class="img-bg module-border-wrap"
                 src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/13-02-2025/1739454844767_1913151"
                 alt="">
         </div>
     </section>
-    <section class="section bg-main">
+    <section class=" bg-main">
         <div class="container">
-            <div class="card col-lg-5 mx-auto shadow custom-shadow">
+            <div class="card col-lg-5 container mx-auto shadow custom-shadow">
                 <a href="https://belajarsatupersen.xyz/belajarsatupersen.id/LPn99wE" class="d-flex justify-content-center">
                     <div class="card-body text-center ">
                         <div class="row align-items-center">
@@ -123,15 +125,15 @@
         </div>
     </section>
 
-    <section class="section bg-main text-center">
-        <div class="col-lg-5 mx-auto">
+    <section class=" bg-main text-center">
+        <div class="col-lg-5 container mx-auto">
             <img class="img-bg module-border-wrap"
                 src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739554469006_2126920"
                 alt="">
         </div>
     </section>
-    <section class="section bg-main text-center">
-        <div class="col-lg-5 mx-auto">
+    <section class=" bg-main text-center">
+        <div class="col-lg-5 container mx-auto">
             <img class="img-bg module-border-wrap"
                 src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/12-02-2025/1739307282480_5799265"
                 alt="">
