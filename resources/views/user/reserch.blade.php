@@ -101,11 +101,12 @@
                     });
                     $('#loadMore').hide(); // Sembunyikan tombol Load More saat pencarian
                 } else {
+                    // Jika input kosong, kembalikan ke tampilan awal
                     visibleItems = itemsPerPage; // Reset jumlah item yang terlihat
-                    $('.research-item').addClass('d-none').slice(0, visibleItems).removeClass(
-                        'd-none'); // Kembalikan ke kondisi awal
-                    $('#loadMore').toggle(visibleItems <
-                        totalItems); // Tampilkan tombol Load More jika masih ada item tersembunyi
+                    $('.research-item').addClass('d-none').slice(0, visibleItems).removeClass('d-none');
+
+                    // Cek apakah tombol "Load More" perlu ditampilkan
+                    $('#loadMore').toggle(visibleItems < totalItems);
                 }
             });
 
