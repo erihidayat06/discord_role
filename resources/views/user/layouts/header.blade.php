@@ -2,7 +2,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center bg-dark text-white" data-bs-theme="dark">
     <style>
         .logo {
-            width: 50px;
+            width: 150px;
         }
 
         .lebar {
