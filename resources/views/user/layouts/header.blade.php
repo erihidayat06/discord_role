@@ -16,7 +16,7 @@
     </style>
     <div class="lebar d-flex align-items-center">
         <a href="/kursus" class="logo ">
-            <img src="/assets/img/logo.png" alt="">
+            <img src="/assets/img/logo-main.png" alt="">
         </a>
 
         @if (Request::is('kursus*'))

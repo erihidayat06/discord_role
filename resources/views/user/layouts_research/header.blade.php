@@ -16,7 +16,7 @@
     </style>
     <div class="lebar d-flex align-items-center">
         <a href="/kursus" class="logo ">
-            <img src="/assets/img/logo.png" alt="">
+            <img src="/assets/img/logo-main.png" alt="">
         </a>
         {{-- <i class="bi bi-list toggle-sidebar-btn text-white d-none d-md-block"></i> --}}
         <div class="search-bar bg-dark text-white p-0 m-0 ">
