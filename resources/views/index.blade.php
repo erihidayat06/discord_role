@@ -1,233 +1,1119 @@
 @extends('layouts.main')
-@section('content')
-    <style>
-        .bg-primary {
-            color: white;
-            background: linear-gradient(to top, #4e0d94, #6a11cb, #ac43e4) !important;
-        }
 
-        .bg-primary:hover {
-            color: white !important;
+@section('content')
+    <div class="container " style="margin-top: 100px">
+        <div class="text-center">
+            <h1 class="text-white fw-bold text-title">Strategi Investasi Crypto Untuk</h1>
+            <h1 class="text-title text-grad fw-bold">Gandain Uang Kalian</h1>
+            <div class="container text-center mx-auto" style="max-width: 658px">
+                <!-- Untuk layar besar -->
+                <p class="text-white fs-3 fw-medium d-none d-lg-block">
+                    71% Murid di Akademi berhasil melipatgandakan portofolionya <br>
+                    dalam waktu <span class="text-decoration-underline fw-bold">3 bulan</span> menggunakan strategi kita.
+                </p>
+
+                <!-- Untuk layar kecil -->
+                <p class="text-white fs-3 fw-medium d-lg-none">
+                    71% Murid di Akademi berhasil <br>
+                    melipatgandakan portofolionya dalam <br>
+                    <span class="text-decoration-underline fw-bold">waktu 3 bulan</span> menggunakan strategi kita.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container d-flex justify-content-center mt-5 w-100">
+        <div class="video-container">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/mkLVWTv7zNM?si=eZiCoX8Fn_37KbJR"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <div class="text-center mt-5 mb-5">
+        <a href="#tawaran"> <img class="join-now" src="https://akademicrypto.com/wp-content/uploads/2024/04/button-join.svg"
+                class="img-fluid" style="max-width: 50%;" alt=""></a>
+    </div>
+
+
+    <h2 class="title-line">Apa Kata Mereka</h2>
+
+
+
+    <div class="container mt-5 mb-5">
+        <div class="swiper">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/Xsy6YLUQojw?si=1E82vpjb6Hb8UMSE" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                <div class="swiper-slide"><iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/eA--N6bT1KI?si=qXnnM3wbWd2BL1qz" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                <div class="swiper-slide"><iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/mCKuO1oIutg?si=I84J83uqsRgZ3sB4" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                <div class="swiper-slide"><iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/Dc9oCwssAAk?si=U_YyGd4KkhAqhv3o" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                <div class="swiper-slide"><iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/QgUyEdYWRas?si=sai1igD6eAYzHJfn" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                <div class="swiper-slide"><iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/8RLgcEowJi4?si=rWRurxvbroQhEUDH" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                <div class="swiper-slide"><iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/FLvauie6eDk?si=5m-tz2YD7az5Ws16" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                <div class="swiper-slide"><iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/0GSK7cEmVUc?si=JW1XTp2b3QC3H3qF" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+
+                <div class="swiper-slide"><iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/Oex3FempwxA?si=J85sKP9qhfPDNH1E" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="text-center mt-5">
+            <a href="/login/discord"> <img class="join-now"
+                    src="https://akademicrypto.com/wp-content/uploads/2024/04/btn-join-discord.webp" class="img-fluid"
+                    style="max-width: 350px;" alt=""></a>
+        </div>
+    </div>
+
+    <style>
+        @media (min-width: 992px) {
+
+            /* Bootstrap breakpoint untuk lg */
+            .w-lg-40 {
+                width: 35% !important;
+            }
         }
     </style>
-    <!-- Hero Section -->
-    <section id="hero" class="hero section bg-color">
-        <div class="container">
-            <div class="row gy-4">
-                <div class="col-lg-12 text-center order-2 order-lg-1 d-flex flex-column justify-content-center "
-                    data-aos="zoom-out">
-                    <h1 class="text-white">Modul Belajar Investasi & Trading Crypto Terlengkap</h1>
-                    <p class="text-white">Ada Lebih Ratusan Member Telah Bergabung Disini!! Sekarang Kaliann Join Bersama
-                        Pelajar Lainnya </p>
-                    <div class="text-center">
-                        <a href="/login/discord" class="btn-get-started"><i class="bi bi-chevron-double-right"></i> Gabung
-                            discord <i class="bi bi-chevron-double-left"></i></a>
-                        {{-- <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8"
-                            class="glightbox btn-watch-video d-flex align-items-center text-white"><i
-                                class="bi bi-play-circle"></i><span>Watch Video</span></a> --}}
-                    </div>
+
+
+
+    <div class="gradient-line mt-5 mb-5"></div>
+
+    <div class="text-center">
+        <h1 class="fs-1 text-white fw-semibold">Kenapa Akademi Crypto?</h1>
+    </div>
+
+    <div class="container kenapa">
+        <div class="row row-cols-1 row-cols-lg-2 mt-2 mt-lg-5  position-relative">
+            <div class="col border-end border-white">
+                <h3 class="pe-3 ps-5"><span class="text-grad fw-bold"> Kalian akan dibimbing dari 0 sampai mahir
+                        berinvestasi
+                        di crypto dan
+                        melipatgandakan
+                        portofolio kalian,</span> <span class="text-white">dengan 1000+ modul pembelajaran yang di update
+                        setiap
+                        minggu dan diajar langsung
+                        oleh pakarnya.</span></h3>
+            </div>
+            <img class="peringkat-1" src="https://akademicrypto.com/wp-content/uploads/2024/04/no-1.svg" alt="">
+            <div class="vertical-line"></div>
+            <div class="col py-3 py-lg-0">
+                <img class="px-5"
+                    src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654037542@2x-1536x805.webp"
+                    width="100%" alt="">
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-lg-2 mt-2 mt-lg-5 position-relative">
+            <!-- Kolom teks -->
+            <div class="col border-end border-white py-3 py-lg-5 order-2 order-lg-1">
+                <img class="pt-3 px-5"
+                    src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654037579-1536x904.webp"
+                    width="100%" alt="">
+            </div>
+
+            <img class="peringkat" src="https://akademicrypto.com/wp-content/uploads/2024/04/02-a.svg" alt="">
+
+            <!-- Kolom gambar -->
+            <div class="col py-1 py-lg-5 order-1 order-lg-2">
+                <h3 class="ps-5 ">
+                    <span class="text-grad fw-bold">Kalian akan mendapatkan akses ke AC Research, dimana kalian akan
+                        mendapatkan coin picks setiap bulannya, analisa onchain detail setiap harinya,</span>
+                    <span class="text-white">Berita market A1 yang tidak akan bisa didapatkan di tempat lain.</span>
+                </h3>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-lg-2 mt-2 mt-lg-5 position-relative">
+            <div class="col ">
+                <h3 class="pe-5 ps-5">
+                    <span class="text-grad fw-bold">Kalian akan mendapatkan event ekslusif khusus bersama komunitas dengan
+                        tujuan
+                        yang sama, yaitu membuat kekayaan dari crypto.</span>
+                    <span class="text-white">Sukses tidak bisa dicapai sendirian, kalian membutuhkan komunitas offline yang
+                        saling support dan mau maju bersama.</span>
+                </h3>
+            </div>
+            <img class="peringkat" src="https://akademicrypto.com/wp-content/uploads/2024/04/03-a.svg" alt="">
+            <div class="col py-3 py-lg-5">
+                <img class="px-5 img-p3"
+                    src="https://akademicrypto.com/wp-content/uploads/2025/02/community-1536x1074.webp" width="100%"
+                    alt="">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="gradient-line mt-5 mb-5"></div>
+
+    <div class="text-center">
+        <h5 class="text-grad fw-bold fs-5 text-spacing">KURIKULUM PROGRAM</h5>
+
+        <span class="fw-bold fs-3 text-secondary">01.</span><span
+            class="text-title fw-bold text-white sub-title">Edukasi</span>
+    </div>
+
+    <div class="parent-container">
+        <div class="container mt-5">
+
+            <img class="shadow-right" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
+                alt="">
+
+            <div class="row row-cols-1 row-cols-lg-2 position-relative ">
+                <div class="col border-right-dotted px-5  pb-6">
+                    <img src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654037543-1536x840.webp"
+                        alt="" width="100%">
                 </div>
-                {{-- <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="/assets/img/logo-main.png" class="img-fluid animated" alt="">
-                </div> --}}
+                <img class="check-1" width="20px" src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg"
+                    alt="">
+                <div class="col ps-5 text-white">
+                    <h1 class="text-white">Crypto <span class="text-grad">Investing</span></h1>
+                    <p class="mt-3">Di modul ini kalian akan gua pandu pribadi step by step dari Mindset berinvestasi di
+                        crypto, cara melihat siklus pasar untuk tau kapan masuk dan keluar, menganalisa tipe-tipe
+                        cryptocurrency, cara melihat attention economy didalam crypto, cara meriset crypto dan menghitung
+                        harga
+                        wajarnya,</p>
+
+                    <p class="mt-3">Bagaimana cara mengatur resiko didalam portofolio, cara melihat korelasi anatara
+                        bitcoin
+                        dan altcoin, bagaimana cara nyontek “smart money” sampai contekan portofolio gua supaya kalian bisa
+                        dapat gambaran bagaimana menyusun portofolio yang baik.</p>
+                </div>
             </div>
-        </div>
+            <div class="vertical-line-dotted"></div>
+            <img class="shadow-left" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
+                alt="">
+            <div class="row row-cols-1 row-cols-lg-2 position-relative ">
 
-    </section><!-- /Hero Section -->
+                <div class="col border-right-dotted px-5 pb-6">
+                    <img src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654037544-1536x840.webp"
+                        alt="" width="100%">
+                </div>
+                <img class="check-1" width="20px" src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg"
+                    alt="">
+                <div class="col ps-5 text-white">
+                    <h1 class="text-white">Crypto <span class="text-grad">Trading</span></h1>
+                    <p class="mt-3">Di modul ini kalian akan belajar dari 0 sampai bisa trading crypto secara mahir, dari
+                        pengenalan trading crypto, dow theory, dasar dari analisa teknikal, bagaimana cara mengukur setup
+                        sebuah
+                        trade, dasar dari kontrak futures, manajemen resiko, bagaimana cara masuk ke sebuah posisi dan
+                        mengukur
+                        resiko, behavioural dari market, pattern recognition, psikologi dalam trading, sampai live trading
+                        bareng bersama komunitas.</p>
 
 
-    <section class="section bg-main">
-        <div class="container col-lg-4">
-            <a href=""></a>
-            <div class="card">
-                <img src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739566164551_9962437"
-                    class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Kelas Bulanan Akademi Crypto 1 Bulan</h5>
-                    <p class="card-text fw-bold">IDR 147,000</p>
-                    <p class="card-text text-decoration-line-through text-dark-emphasis fw-bold">IDR 2,000,000</p>
-                    <a href="{{ auth()->check() ? 'https://belajarsatupersen.xyz/belajarsatupersen.id/LPn99wE' : '/register' }}"
-                        {{ auth()->check() ? 'target="_blank"' : '' }} class="btn bg-primary bg-gradient col-lg-12 fw-bold">
-                        Dapatkan akses sekarang
-                    </a>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-lg-2 position-relative ">
+
+                <div class="col border-right-dotted px-5 pb-6">
+                    <img src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654037544-1-1536x840.webp"
+                        alt="" width="100%">
+                </div>
+                <img class="check-1" width="20px" src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg"
+                    alt="">
+                <div class="col ps-5 text-white">
+                    <h1 class="text-white">Crypto <span class="text-grad">Trading <br> Psychology</span></h1>
+                    <p class="mt-3">Di modul ini kalian akan belajar tentang strategi rahasia mengatur psikologi dan
+                        emosi
+                        dalam trading, Mekanisme dalam otak yang menyebabkan bias, pola prilaku para trader dan investor,
+                        overconfidence bias, herding behaviour bias, dan kenapa trader memiliki loss aversion bias supaya
+                        kamu
+                        bisa menjadi trader crypto yang lebih konsisten, mengerti manajemen emosi dan resiko setiap
+                        melakukan
+                        trading.</p>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-lg-2 position-relative ">
+
+                <div class="col border-right-dotted px-5 pb-6">
+                    <img src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654037545-1-1536x840.webp"
+                        alt="" width="100%">
+                </div>
+                <img class="check-1" width="20px" src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg"
+                    alt="">
+                <div class="col ps-5 text-white">
+                    <h1 class="text-white">Crypto <span class="text-grad">Research</span></h1>
+                    <p class="mt-3">
+
+                        Di modul ini kalian akan belajar bagaimana cara mencari project crypto atau altcoin yang akan naik
+                        sampai 10x dengan strategi screening altcoin proprietary akademi crypto menggunakan narrative
+                        research, technical research, dan juga fundamental research.
+
+                        Disini kalian juga akan belajar bagaimana cara menggunakan tools seperti token terminal, glassnode
+                        secara efisien untuk mencari alpha di market dan mendapatkan profit yang konsisten.
+                    </p>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-lg-2 position-relative ">
+
+                <div class="col border-right-dotted px-5 pb-6">
+                    <img src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654037547-1536x840.webp"
+                        alt="" width="100%">
+                </div>
+                <img class="check-1" width="20px" src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg"
+                    alt="">
+                <div class="col ps-5 text-white">
+                    <h1 class="text-white">Bitcoin: <span class="text-grad">Transaction</span> in <br> Depth</h1>
+                    <p class="mt-3">
+
+                        Di modul ini kita akan mempelajari transaksi bitcoin secara dalam seperti cara kerja base58check
+                        encoding, Bitcoin scripting, Pay to Adress (P2A), Pay to public key (P2PK), Hash locked transaction
+                        (HLT), Check lock time verify (CLTV), dan praktek langsung dengan IDE.
+                    </p>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-lg-2 position-relative ">
+
+                <div class="col border-right-dotted px-5 pb-6">
+                    <img src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654037548-1536x840.webp"
+                        alt="" width="100%">
+                </div>
+                <img class="check-1" width="20px" src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg"
+                    alt="">
+                <div class="col ps-5 text-white">
+                    <h1 class="text-white">Ethereum: <span class="text-grad">Programmable</span> <br>money</h1>
+                    <p class="mt-3">
+
+                        Di modul ini kalian akan belajar semua yang perlu kalian tau tentang ethereum atau biasa disebut
+                        “the world computer”. Mulai dari pengenalan ethereum, perbedaan Bitcoin dan Ethereum, dari awal
+                        sejarahnya, komponen dari ethereum, basic dari denominasi ethereum, wallet, dan networks, struktur
+                        transaksinya, transaction nonce, gas, & gas limit,<br>
+
+                        the Merge yaitu transisi dari PoW (Proof of Work) ke PoS (Proof of stake) yang di eksekusi 15
+                        september 2022 kemarin, integrasi beacon chain dan mainnet, basic dari EVM (Ethereum Virtual
+                        Machine) sampai cara staking ethereum untuk mendapatkan bunga.
+
+                    </p>
+                </div>
+            </div>
+            <img class="shadow-right" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
+                alt="">
+
+            <div class="row row-cols-1 row-cols-lg-2 position-relative ">
+
+                <div class="col border-right-dotted px-5 pb-6">
+                    <img src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654037549-1-1536x840.webp"
+                        alt="" width="100%">
+                </div>
+                <img class="check-1" width="20px" src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg"
+                    alt="">
+                <div class="col ps-5 text-white">
+                    <h1 class="text-white">Monero: <span class="text-grad">Anonymity</span></h1>
+                    <p class="mt-3">
+                        Di modul ini kalian akan belajar secara mendalam tentang salah satu cryptocurrency yang paling
+                        terkenal dengan anonimitasnya yaitu monero, dari ransom case di norwa tahun 2018, sejarah dari
+                        monero, backrground dari cryptocurrency privacy, transaksi monero secara detail, problem anonimitas
+                        yang ada, Monero Ring Attack (MRA), masalah dari Key reuse.
+                    </p>
+                </div>
+            </div>
+            <img class="shadow-right" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
+                alt="">
+            <img class="shadow-left" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
+                alt="">
+
+            <div class="row row-cols-1 row-cols-lg-2 position-relative ">
+
+                <div class="col border-right-dotted px-5 pb-6">
+                    <img src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654037551-2-1536x840.webp"
+                        alt="" width="100%">
+                </div>
+                <img class="check-1" width="20px" src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg"
+                    alt="">
+                <div class="col ps-5 text-white">
+                    <h1 class="text-white">Crypto <span class="text-grad">Self Custody</span></h1>
+                    <p class="mt-3">
+                        Di modul ini kalian akan belajar salah satu hal paling penting di crypto yaitu gimana cara
+                        mengamankan coin kalian sendiri. Kita akan belajar dari cara menyimpan crypto dengan aman dengan
+                        memegang private key kalian sendiri (gak membiarkan coin kalian ada di CEX seperti binance).
+                    </p>
+                    <p class="mt-3">
+                        Perbedaan hot dan cold wallet, cara setup cold wallet, cara reset dan recover cold wallet kalian,
+                        cara menghubungkan cold wallet kalian ke desktop app, testnet di ledger, cara menyambungkan cold
+                        wallet dengan metamask, dan cara transaksi dengan cold wallet kalian.
+                    </p>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-lg-2 position-relative ">
+
+                <div class="col border-right-dotted px-5 pb-6">
+                    <img src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654037552-1536x840.webp"
+                        alt="" width="100%">
+                </div>
+                <img class="check-1" width="20px" src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg"
+                    alt="">
+                <div class="col ps-5 text-white">
+                    <h1 class="text-white">Cryptocurrency <span class="text-grad">Security</span></h1>
+                    <p class="mt-3">
+                        Di modul ini kita akan belajar mengenai keamanan crypto secara mendalam, dari Blockchain & security
+                        overview, komponen sistem dari blockchain, blockchain execution environment, masalah keamanan
+                        didalam blockchain, teknik kriptografi, blockchain memory pool (Mempool), miner extractable value
+                        (MEV), finality issues, solidity issues, permanent contract & upgradable contract, decentralized
+                        finance issues, user issues, dan best practices untuk security crypto.
+                    </p>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-lg-2 position-relative ">
+
+                <div class="col border-right-dotted px-5 pb-6">
+                    <img src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654037553-1536x840.webp"
+                        alt="" width="100%">
+                </div>
+                <img class="check-1" width="20px" src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg"
+                    alt="">
+                <div class="col ps-5 text-white">
+                    <h1><span class=" text-grad">Smart Contract</span> <span class="text-white">Security</span></h1>
+                    <p class="mt-3">
+                        Di modul ini kalian akan belajar secara advanced tentang smart contract security, modul ini dibuat
+                        untuk kalian yang mau bekerja dibidang auditor smart contract. Kalian akan belajar dari cara menjadi
+                        auditor security dari pengalaman dan resikonya, proses auditing security, tools dan techniques yang
+                        digunakan, sampai praktik cara mencari angka tersembunyi dari sebuah smart contract.
+                    </p>
+                </div>
+            </div>
+            <img class="shadow-right" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
+                alt="">
+            <div class="row row-cols-1 row-cols-lg-2 position-relative ">
+
+                <div class="col border-right-dotted px-5 pb-6">
+                    <img src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654037554-1536x840.webp"
+                        alt="" width="100%">
+                </div>
+                <img class="check-1" width="20px" src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg"
+                    alt="">
+                <div class="col ps-5 text-white">
+                    <h1 class="text-white">Blockchain <br> <span class="text-grad">Interoperability</span></h1>
+                    <p class="mt-3">
+                        Di modul ini kalian akan belajar tentang konsep dari blockchain interoperability yaitu sebuah ide
+                        untuk mengaktifkan jaringan blockchain yang berbeda untuk berinteraksi, berintegrasi, berkomunikasi
+                        secara mulus untuk memungkinkan transfer data antar chain.
+                    </p>
+                    <p class="mt-3">
+                        Kalian akan belajar secara lengkap dari landscape blockchain interoperability, blockchain dbms,
+                        multi blockchain environment, blockchain joint, blockchain extension (sidechain), desentralized
+                        exchange, state pinning, consensus, communication & standardisation, bridge, benefit & drawbacks,
+                        dan studi kasus blockchain in SCM approach.
+                    </p>
+                </div>
+            </div>
+            <img class="shadow-right" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
+                alt="">
+            <div class="row row-cols-1 row-cols-lg-2 position-relative ">
+
+                <div class="col border-right-dotted px-5 pb-6">
+                    <img src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654037555-1536x840.webp"
+                        alt="" width="100%">
+                </div>
+                <img class="check-1" width="20px" src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg"
+                    alt="">
+                <div class="col ps-5 text-white">
+                    <h1><span class="text-grad ">Smart Contract</span> <br> <span class="text-white">Development</span>
+                    </h1>
+                    <p class="mt-3">
+                        Di modul ini kalian akan belajar tentang konsep dari blockchain interoperability yaitu sebuah ide
+                        untuk mengaktifkan jaringan blockchain yang berbeda untuk berinteraksi, berintegrasi, berkomunikasi
+                        secara mulus untuk memungkinkan transfer data antar chain.di modul ini kalian akan belajar skill
+                        programming paling mahal di dunia yaitu belajar coding di internet masa depan dengan teknologi smart
+                        contract atau biasa disebut dengan web3. ini adalah materi yang kalian gaakan temuin di universitas
+                        manapun di Indonesia.
+                    </p>
+                    <p class="mt-3">
+                        disini kalian akan di bimbing oleh praktisi langsung step by step dari bahasa pemrograman solidity,
+                        struktur smart contract, Remix interface, Mnemonic phrases, sampai deployment smart contract.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row row-cols-1 row-cols-lg-2 position-relative ">
+
+                <div class="col px-5 pb-6">
+                    <img src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654037556-1536x840.webp"
+                        alt="" width="100%">
+                </div>
+                <img class="check-1" width="20px" src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg"
+                    alt="">
+                <div class="col ps-5 text-white">
+                    <h1 class=" text-white">Sales <span class="text-grad">Mastery</span></h1>
 
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="section bg-main">
-        <div class="container">
-            <div class="card col-lg-5 mx-auto shadow custom-shadow module-border-wrap">
-                <a href="https://api.whatsapp.com/send/?phone=%2B6285179663069&text=Halo+Kelas+Bulanan+Akademi+Crypto+Masih+Ada%3F&type=phone_number&app_absent=0"
-                    class="d-flex justify-content-center">
-                    <div class="card-body text-center">
-                        <div class="row align-items-center">
-                            <div class="col-1">
-                                <i class="bi bi-whatsapp fs-1 ms-4 text-success"></i>
-                            </div>
-                            <div class="col-10">
-                                <h3 class="text-dark"> WhatsApp</h3>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+    <div class="text-center mt-5 mb-5">
+        <a href="#tawaran"> <img class="join-now"
+                src="https://akademicrypto.com/wp-content/uploads/2024/04/button-join.svg" class="img-fluid"
+                style="max-width: 50%;" alt=""></a>
+    </div>
+
+    <div class="gradient-line mt-5 mb-5"></div>
+
+    <div class="container">
+
+
+        <div class="text-center">
+
+            <h2 class="text-white text-spacing mb-lg-5">Bonus yang kalian dapatkan <br>setelah bergabung menjadi member
+            </h2>
+            <div class="d-none d-lg-block">
+                <span class="fw-semibold fs-3 text-secondary">01.</span><span class="sub-title  text-grad"> AC
+                    Research,</span><span class="sub-title  text-white">Coin Picks Yang <br>Memiliki
+                </span><span class="sub-title " style="color: #5ef438">Winrate 90%+</span>
             </div>
+            <div class="d-block d-lg-none">
+                <span class="fw-semibold fs-3 text-secondary">01.</span><span class="sub-title  text-grad"> AC
+                    Research,</span><span class="sub-title  text-white">Coin Picks Yang Memiliki
+                </span><span class="sub-title " style="color: #5ef438">Winrate 90%+</span>
+            </div>
+
+
+
+
+            <p class="text-white mt-5 mx-auto" style="max-width: 600px">5 Tahun dari sekarang kalian akan berharap kalian
+                mulai
+                berinvestasi
+                menggunakan AC
+                Research. Kalian tidak perlu
+                pusing screening jutaan coin, tinggal nyontek riset internal dan nikmati hasilnya.</p>
         </div>
-        <div class="col-lg-5 mt-5 mx-auto">
-            <p class="   fw-bold text-center">71% Murid Akademi Crypto berhasil melipatgandakan portofolionya
-                dalam waktu
-                3 bulan
-                menggunakan strategi kita.
+
+    </div>
+    <div class="container mb-5 px-5 d-none d-lg-block">
+        <img src="/assets/img/Group-654038111-1-1-1024x612.webp" alt="Gambar Tidak Muncul" width="100%">
+
+    </div>
+    <div class="container mb-5 d-block d-lg-none">
+        <img src="/assets/img/Group-654035756-2.png" alt="Gambar Tidak Muncul" width="100%">
+
+    </div>
+    <div class="container text-center mt-5">
+        <img src="/assets/img/Frame-654037574-2-1536x814.webp" alt="Gambar Tidak Muncul" class="responsive-img">
+    </div>
+    <div class="container text-center mt-5">
+        <img src="/assets/img/Frame-654037573-4-1536x814.webp" alt="Gambar Tidak Muncul" class="responsive-img">
+    </div>
+    <div class="container text-center mt-5">
+        <img src="/assets/img/Group-654038109-1536x816.webp" alt="Gambar Tidak Muncul" class="responsive-img">
+    </div>
+    <div class="container text-center mt-5">
+        <img src="/assets/img/Group-654038110-1536x845.webp" alt="Gambar Tidak Muncul" class="responsive-img">
+    </div>
+
+
+    <div class="container text-center mt-5">
+        <img src="https://akademicrypto.com/wp-content/uploads/2025/02/Frame-654036879-1.svg" class="img-fluid"
+            style="max-width: 50%;" alt="Gambar Tidak Muncul">
+
+    </div>
+
+
+    <div class="title-line ">
+        <div class="fw-bold mb-3">
+            <span class="fs-3 text-secondary">02.</span>
+            <span class="text-grad fs-2">Webinar Eksklusif</span>
+            <span class="text-white pb-2 fs-2">&nbsp;Bulanan</span>
+        </div>
+
+    </div>
+
+    <div class="contriner">
+        <div class="text-center">
+            <p class="fs-2 text-white fw-bold mx-auto" style="max-width: 500px">Seharga 970rb Per Webinar Untuk Orang Luar
             </p>
+            <p class="text-white mx-auto" style="max-width: 480px">Kalian akan mendapatkan hanya dengan commitment fee
+                97rb jika
+                menjadi member dan
+                recording seumur hidup.</p>
         </div>
-    </section>
+    </div>
 
 
+    <div class="container">
+        <div class="card card-bg-grad ">
+            <div class="value  text-center">
+                <img class="img-fluid w-auto"
+                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Frame-654037320.svg" alt="">
+            </div>
 
-
-    <section class=" bg-main text-center">
-        <div class="col-lg-5 container mx-auto">
-            <img class="img-bg module-border-wrap"
-                src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/02-03-2025/1740850002427_7540093"
+            <img class="shadow-left" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
                 alt="">
+            <div class="card-body p-0">
+                <div class="header">
+                    <div class="zoom text-center mb-3 mt-2 mt-lg-5">
+                        <img src="/assets/img/Group-654035762.webp" alt="Zoom Icon">
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="row row-cols-2 row-cols-lg-4">
+                        <div class="col">
+                            <img width="100%" class="mb-3" src="/assets/img/image-13.webp" alt="Crypto Card">
+                        </div>
+                        <div class="col">
+                            <img width="100%" class="mb-3" src="/assets/img/image-14.webp" alt="Election Card">
+                        </div>
+                        <div class="col">
+                            <img width="100%" class="mb-3" src="/assets/img/image-26.webp" alt="AI Card">
+                        </div>
+                        <div class="col">
+                            <img width="100%" class="mb-3" src="/assets/img/image-25.webp" alt="Reset Card">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <section class=" bg-main text-center">
-        <div class="col-lg-5 container mx-auto">
-            <img class="img-bg module-border-wrap"
-                src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739554405994_7888550"
-                alt="">
-        </div>
-    </section>
+    {{-- <div class="title-line fw-bold">
+        <span class="fs-3 text-secondary">03.</span>
+        <span class="text-grad fs-2">Private Mentoring,</span>
+        <span class="text-white pb-2 fs-2">&nbsp;Akses </span>
+    </div>
 
-    <section class=" bg-main text-center">
-        <div class="col-lg-5 container mx-auto">
-            <img class="img-bg module-border-wrap"
-                src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/13-02-2025/1739454844767_1913151"
-                alt="">
+    <div class="text-center">
+        <p class="fs-2 text-white fw-bold">Langsung Ke Para Founder <br> Untuk Main Ke Kantor Kita</p>
+
+        <p class="text-white">untuk private mentoring dengan komunitas.</p>
+    </div> --}}
+
+
+    <div class="title-line fw-bold">
+
+        <p class="text-grad  text-spacing mt-3">KAMU ADA DI TIPE MANA?</p>
+    </div>
+    <div class="container">
+
+        <div class="text-center">
+            <h2 class="text-white fw-bold">di Dunia ini Ada 2 Tipe Orang,</h2>
         </div>
-    </section>
-    <section class=" bg-main">
+
+        <div class="row row-cols-1 row-cols-lg-2">
+            <div class="col d-flex justify-content-end">
+                <img src="https://akademicrypto.com/wp-content/uploads/2024/04/Frame-654037080-905x1024.webp"
+                    alt="" width="97%">
+            </div>
+            <div class="col d-flex justify-content-end">
+                <img class="mt-4 me-2"
+                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Frame-654037079-967x1024.webp"
+                    alt="" width="100%">
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-5">
+        <a href="#tawaran"> <img src="https://akademicrypto.com/wp-content/uploads/2024/04/btn-cta.svg"
+                class="img-fluid join-now" alt=""></a>
+
+    </div>
+
+    <div class="gradient-line mt-5 mb-5" id="tawaran"></div>
+
+    <div class="text-center">
+        <p class="text-spacing text-grad fw-bold">PRICING</p>
+        <h2 class="text-white fw-bold fs-1 mb-4">Daftar & Join Sekarang</h2>
+    </div>
+
+    <style>
+        .button-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            /* Gunakan width 100% */
+        }
+
+        /* Lapisan bawah untuk efek border */
+        .custom-bergabung-border2 {
+            position: absolute;
+            top: 4px;
+            /* Geser lebih jauh ke bawah */
+            left: 7px;
+            /* Geser lebih jauh ke kanan */
+            background: rgb(0, 0, 0);
+            /* Warna border */
+            padding: 14px 24px;
+            /* Tambahkan padding agar lebih besar */
+            font-size: 16px;
+            text-align: center;
+            clip-path: polygon(5% 0%, 99% 0%, 99% 65%, 92% 100%, 0% 100%, 0% 49%);
+            width: calc(100% - 3px);
+            /* Lebar dikurangi 1px */
+            /* Gunakan width 100% */
+            border: none;
+            /* Lebarkan tombol border */
+            height: 35px;
+            /* Pastikan tinggi tombol border lebih besar */
+            z-index: 2;
+        }
+
+        /* Lapisan bawah untuk efek border */
+        .custom-bergabung-border {
+            position: absolute;
+            top: 2px;
+            /* Geser lebih jauh ke bawah */
+            left: 6px;
+            /* Geser lebih jauh ke kanan */
+            background: linear-gradient(90deg, #a040ff, #80d0ff);
+
+            /* Warna border */
+            padding: 14px 24px;
+            /* Tambahkan padding agar lebih besar */
+            font-size: 16px;
+            text-align: center;
+            clip-path: polygon(5% 0%, 99% 0%, 99% 65%, 92% 100%, 0% 100%, 0% 49%);
+            width: 100%;
+            /* Gunakan width 100% */
+            border: none;
+            /* Lebarkan tombol border */
+            height: 38px;
+            /* Pastikan tinggi tombol border lebih besar */
+            z-index: 1;
+        }
+
+        /* Tombol utama di atas */
+        .custom-bergabung {
+            position: relative;
+            background: linear-gradient(90deg, #a040ff, #d980ff);
+            color: white;
+            border: none;
+            padding: 12px 12px 17px 12px;
+            font-size: 16px;
+            text-align: center;
+            clip-path: polygon(5% 0%, 99% 0%, 99% 65%, 92% 100%, 0% 100%, 0% 49%);
+            width: 100%;
+            /* Gunakan width 100% */
+            /* Lebar tombol utama */
+            height: 34px;
+            /* Tinggi tombol utama lebih kecil dari border */
+            z-index: 3;
+            cursor: pointer;
+            /* Tambahkan ini untuk teks di tengah */
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            justify-content: center;
+        }
+
+        .img-card {
+            margin-top: 50px;
+        }
+
+        /* Badge di atas kartu */
+        .top-badge {
+            position: absolute;
+            top: -12px;
+            left: 30%;
+            transform: translateX(-50%);
+            background: #b240ee;
+            color: white;
+            font-size: 12px;
+
+            padding: 5px 15px;
+            border-radius: 15px;
+            /* border: 2px solid #d980ff; */
+        }
+    </style>
+
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-lg-3">
+            <div class="col">
+                <div class="card text-white position-relative">
+                    <!-- Badge di atas -->
+                    <div class="top-badge">Paling banyak dibeli</div>
+
+                    <div class="card-body">
+                        <p class="text-spacing fs-6">Keanggotaan 12 Bulan</p>
+
+                        <h1 class="fw-bold">Rp583.000</h1> <span>/bulan</span>
+
+                        <hr>
+
+                        <h4 class="fw-bold">Rp7.000.000</h4>
+                        <p>*Pembayaran 12 Bulan Penuh</p>
+                        <div class="text-center">
+                            <div class="button-wrapper">
+                                <button class="custom-bergabung-border2">Bergabung</button>
+                                <button class="custom-bergabung-border">Bergabung</button>
+                                <button class="custom-bergabung text-spacing fs-6"
+                                    style="font-size: 14px  !important">Bergabung Sekarang</button>
+                            </div>
+                        </div>
+
+                        <div class="img-card">
+                            <img src="/assets/img/logo-main.png" alt="" width="40%">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        {{-- <div class="tawaran">
+            <img class="shadow-left" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
+                alt="">
+            <div class="card p-0">
+                <div class="card-body p-0">
+                    <div class="row row-cols-1 row-cols-lg-2 p-3">
+                        <div class="col">
+                            <p class="text-spacing text-white text-start">
+                                Dapatkan Akses 12 bulan Akademi Crypto Hanya
+                            </p>
+                        </div>
+                        <div class="col text-lg-end text-start">
+                            <!-- Gambar hanya muncul di desktop (≥992px) -->
+                            <img src="/assets/img/logo-main.png" class="d-none d-lg-inline-block" alt="Logo"
+                                width="100px">
+
+                            <p class="text-spacing text-white mt-2 mt-lg-4">
+                                PEMBAYARAN UNTUK 12 BULAN
+                            </p>
+
+                        </div>
+                    </div>
+
+
+
+                    <p class="text-danger text-decoration-line-through fw-bold px-3">RP2.000.000</p>
+
+                    <p class="fs-bold fs-1 fw-bold text-white px-3">RP147.000</p>
+
+                    <div class="title-line fs-6 m-0">
+                        <img src="https://akademicrypto.com/wp-content/uploads/2024/04/Star-2.svg" alt=""
+                            width="15"> &nbsp;BENEFIT
+                    </div>
+
+                    <table class="table-dot" class="text-white">
+                        <tr>
+                            <td style="width: 90%">
+                                <p class="ps-3">Strategi investasi yang telah terbukti memberikan return
+                                    signifikan
+                                    pada
+                                    portofolio member dalam 3
+                                    bulan</p>
+                            </td>
+                            <td class="text-end pe-3"><img
+                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
+                                    alt=""></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 90%">
+                                <p class="ps-3">
+                                    Coin Picks AC Research yang sudah terbukti outperform market
+                                </p>
+                            </td>
+                            <td class="text-end pe-3"><img
+                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
+                                    alt=""></td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 90%">
+                                <p class="ps-3">Rahasia trading dan investasi yang sudah di buktikan oleh ribuan
+                                    member
+                                </p>
+                            </td>
+                            <td class="text-end pe-3"><img
+                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
+                                    alt=""></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 90%">
+                                <p class="ps-3">Ribuan Modul E-Learning yang bisa di akses 24 jam
+                                    seputar crypto</p>
+                            </td>
+                            <td class="text-end pe-3"><img
+                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
+                                    alt=""></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 90%">
+                                <p class="ps-3">
+                                    Akses ke data mahal seperti bloomberg, glassnode, cryptoquant, LSEG senilai 600jt
+                                    per
+                                    tahun
+                                </p>
+                            </td>
+                            <td class="text-end pe-3"><img
+                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
+                                    alt=""></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 90%">
+                                <p class="ps-3">
+                                    Riset ekslusif coin yang naik ratusan persen setiap bulannya
+                                </p>
+                            </td>
+                            <td class="text-end pe-3"><img
+                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
+                                    alt=""></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 90%">
+                                <p class="ps-3">
+                                    Webinar ekslusif untuk mengetahui outlook dunia crypto
+                                </p>
+                            </td>
+                            <td class="text-end pe-3"><img
+                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
+                                    alt=""></td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 90%">
+                                <p class="ps-3">
+                                    Private mentoring ke kantor untuk para contrarian
+                                </p>
+                            </td>
+                            <td class="text-end pe-3"><img
+                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
+                                    alt=""></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 90% ">
+                                <p class="ps-3">
+                                    Aplikasi Ekslusif member untuk mendapatkan kemudahan akses berita, riset, dan juga
+                                    modul
+                                </p>
+                            </td>
+                            <td class="text-end pe-3"><img
+                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
+                                    alt=""></td>
+                        </tr>
+
+
+                        <img class="shadow-left" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
+                            alt="">
+                    </table>
+                 <img class="shadow-right" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
+                        alt="">
+                    <div class="p-3">
+                        <a href="{{ auth()->check() ? 'https://belajarsatupersen.xyz/belajarsatupersen.id/LPn99wE' : '/register' }}"
+                            {{ auth()->check() ? 'target="_blank"' : '' }} class="btn-custom">
+                            Dapatkan akses sekarang
+                        </a>
+                   <a href="#" class="btn-custom ">Dapatkan Akses Sekarang</a>
+                    </div>
+
+                </div>
+            </div>
+        </div> --}}
+
+    </div>
+
+    <section class="binjamin">
         <div class="container">
-            <div class="card col-lg-5 container mx-auto shadow custom-shadow">
-                <a href="https://belajarsatupersen.xyz/belajarsatupersen.id/LPn99wE" class="d-flex justify-content-center">
-                    <div class="card-body text-center ">
-                        <div class="row align-items-center">
 
-                            <h3 class="text-dark"> Saya Mau Belajar</h3>
 
-                        </div>
-                    </div>
-                </a>
+            <div class="text-center kata text-white fw-bold">
+                “If a Man Empties His Purse Into His Head no Man Can Take It Away”
+            </div>
+
+            <div class="text-center">
+                <p class="text-spacing text-white mb-5">
+                    BENJAMIN FRANKLIN
+                </p>
+                <a href="#tawaran"> <img class="join-now"
+                        src="https://akademicrypto.com/wp-content/uploads/2024/04/button-join.svg" class="img-fluid"
+                        style="max-width: 50%;" alt=""></a>
+
             </div>
         </div>
     </section>
 
-    <section class=" bg-main text-center">
-        <div class="col-lg-5 container mx-auto">
-            <img class="img-bg module-border-wrap"
-                src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/15-02-2025/1739554469006_2126920"
-                alt="">
-        </div>
-    </section>
-    <section class=" bg-main text-center">
-        <div class="col-lg-5 container mx-auto">
-            <img class="img-bg module-border-wrap"
-                src="https://s3.ap-southeast-1.amazonaws.com/assets.lynk.id/products/12-02-2025/1739307282480_5799265"
-                alt="">
-        </div>
-    </section>
 
-
-    {{-- <!-- Contact Section -->
-    <section id="contact" class="contact section bg-main">
-
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Contact</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-        </div><!-- End Section Title -->
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="row gy-4">
-
-                <div class="col-lg-12">
-
-                    <div class="info-wrap">
-                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                            <i class="bi bi-geo-alt flex-shrink-0"></i>
-                            <div>
-                                <h3>Address</h3>
-                                <p>A108 Adam Street, New York, NY 535022</p>
-                            </div>
-                        </div><!-- End Info Item -->
-
-                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                            <i class="bi bi-telephone flex-shrink-0"></i>
-                            <div>
-                                <h3>Call Us</h3>
-                                <p>+1 5589 55488 55</p>
-                            </div>
-                        </div><!-- End Info Item -->
-
-                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                            <i class="bi bi-envelope flex-shrink-0"></i>
-                            <div>
-                                <h3>Email Us</h3>
-                                <p>info@example.com</p>
-                            </div>
-                        </div><!-- End Info Item -->
-
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus"
-                            frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div> --}}
-
-    {{-- <div class="col-lg-7">
-                    <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
-                        data-aos-delay="200">
-                        <div class="row gy-4">
-
-                            <div class="col-md-6">
-                                <label for="name-field" class="pb-2">Your Name</label>
-                                <input type="text" name="name" id="name-field" class="form-control" required="">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="email-field" class="pb-2">Your Email</label>
-                                <input type="email" class="form-control" name="email" id="email-field" required="">
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="subject-field" class="pb-2">Subject</label>
-                                <input type="text" class="form-control" name="subject" id="subject-field" required="">
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="message-field" class="pb-2">Message</label>
-                                <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
-                            </div>
-
-                            <div class="col-md-12 text-center">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                                <button type="submit">Send Message</button>
-                            </div>
-
+    <div class="title-line text-grad text-spacing fs-6 fw-bold mb-5">FREQUENTLY ASKED QUESTION</div>
+    <img class="shadow-left" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg" alt="">
+    <div class="parent-container accordion-widht">
+        <div class="container ">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-transparent fs-4 text-white" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                            aria-controls="collapseOne">
+                            Apakah investasi di crypto pasti akan mendapatkan keuntungan?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show bg-transparent "
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body ">
+                            Layaknya semua hal didunia tidak ada yang pasti. Semakin tinggi potensi imbal hasil sebuah
+                            asset
+                            maka resikonya akan semakin tinggi juga. tetapi dengan belajar, kalian pasti akan bisa
+                            meminimalisir kerugian.
                         </div>
-                    </form>
-                </div><!-- End Contact Form --> --}}
-    {{--
+                    </div>
+                </div>
             </div>
 
-        </div>
+            <div class="accordion mt-4" id="accordionExample">
 
-    </section><!-- /Contact Section --> --}}
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button fs-4 py-4 collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+
+                            Apakah butuh modal yang besar untuk mulai berinvestasi di crypto?
+                        </button>
+                    </h2>
+
+
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Tidak juga, kalian bisa mulai dengan modal sekecil apapun kita bahkan menyarankan untuk
+                            pemula,
+                            mulai dengan 5-10% dari total asset untuk merasakan naik & turunnya fluktuasi harga crypto &
+                            untuk belajar cara teknologinya bekerja
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="accordion mt-4" id="accordionExample">
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button fs-4 py-4 collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+
+                            Saya benar-benar awam tentang crypto apakah akan menjadi masalah?
+                        </button>
+                    </h2>
+                    <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Tentu tidak, justru itulah fungsinya kalian belajar di akademi crypto. disini kita akan
+                            membimbing kalian dari 0 sampai mengerti secara penuh tentang analisa, manajemen portofolio,
+                            dan
+                            cara berhasil di pasar crypto
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="accordion mt-4" id="accordionExample">
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button fs-4 py-4 collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+
+                            Saya masih muda, apakah umur akan menjadi masalah?
+                        </button>
+                    </h2>
+                    <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            umur itu tidak pernah menjadi masalah, karena kita tau teman terbaik dari mulai lebih awal
+                            adalah compounding. compounding tidak hanya bekerja di uang tapi juga di ilmu, semakin muda
+                            kalian mulai, semakin tinggi imbal hasil efek compounding yang kalian dapatkan di masa
+                            mendatang. waktu terbaik untuk mulai adalah hari ini.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="accordion mt-4" id="accordionExample">
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button fs-4 py-4 collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+
+                            Belum punya income yang besar, apakah iya bisa mencapai kebebasan finansial di crypto?
+                        </button>
+                    </h2>
+                    <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            komunitas yang akan gua bangun disini, gaakan cuma sekedar ngomongin investasi, tapi gua
+                            juga
+                            akan sharing bagaimana cara kalian bisa mendapatkan income lebih untuk mencapai 1 miliar
+                            pertama.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="accordion mt-4" id="accordionExample">
+
+                <img class="shadow-right" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
+                    alt="">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button fs-4 py-4 collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+
+                            Tidak di support oleh teman dan keluarga, apakah iya bisa menjadi orang yang sukses?
+                        </button>
+                    </h2>
+                    <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            gua ngerti kok rasanya tidak di support oleh keluarga dan teman, itulah fungsinya komunitas
+                            eklusif akademi crypto untuk menjadi teman yang saling support dengan visi, misi dan tujuan
+                            yang
+                            sama, karena gua tau relasi adalah hal yang penting dalam mencapai kesuksesan.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-4 mb-5">
+        <a href="#tawaran"> <img class="join-now"
+                src="https://akademicrypto.com/wp-content/uploads/2024/04/button-join.svg" class="img-fluid"
+                style="max-width: 50%;" alt=""></a>
+
+    </div>
+
+    <div class="container mb-5 d-none d-lg-block">
+        <img src="/assets/img/Frame-654037265-1536x532.webp" alt="" width="100%">
+    </div>
+    <div class="container mb-5 d-block d-lg-none">
+        <img src="/assets/img/Frame-654037268.webp" alt="" width="100%">
+    </div>
+
+    <hr>
 @endsection

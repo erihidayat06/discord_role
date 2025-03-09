@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\GetUsersController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\LanggananController;
 use App\Http\Controllers\Admin\ResearchController;
+use App\Http\Controllers\AkademiController;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /*
@@ -32,6 +33,9 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 Route::get('/', function () {
     return view('index');
 })->middleware('prevent.if.active', 'add_role');
+
+
+Route::get('/akademicrypto', [AkademiController::class, 'index'])->middleware('add_role');
 
 Route::middleware(['is_admin', 'auth'])->group(function () {
     Route::get('/discord/data-role/view', [DiscordController::class, 'roleUser']);

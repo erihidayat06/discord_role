@@ -1,0 +1,697 @@
+.btn-main {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #9b25e3;
+    --bs-btn-border-color: #9b25e3;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #8221be;
+    --bs-btn-hover-border-color: #7123a1;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #7123a1;
+    --bs-btn-active-border-color: #56197c;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #9b25e3;
+    --bs-btn-disabled-border-color: #9b25e3;
+}
+
+.elementor-background-overlay {
+    position: absolute; /* Bisa diganti ke fixed jika ingin tetap di layar saat scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Pastikan menutupi seluruh layar */
+    background-image: url("https://akademicrypto.com/wp-content/uploads/2024/04/glow-top-svg-3.svg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1; /* Letakkan di belakang elemen lain */
+    opacity: 1;
+}
+
+.text-title {
+    font-size: 70px;
+}
+
+.text-grad {
+    background-image: linear-gradient(
+        100deg,
+        rgb(174, 58, 228) 0%,
+        rgb(39, 185, 255) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    line-height: 1.2; /* Pastikan teks tidak terpotong */
+    padding-bottom: 5px;
+}
+
+.title-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    margin-top: 100px;
+
+    color: #ffffff; /* Warna teks */
+}
+
+.title-line::before,
+.title-line::after {
+    content: "";
+    flex-grow: 1;
+    height: 0.9px; /* Garis lebih tipis */
+    background-color: #86868677; /* Warna garis */
+    margin: 0 10px; /* Jarak antara teks dan garis */
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.text-spacing {
+    font-size: 25.6px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+}
+.text-spacing-2 {
+    font-size: 18px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+}
+
+.apa-modul {
+    max-width: 450px;
+    margin: auto;
+}
+
+.phase {
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    color: #c54cfc;
+    text-align: left !important;
+}
+
+@media (max-width: 768px) {
+    .text-title {
+        font-size: 22px;
+    }
+
+    .title-line {
+        font-size: 24px;
+    }
+
+    .fs-3 {
+        font-size: 16px !important;
+    }
+    p {
+        font-size: 16px;
+    }
+
+    .elementor-background-overlay {
+        height: 30vh; /* Pastikan menutupi seluruh layar */
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .text-spacing {
+        font-size: 14px;
+    }
+
+    .text-spacing-2 {
+        font-size: 12px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+    }
+
+    .apa-modul h1 {
+        max-width: 200px;
+        margin: auto;
+        font-size: 18px;
+    }
+}
+
+.responsive-img {
+    max-width: 100%;
+    /* Default untuk mobile */
+}
+
+@media (min-width: 992px) {
+    /* Jika layar >= lg (desktop) */
+    .responsive-img {
+        max-width: 70%;
+    }
+}
+
+/* Video */
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio (9/16 * 100) */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: rgba(94, 177, 253, 0.16) 10px 10px 24px 3px;
+}
+
+/* Swipper */
+.swiper {
+    width: 90%;
+    max-width: 1200px;
+    overflow: visible;
+    position: relative;
+    margin: auto;
+}
+
+/* Reset gaya default Swiper */
+.swiper-button-prev,
+.swiper-button-next {
+    all: unset; /* Hapus semua gaya default */
+    width: 50px;
+    height: 50px;
+
+    color: white !important; /* Paksa ikon putih */
+    border-radius: 50%; /* Bikin lingkaran */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+/* Posisi tombol keluar dari slider */
+.swiper-button-prev {
+    position: absolute;
+    left: -70px; /* Geser lebih jauh */
+}
+
+.swiper-button-next {
+    right: -70px; /* Geser lebih jauh */
+}
+
+/* Hover efek */
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    color: rgb(255, 255, 255) !important;
+}
+
+/* Pastikan iframe responsif */
+.swiper-slide iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+}
+
+/* Responsif untuk mobile */
+@media (max-width: 768px) {
+    .swiper-button-prev {
+        left: -50px; /* Sedikit lebih dekat di layar kecil */
+    }
+    .swiper-button-next {
+        right: -50px;
+    }
+    .swiper-slide iframe {
+        height: 200px;
+    }
+}
+
+.gradient-line {
+    width: 100%;
+    height: 4px; /* Atur ketebalan garis */
+    background-image: radial-gradient(
+        at center center,
+        #bd48f9 15%,
+        #04d9fb00 80%
+    );
+    display: block;
+}
+
+.garis-bawah {
+    position: relative;
+}
+
+.garis-bawah::after {
+    content: "";
+    position: absolute;
+    width: 4px; /* Ketebalan garis */
+    height: 100%; /* Panjang otomatis agar nyambung */
+    background-color: white; /* Warna garis */
+    left: 50%;
+    top: 100%; /* Mulai dari bawah gambar */
+    transform: translateX(-50%);
+    z-index: -1; /* Pastikan di belakang elemen lain */
+}
+
+.peringkat-1 {
+    position: absolute;
+    left: 50.5%;
+    top: 30px;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Pastikan tetap di atas elemen lain */
+    width: 100px; /* Sesuaikan ukuran jika perlu */
+}
+.peringkat {
+    position: absolute;
+    left: 50.5%;
+    top: -20px;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Pastikan tetap di atas elemen lain */
+    width: 100px; /* Sesuaikan ukuran jika perlu */
+}
+
+.kenapa {
+    margin-top: 70px;
+}
+
+.img-p3 {
+    top: -100px;
+    position: relative;
+}
+
+.vertical-line {
+    position: absolute;
+}
+
+.border-right-dotted {
+    border-right: 2px dotted rgb(112, 112, 112); /* Atur ketebalan dan warna sesuai kebutuhan */
+}
+
+.join-now {
+    max-width: 400px;
+}
+
+.sub-title {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .peringkat-1,
+    .peringkat {
+        left: 9%;
+        position: absolute;
+        width: 60px;
+        margin-right: 10px;
+    }
+
+    .peringkat-1 {
+        top: 20px;
+    }
+
+    .peringkat {
+        top: 25px;
+    }
+    .col.border-end {
+        border-right: none !important;
+    }
+    .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .vertical-line-dotted {
+        border-left: 1px dotted transparent; /* Membuat dasar */
+        height: 7850px; /* Panjang garis */
+        position: absolute;
+        left: 5%;
+        top: 50px;
+        width: 10px;
+        border-image: repeating-linear-gradient(
+                to bottom,
+                rgb(185, 185, 185),
+                rgb(185, 185, 185) 1px,
+                transparent 2px,
+                transparent 5px
+            )
+            1;
+    }
+
+    .img-p3 {
+        position: static;
+    }
+
+    .border-right-dotted {
+        border: none;
+    }
+
+    .kenapa {
+        margin-top: 40px;
+    }
+
+    .join-now {
+        max-width: 250px;
+    }
+
+    .sub-title {
+        font-size: 30px;
+    }
+}
+
+.check-1 {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translate(-50%, -50%);
+    z-index: 99; /* Pastikan tetap di atas elemen lain */
+    width: 60px;
+}
+
+.pb-6 {
+    padding-bottom: 150px;
+}
+
+.shadow-right {
+    right: 50px;
+    z-index: -1;
+    transform: translate(20%, -20%);
+    position: absolute;
+    max-width: 50%;
+    max-height: 100%;
+}
+
+.shadow-left {
+    left: 10px;
+    z-index: -1;
+    transform: translate(-20%, -20%);
+    position: absolute;
+    max-width: 50%; /* Pastikan tidak 0%, agar terlihat */
+    max-height: 100%;
+}
+
+@media (max-width: 768px) {
+    .peringkat-1,
+    .peringkat {
+        left: 6.5%;
+        position: absolute;
+        width: 60px;
+        margin-right: 10px;
+    }
+    .col.border-end {
+        border-right: none !important;
+    }
+    .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .vertical-line {
+        border-left: 1px solid white; /* Warna dan ketebalan garis */
+        height: 700px; /* Panjang garis */
+        position: absolute;
+        left: 5%;
+        top: 20px;
+        width: 10px;
+    }
+
+    .check-1 {
+        position: absolute;
+        left: 5%;
+        top: 10px;
+        background-color: black;
+        transform: translate(-50%, -50%);
+        z-index: 99; /* Pastikan tetap di atas elemen lain */
+        width: 45px;
+    }
+
+    .img-p3 {
+        position: static;
+    }
+
+    .pb-6 {
+        padding-bottom: 50px;
+    }
+
+    .shadow-right,
+    .shadow-left {
+        width: 100vw; /* Lebar full sesuai layar */
+        max-width: 100%;
+        left: 0;
+        right: 0;
+        transform: translate(0, 0); /* Reset posisi */
+    }
+}
+
+.parent-container {
+    position: relative;
+    overflow: hidden; /* Sembunyikan hanya kanan dan kiri */
+}
+
+p {
+    font-size: 18px;
+}
+
+.value {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+}
+
+.zoom img {
+    margin: auto;
+    width: 30%;
+}
+
+@media (max-width: 768px) {
+    .zoom img {
+        margin: auto;
+        width: 80%;
+    }
+}
+
+.card-bg-grad {
+    background: linear-gradient(
+        to right,
+        rgba(190, 72, 249, 0.11) 0%,
+        rgba(4, 217, 251, 0.08) 50%,
+        rgba(190, 72, 249, 0.11) 100%
+    ) !important;
+}
+
+.card {
+    background: rgba(
+        255,
+        255,
+        255,
+        0.05
+    ); /* Transparan dengan sedikit opacity */
+
+    margin-top: 70px;
+    position: relative;
+    border-radius: 20px;
+    padding: 15px;
+    backdrop-filter: blur(10px); /* Efek blur untuk kesan glassmorphism */
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 1px;
+    background: linear-gradient(
+        to right,
+        rgba(189, 72, 249, 0.8) 0%,
+        rgba(4, 217, 251, 0.2) 50%,
+        rgba(189, 72, 249, 0.8) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.card-img {
+    width: 100%;
+    background-color: #282828;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-img img {
+    width: 100%;
+    display: block;
+}
+
+.tawaran {
+    max-width: 850px;
+
+    margin: auto;
+}
+
+.table-dot {
+    color: white;
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Atur jarak antar baris */
+}
+
+.table-dot td {
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.5); /* Warna putih semi transparan */
+    padding: 12px 8px; /* Padding lebih besar agar renggang */
+}
+
+.table-dot tr:last-child td {
+    border-bottom: none; /* Hapus border di baris terakhir */
+}
+
+.btn-custom {
+    background: linear-gradient(
+        180deg,
+        rgba(178, 52, 244, 1) 0%,
+        rgba(49, 15, 68, 1) 100%
+    ) !important;
+    color: #fff !important;
+    border: 2px solid #b133f1;
+    display: block;
+    border-radius: 10px !important;
+    padding: 12px 16px;
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efek Hover */
+/* .btn-custom:hover {
+    background: linear-gradient(
+        180deg,
+        rgba(152, 42, 210, 1) 0%,
+        rgba(35, 10, 55, 1) 100%
+    ) !important;
+    border-color: #951dd7;
+    transform: scale(1.05);
+} */
+
+.binjamin {
+    background-image: url("https://akademicrypto.com/wp-content/uploads/2024/04/Group-654035659-scaled-1.webp");
+    background-position: center center;
+    background-size: cover;
+    padding: 100px 0px;
+    margin-top: 200px;
+}
+
+.kata {
+    font-size: 60px;
+}
+
+.accordion,
+.accordion-item,
+.accordion-header,
+.accordion-button,
+.accordion-body,
+.accordion-collapse {
+    background: transparent !important;
+    box-shadow: none !important;
+
+    color: white;
+}
+.accordion-body,
+.accordion-collapse {
+    background: #48d0fe07 !important;
+}
+
+.accordion-button {
+    color: inherit !important;
+    background: #464646b6 !important;
+}
+
+@media (max-width: 768px) {
+    .kata {
+        font-size: 30px;
+    }
+
+    .accordion-button {
+        font-size: 16px !important;
+    }
+}
+
+.accordion-button:focus {
+    outline: none !important;
+
+    box-shadow: none !important;
+}
+
+.accordion-item {
+    border: none !important; /* Hilangkan border default */
+    background: #48d0fe07 !important;
+}
+
+.accordion-item:not(:has(.collapse.show)) {
+    border: none !important; /* Pastikan border hilang saat tertutup */
+}
+
+.accordion-item:has(.collapse.show) {
+    background: #48d0fe07 !important;
+
+    border: 1px solid #48cffe !important; /* Tambahkan border saat dibuka */
+    border-radius: 8px; /* Opsional: Membuat sudut lebih halus */
+}
+
+/* Default button (tertutup) */
+.accordion-button {
+    color: inherit !important;
+    background: #46464652 !important;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Saat accordion terbuka, buat transparan */
+.accordion-button:not(.collapsed) {
+    background: transparent !important;
+    color: white !important; /* Pastikan teks tetap terlihat */
+    border-bottom: none; /* Tambahkan garis pemisah opsional */
+    background: hsla(195, 99%, 64%, 0.06) !important;
+}
+
+.accordion-button:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Ubah warna dan ukuran panah saat accordion tertutup */
+.accordion-button::after {
+    width: 18px !important; /* Memperbesar panah */
+    height: 18px !important;
+    filter: brightness(0) saturate(100%) invert(45%) sepia(99%) saturate(551%)
+        hue-rotate(167deg) brightness(97%) contrast(96%);
+    transition: transform 0.3s ease-in-out; /* Animasi rotasi */
+}
+
+/* Ubah warna dan putar panah saat accordion terbuka */
+.accordion-button:not(.collapsed)::after {
+    filter: brightness(0) saturate(100%) invert(30%) sepia(99%) saturate(551%)
+        hue-rotate(167deg) brightness(97%) contrast(96%);
+    transform: rotate(180deg) scale(1.2); /* Putar dan perbesar */
+}
+
+.accordion-widht {
+    max-width: 850px;
+    margin: auto;
+}
+
+.border-color-1 {
+    background: linear-gradient(
+        325deg,
+        rgb(189 72 249),
+        rgb(4 217 251 / 0%) 20%,
+        rgb(189 72 249)
+    );
+    border-radius: 20px;
+}
