@@ -703,8 +703,8 @@
                                 <div class="button-wrapper">
                                     <a href="{{ auth()->check() ? $keanggotaan->url : '/register' }}"
                                         {{ auth()->check() ? 'target="_blank"' : '' }} class="text-decoration-none">
-                                        <button class="custom-bergabung-border2">Bergabung</button>
-                                        <button class="custom-bergabung-border">Bergabung</button>
+                                        <button class="custom-bergabung-border2"></button>
+                                        <button class="custom-bergabung-border"></button>
                                         <button class="custom-bergabung text-spacing fs-6"
                                             style="font-size: 14px !important">Bergabung Sekarang</button>
                                     </a>
