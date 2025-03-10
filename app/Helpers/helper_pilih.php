@@ -3,6 +3,7 @@
 use App\Models\Guild;
 use App\Models\Kelas;
 use App\Models\Modul;
+use App\Models\Pixel;
 use App\Models\Choose;
 use App\Models\Kategori;
 
@@ -48,5 +49,17 @@ if (!function_exists('kategori')) {
         $kategori = Kategori::orderBy('order', 'asc')->get();
 
         return $kategori;
+    }
+}
+
+
+if (!function_exists('pixel')) {
+    function pixel()
+    {
+
+        $pixel = Pixel::first();
+
+
+        return $pixel;
     }
 }

@@ -14,9 +14,12 @@ use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\RedirectController;
 use App\Http\Controllers\Admin\GetUsersController;
 use App\Http\Controllers\Admin\KategoriController;
+use App\Http\Controllers\Admin\KeanggotaanController;
 use App\Http\Controllers\Admin\LanggananController;
+use App\Http\Controllers\Admin\PixelController;
 use App\Http\Controllers\Admin\ResearchController;
 use App\Http\Controllers\AkademiController;
+use App\Http\Controllers\HomeController;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /*
@@ -30,9 +33,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->middleware('prevent.if.active', 'add_role');
+Route::get('/', [HomeController::class, 'index'])->middleware('prevent.if.active', 'add_role');
 
 
 Route::get('/akademicrypto', [AkademiController::class, 'index'])->middleware('add_role');
@@ -79,6 +80,12 @@ Route::middleware(['is_admin', 'auth'])->group(function () {
 
     // research
     Route::resource('/admin/research', ResearchController::class);
+
+
+    Route::resource('/admin/keanggotaan', KeanggotaanController::class);
+
+    Route::get('/admin/pixel', [PixelController::class, 'index']);
+    Route::put('/admin/pixel/{id}', [PixelController::class, 'update'])->name('pixel.update');
 });
 
 Route::post('/logout', [DiscordController::class, 'logout'])->name('logout')->middleware('auth');

@@ -66,9 +66,22 @@
          </li><!-- End Dashboard Nav -->
          <li class="nav-heading">Pengaturan Research</li>
          <li class="nav-item">
-             <a class="nav-link {{ Request::is('research*') ? '' : 'collapsed' }}" href="/admin/research">
+             <a class="nav-link {{ Request::is('admin/research*') ? '' : 'collapsed' }}" href="/admin/research">
                  <i class="bi bi-graph-up"></i>
                  <span>Research</span>
+             </a>
+         </li><!-- End Dashboard Nav -->
+         <li class="nav-heading">Pengaturan Home</li>
+         <li class="nav-item">
+             <a class="nav-link {{ Request::is('admin/keanggotaan*') ? '' : 'collapsed' }}" href="/admin/keanggotaan">
+                 <i class="bi bi-currency-dollar"></i>
+                 <span>Keanggotaan</span>
+             </a>
+         </li><!-- End Dashboard Nav -->
+         <li class="nav-item">
+             <a class="nav-link {{ Request::is('admin/pixel*') ? '' : 'collapsed' }}" href="/admin/pixel ">
+                 <i class="bi bi-facebook"></i>
+                 <span>Pixel</span>
              </a>
          </li><!-- End Dashboard Nav -->
 
