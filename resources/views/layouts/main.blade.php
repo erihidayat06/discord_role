@@ -39,12 +39,12 @@
         }(window, document, 'script',
             'https://connect.facebook.net/en_US/fbevents.js');
 
-        fbq('init', {{ pixel()->pixel }}); // Ganti dengan ID Pixel kamu
+        fbq('init', {{ pixel()->pixel ?? 0 }}); // Ganti dengan ID Pixel kamu
         fbq('track', 'PageView'); // Melacak setiap halaman yang dikunjungi
     </script>
     <noscript>
         <img height="1" width="1"
-            src="https://www.facebook.com/tr?id={{ pixel()->pixel }}&ev=PageView&noscript=1" />
+            src="https://www.facebook.com/tr?id={{ pixel()->pixel ?? 0 }}&ev=PageView&noscript=1" />
     </noscript>
 
 </head>
