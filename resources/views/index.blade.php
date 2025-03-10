@@ -702,7 +702,7 @@
                             <p>*Pembayaran {{ $keanggotaan->bulan }} Bulan Penuh</p>
                             <div class="text-center mt-auto">
                                 <div class="button-wrapper">
-                                    <a href="{{ auth()->check() ? $keanggotaan->url : '/register' }}"
+                                    <a href="{{ auth()->check() ? $keanggotaan->url : $keanggotaan->url }}"
                                         {{ auth()->check() ? 'target="_blank"' : '' }} class="text-decoration-none">
                                         <button class="custom-bergabung-border2"></button>
                                         <button class="custom-bergabung-border"></button>
