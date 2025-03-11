@@ -104,6 +104,7 @@ Route::middleware(['is_admin', 'auth'])->group(function () {
 
 
     Route::resource('/admin/keanggotaan', KeanggotaanController::class);
+    Route::post('/admin/periode/{period:id}', [KeanggotaanController::class, 'periode']);
 
     Route::get('/admin/pixel', [PixelController::class, 'index']);
     Route::put('/admin/pixel/{id}', [PixelController::class, 'update'])->name('pixel.update');

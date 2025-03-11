@@ -685,7 +685,8 @@
     <div class="text-center" data-aos="fade-up">
         <p class="text-spacing text-grad fw-bold">PRICING</p>
         <h2 class="text-white fw-bold fs-1 mb-4">Daftar & Join Sekarang</h2>
-        <p class="text-spacing text-white">Harga Sampai Periode <span class="text-danger">30 April 23:59</span></p>
+        <p class="text-spacing text-white">Harga Sampai Periode <span
+                class="text-danger">{{ date('d F H:i', strtotime($periode->periode)) }}</span></p>
     </div>
 
 

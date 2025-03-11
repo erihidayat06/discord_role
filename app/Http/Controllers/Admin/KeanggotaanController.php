@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Keanggotaan;
+use App\Models\Period;
 use Illuminate\Http\Request;
 
 class KeanggotaanController extends Controller
@@ -13,8 +14,12 @@ class KeanggotaanController extends Controller
      */
     public function index()
     {
+        $period = Period::firstOrCreate([], [
+            'periode' => now(),
+        ]);
+
         $keanggotaans = Keanggotaan::get();
-        return view('admin.keanggotaan.index', ['keanggotaans' => $keanggotaans]);
+        return view('admin.keanggotaan.index', ['keanggotaans' => $keanggotaans, 'periode' => $period]);
     }
 
     /**
@@ -75,6 +80,14 @@ class KeanggotaanController extends Controller
         $keanggotaan->update($request->all());
 
         return redirect()->route('keanggotaan.index')->with('success', 'Keanggotaan berhasil diperbarui.');
+    }
+
+
+    public function periode(Request $request, Period $period)
+    {
+        $period->update(['periode' => $request->periode]);
+
+        return back()->with('success', 'Periode berhasil diperbarui.');
     }
 
     /**

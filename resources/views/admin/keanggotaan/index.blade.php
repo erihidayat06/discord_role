@@ -8,7 +8,27 @@
                 <a href="{{ route('keanggotaan.create') }}" class="btn btn-sm btn-success">Tambah Data</a>
             </div>
             <div class="card-body">
+                <div class="col-lg-4">
+                    <form action="/admin/periode/{{ $periode->id }}" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="periode" class="form-label">Tanggal Periode</label>
+                            <div class="input-group mb-3">
+
+                                <input type="datetime-local" id="periode" name="periode"
+                                    class="form-control @error('periode') is-invalid @enderror"
+                                    value="{{ old('periode', $periode) }}" required aria-describedby="button-addon2">
+                                <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
+                            </div>
+                            @error('periode')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </form>
+                </div>
+
                 <div class="table-responsive">
+
                     <table class="table datatable">
                         <thead>
                             <tr>
