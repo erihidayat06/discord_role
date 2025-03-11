@@ -36,7 +36,7 @@
     <div class="text-center mt-5 mb-5">
         <p class="fs-5 text-white fw-bold text-grad text-spacing lh-1">Harga Mulai</p>
         <p class="lh-1"><span class=" text-danger fs-6  text-decoration-line-through ">Rp2.000.000</span> <span
-                class="fs-1 text-white fw-bold">Rp170.000</span></p>
+                class="fs-1 text-white fw-bold">Rp135.000</span></p>
 
         <a href="#tawaran"> <img class="join-now" src="https://akademicrypto.com/wp-content/uploads/2024/04/button-join.svg"
                 class="img-fluid" style="max-width: 50%;" alt=""></a>

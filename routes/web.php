@@ -6,21 +6,24 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KursusController;
+use App\Http\Controllers\AkademiController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Admin\GuildController;
 use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\ModulController;
+use App\Http\Controllers\Admin\PixelController;
 use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\RedirectController;
 use App\Http\Controllers\Admin\GetUsersController;
 use App\Http\Controllers\Admin\KategoriController;
-use App\Http\Controllers\Admin\KeanggotaanController;
-use App\Http\Controllers\Admin\LanggananController;
-use App\Http\Controllers\Admin\PixelController;
 use App\Http\Controllers\Admin\ResearchController;
-use App\Http\Controllers\AkademiController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\LanggananController;
+use App\Http\Controllers\Admin\KeanggotaanController;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Midtrans\Config;
+use Midtrans\Transaction;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +40,24 @@ Route::get('/', [HomeController::class, 'index'])->middleware('prevent.if.active
 
 
 Route::get('/akademicrypto', [AkademiController::class, 'index'])->middleware('add_role');
+
+
+Route::get('/payment', [PaymentController::class, 'index']);
+Route::post('/payment/process', [PaymentController::class, 'process']);
+Route::post('/payment/notification', [PaymentController::class, 'notification']);
+Route::post('/midtrans/cancel', function (Request $request) {
+    Config::$serverKey = config('midtrans.server_key');
+    Config::$isProduction = config('midtrans.is_production');
+
+    $orderId = $request->order_id;
+
+    try {
+        $response = Transaction::cancel($orderId);
+        return response()->json(['success' => true, 'message' => 'Transaksi dibatalkan!', 'data' => $response]);
+    } catch (Exception $e) {
+        return response()->json(['success' => false, 'message' => $e->getMessage()]);
+    }
+});
 
 Route::middleware(['is_admin', 'auth'])->group(function () {
     Route::get('/discord/data-role/view', [DiscordController::class, 'roleUser']);
