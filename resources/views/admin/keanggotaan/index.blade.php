@@ -18,7 +18,7 @@
                                 <input type="datetime-local" id="periode" name="periode"
                                     class="form-control @error('periode') is-invalid @enderror"
                                     value="{{ old('periode', $periode) }}" required aria-describedby="button-addon2">
-                                <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
+                                <button class="btn btn-primary" type="submit" id="button-addon2">Simpan</button>
                             </div>
                             @error('periode')
                                 <div class="invalid-feedback">{{ $message }}</div>
