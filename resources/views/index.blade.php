@@ -699,10 +699,14 @@
                         <div class="top-badge {{ $keanggotaan->title ? 'd-block' : 'd-none' }}">Paling banyak dibeli</div>
                         <div class="card-body d-flex flex-column">
                             <p class="text-spacing fs-6">Keanggotaan {{ $keanggotaan->bulan }} Bulan</p>
-                            <h1 class="fw-bold">Rp{{ number_format($keanggotaan->harga, 0, ',', '.') }}</h1>
+                            <h1 class="fw-bold">
+                                Rp{{ number_format($keanggotaan->harga_setahun / $keanggotaan->bulan, 0, ',', '.') }}</h1>
                             <span>/bulan</span>
                             <hr>
-                            <h4 class="fw-bold">Rp{{ number_format($keanggotaan->harga_setahun, 0, ',', '.') }}</h4>
+                            <p class="fw-bold text-danger text-decoration-line-through m-0" style="font-size: 14px">
+                                Rp{{ number_format($keanggotaan->harga * $keanggotaan->bulan, 0, ',', '.') }}
+                            </p>
+                            <h3 class="fw-bold">Rp{{ number_format($keanggotaan->harga_setahun, 0, ',', '.') }}</h3>
                             <p>*Pembayaran {{ $keanggotaan->bulan }} Bulan Penuh</p>
                             <div class="text-center mt-auto">
                                 <div class="button-wrapper">
@@ -727,155 +731,7 @@
 
 
 
-    {{-- <div class="tawaran">
-            <img class="shadow-left" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
-                alt="">
-            <div class="card p-0">
-                <div class="card-body p-0">
-                    <div class="row row-cols-1 row-cols-lg-2 p-3">
-                        <div class="col">
-                            <p class="text-spacing text-white text-start">
-                                Dapatkan Akses 12 bulan Akademi Crypto Hanya
-                            </p>
-                        </div>
-                        <div class="col text-lg-end text-start">
-                            <!-- Gambar hanya muncul di desktop (≥992px) -->
-                            <img src="/assets/img/logo-main.png" class="d-none d-lg-inline-block" alt="Logo"
-                                width="100px">
 
-                            <p class="text-spacing text-white mt-2 mt-lg-4">
-                                PEMBAYARAN UNTUK 12 BULAN
-                            </p>
-
-                        </div>
-                    </div>
-
-
-
-                    <p class="text-danger text-decoration-line-through fw-bold px-3">RP2.000.000</p>
-
-                    <p class="fs-bold fs-1 fw-bold text-white px-3">RP147.000</p>
-
-                    <div class="title-line fs-6 m-0">
-                        <img src="https://akademicrypto.com/wp-content/uploads/2024/04/Star-2.svg" alt=""
-                            width="15"> &nbsp;BENEFIT
-                    </div>
-
-                    <table class="table-dot" class="text-white">
-                        <tr>
-                            <td style="width: 90%">
-                                <p class="ps-3">Strategi investasi yang telah terbukti memberikan return
-                                    signifikan
-                                    pada
-                                    portofolio member dalam 3
-                                    bulan</p>
-                            </td>
-                            <td class="text-end pe-3"><img
-                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
-                                    alt=""></td>
-                        </tr>
-                        <tr>
-                            <td style="width: 90%">
-                                <p class="ps-3">
-                                    Coin Picks AC Research yang sudah terbukti outperform market
-                                </p>
-                            </td>
-                            <td class="text-end pe-3"><img
-                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
-                                    alt=""></td>
-                        </tr>
-
-                        <tr>
-                            <td style="width: 90%">
-                                <p class="ps-3">Rahasia trading dan investasi yang sudah di buktikan oleh ribuan
-                                    member
-                                </p>
-                            </td>
-                            <td class="text-end pe-3"><img
-                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
-                                    alt=""></td>
-                        </tr>
-                        <tr>
-                            <td style="width: 90%">
-                                <p class="ps-3">Ribuan Modul E-Learning yang bisa di akses 24 jam
-                                    seputar crypto</p>
-                            </td>
-                            <td class="text-end pe-3"><img
-                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
-                                    alt=""></td>
-                        </tr>
-                        <tr>
-                            <td style="width: 90%">
-                                <p class="ps-3">
-                                    Akses ke data mahal seperti bloomberg, glassnode, cryptoquant, LSEG senilai 600jt
-                                    per
-                                    tahun
-                                </p>
-                            </td>
-                            <td class="text-end pe-3"><img
-                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
-                                    alt=""></td>
-                        </tr>
-                        <tr>
-                            <td style="width: 90%">
-                                <p class="ps-3">
-                                    Riset ekslusif coin yang naik ratusan persen setiap bulannya
-                                </p>
-                            </td>
-                            <td class="text-end pe-3"><img
-                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
-                                    alt=""></td>
-                        </tr>
-                        <tr>
-                            <td style="width: 90%">
-                                <p class="ps-3">
-                                    Webinar ekslusif untuk mengetahui outlook dunia crypto
-                                </p>
-                            </td>
-                            <td class="text-end pe-3"><img
-                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
-                                    alt=""></td>
-                        </tr>
-
-                        <tr>
-                            <td style="width: 90%">
-                                <p class="ps-3">
-                                    Private mentoring ke kantor untuk para contrarian
-                                </p>
-                            </td>
-                            <td class="text-end pe-3"><img
-                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
-                                    alt=""></td>
-                        </tr>
-                        <tr>
-                            <td style="width: 90% ">
-                                <p class="ps-3">
-                                    Aplikasi Ekslusif member untuk mendapatkan kemudahan akses berita, riset, dan juga
-                                    modul
-                                </p>
-                            </td>
-                            <td class="text-end pe-3"><img
-                                    src="https://akademicrypto.com/wp-content/uploads/2024/04/Vector.svg" width="20px"
-                                    alt=""></td>
-                        </tr>
-
-
-                        <img class="shadow-left" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
-                            alt="">
-                    </table>
-                 <img class="shadow-right" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
-                        alt="">
-                    <div class="p-3">
-                        <a href="{{ auth()->check() ? 'https://belajarsatupersen.xyz/belajarsatupersen.id/LPn99wE' : '/register' }}"
-                            {{ auth()->check() ? 'target="_blank"' : '' }} class="btn-custom">
-                            Dapatkan akses sekarang
-                        </a>
-                   <a href="#" class="btn-custom ">Dapatkan Akses Sekarang</a>
-                    </div>
-
-                </div>
-            </div>
-        </div>  </div> --}}
 
     <section class="binjamin">
         <div class="container">
