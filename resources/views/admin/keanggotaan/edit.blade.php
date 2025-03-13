@@ -12,17 +12,8 @@
                     @method('PUT')
 
                     <div class="mb-3">
-                        <label class="form-label">Harga</label>
-                        <input type="number" name="harga" class="form-control @error('harga') is-invalid @enderror"
-                            value="{{ old('harga', $keanggotaan->harga) }}">
-                        @error('harga')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Harga Setahun</label>
-                        <input type="number" name="harga_setahun"
+                        <label class="form-label">Harga Satu Bulan</label>
+                        <input type="number" id="harga_bulan" name="harga_setahun"
                             class="form-control @error('harga_setahun') is-invalid @enderror"
                             value="{{ old('harga_setahun', $keanggotaan->harga_setahun) }}">
                         @error('harga_setahun')
@@ -32,21 +23,16 @@
 
                     <div class="mb-3">
                         <label class="form-label">Bulan</label>
-                        <input type="number" name="bulan" class="form-control @error('bulan') is-invalid @enderror"
+                        <input type="number" id="bulan" name="bulan"
+                            class="form-control @error('bulan') is-invalid @enderror"
                             value="{{ old('bulan', $keanggotaan->bulan) }}">
                         @error('bulan')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label">URL</label>
-                        <input type="url" name="url" class="form-control @error('url') is-invalid @enderror"
-                            value="{{ old('url', $keanggotaan->url) }}">
-                        @error('url')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                    <!-- Menampilkan hasil total harga -->
+                    <p><strong>Total Harga: </strong><span id="totalHarga">0</span></p>
 
                     <div class="mb-3">
                         <label class="form-label">Title</label>
@@ -67,4 +53,22 @@
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function hitungTotalHarga() {
+                let hargaBulan = parseFloat($('#harga_bulan').val()) || 0;
+                let bulan = parseInt($('#bulan').val()) || 0;
+                let total = hargaBulan * bulan;
+                $('#totalHarga').text(total.toLocaleString()); // Format angka
+            }
+
+            // Panggil fungsi saat input berubah
+            $('#harga_bulan, #bulan').on('input', hitungTotalHarga);
+
+            // Jalankan perhitungan pertama kali jika ada nilai default
+            hitungTotalHarga();
+        });
+    </script>
 @endsection

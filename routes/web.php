@@ -42,7 +42,7 @@ Route::get('/', [HomeController::class, 'index'])->middleware('prevent.if.active
 
 Route::get('/akademicrypto', [AkademiController::class, 'index'])->middleware('add_role');
 
-Route::middleware(['auth', 'prevent.if.active'])->group(
+Route::middleware(['auth'])->group(
     function () {
         Route::get('/payment', [PaymentController::class, 'index']);
         Route::post('/payment/process', [PaymentController::class, 'process']);
