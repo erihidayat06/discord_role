@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Keanggotaan;
+use App\Models\Order;
 use App\Models\Period;
 use Illuminate\Http\Request;
 
@@ -98,5 +99,13 @@ class KeanggotaanController extends Controller
         $keanggotaan->delete();
 
         return redirect()->route('keanggotaan.index')->with('success', 'Keanggotaan berhasil dihapus.');
+    }
+
+
+
+    public function orderan()
+    {
+        $orders = Order::latest()->get();
+        return view('admin.keanggotaan.orderan', ['orders' => $orders]);
     }
 }

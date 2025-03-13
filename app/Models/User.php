@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Look::class);
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

@@ -139,6 +139,21 @@
                     </div>
                 </div>
 
+                <script>
+                    document.getElementById('floatingname').addEventListener('keydown', function(event) {
+                        // Cegah tombol spasi
+                        if (event.key === ' ') {
+                            event.preventDefault();
+                        }
+                    });
+
+                    document.getElementById('floatingname').addEventListener('input', function(event) {
+                        // Ubah otomatis ke huruf kecil
+                        this.value = this.value.toLowerCase();
+                    });
+                </script>
+
+
                 <!-- Email Field -->
                 <div class="row mb-3">
                     <div class="col-md-12">
@@ -457,11 +472,16 @@
                 <!-- Password Field -->
                 <div class="row mb-3">
                     <div class="col-md-12">
-                        <div class="form-floating mb-3">
+                        <div class="form-floating position-relative">
                             <input type="password"
-                                class="form-control bg-dark text-white @error('password') is-invalid @enderror"
+                                class="form-control bg-dark text-white pe-5 @error('password') is-invalid @enderror"
                                 id="floatingPassword" placeholder="Password" name="password" required>
                             <label for="floatingPassword" class="text-white">Password</label>
+                            <button type="button"
+                                class="btn btn-outline-secondary position-absolute end-0 top-50 translate-middle-y me-2"
+                                onclick="togglePassword('floatingPassword', 'eyeIconPassword')">
+                                <i id="eyeIconPassword" class="bi bi-eye-slash"></i>
+                            </button>
                         </div>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -474,12 +494,17 @@
                 <!-- Confirm Password Field -->
                 <div class="row mb-3">
                     <div class="col-md-12">
-                        <div class="form-floating">
+                        <div class="form-floating position-relative">
                             <input type="password"
-                                class="form-control bg-dark text-white @error('password_confirmation') is-invalid @enderror"
+                                class="form-control bg-dark text-white pe-5 @error('password_confirmation') is-invalid @enderror"
                                 id="floatingPasswordConfirm" placeholder="Confirm Password"
                                 name="password_confirmation" required>
                             <label for="floatingPasswordConfirm" class="text-white">Confirm Password</label>
+                            <button type="button"
+                                class="btn btn-outline-secondary position-absolute end-0 top-50 translate-middle-y me-2"
+                                onclick="togglePassword('floatingPasswordConfirm', 'eyeIconPasswordConfirm')">
+                                <i id="eyeIconPasswordConfirm" class="bi bi-eye-slash"></i>
+                            </button>
                         </div>
                         @error('password_confirmation')
                             <span class="invalid-feedback" role="alert">
@@ -488,6 +513,27 @@
                         @enderror
                     </div>
                 </div>
+
+                <script>
+                    function togglePassword(inputId, iconId) {
+                        var passwordInput = document.getElementById(inputId);
+                        var eyeIcon = document.getElementById(iconId);
+
+                        if (passwordInput.type === "password") {
+                            passwordInput.type = "text";
+                            eyeIcon.classList.remove("bi-eye-slash");
+                            eyeIcon.classList.add("bi-eye");
+                        } else {
+                            passwordInput.type = "password";
+                            eyeIcon.classList.remove("bi-eye");
+                            eyeIcon.classList.add("bi-eye-slash");
+                        }
+                    }
+                </script>
+
+                <!-- Bootstrap Icons -->
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
 
                 <!-- Submit Button -->
                 <div class="row mb-0">

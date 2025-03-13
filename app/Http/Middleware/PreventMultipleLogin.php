@@ -15,8 +15,8 @@ class PreventMultipleLogin
             $user = Auth::user();
             $currentSessionId = session()->getId();
 
-            // Jika session_id berbeda, berarti user login dari perangkat lain → Logout otomatis
-            if ($user->session_id && $user->session_id !== $currentSessionId) {
+            // Cek jika user bukan admin dan session_id berbeda (login di perangkat lain)
+            if (!$user->is_admin && $user->session_id && $user->session_id !== $currentSessionId) {
                 $user->update(['session_id' => null]);
                 Auth::logout();
                 session()->invalidate();

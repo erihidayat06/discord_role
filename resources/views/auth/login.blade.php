@@ -12,6 +12,9 @@
     <link href="/assets/img/logo.png" rel="icon">
     <link href="/assets/img/logo.png" rel="apple-touch-icon">
 
+    {{-- Icon --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
@@ -139,11 +142,16 @@
 
                 <div class="row mb-3">
                     <div class="col-md-12">
-                        <div class="form-floating">
+                        <div class="form-floating position-relative">
                             <input type="password"
-                                class="form-control bg-dark text-white @error('password') is-invalid @enderror"
+                                class="form-control bg-dark text-white pe-5 @error('password') is-invalid @enderror"
                                 id="floatingPassword" placeholder="Password" name="password">
                             <label for="floatingPassword" class="text-white">Password</label>
+                            <button type="button"
+                                class="btn btn-outline-secondary position-absolute end-0 top-50 translate-middle-y me-2"
+                                onclick="togglePassword()">
+                                <i id="eyeIcon" class="bi bi-eye-slash"></i>
+                            </button>
                         </div>
 
                         @error('password')
@@ -154,6 +162,22 @@
                     </div>
                 </div>
 
+                <script>
+                    function togglePassword() {
+                        var passwordInput = document.getElementById("floatingPassword");
+                        var eyeIcon = document.getElementById("eyeIcon");
+
+                        if (passwordInput.type === "password") {
+                            passwordInput.type = "text";
+                            eyeIcon.classList.remove("bi-eye-slash");
+                            eyeIcon.classList.add("bi-eye");
+                        } else {
+                            passwordInput.type = "password";
+                            eyeIcon.classList.remove("bi-eye");
+                            eyeIcon.classList.add("bi-eye-slash");
+                        }
+                    }
+                </script>
 
 
                 <div class="row mb-3">

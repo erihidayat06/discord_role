@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\ResearchController;
 use App\Http\Controllers\Admin\LanggananController;
 use App\Http\Controllers\Admin\KeanggotaanController;
+use App\Http\Controllers\OrderController;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Midtrans\Config;
 use Midtrans\Transaction;
@@ -41,23 +42,33 @@ Route::get('/', [HomeController::class, 'index'])->middleware('prevent.if.active
 
 Route::get('/akademicrypto', [AkademiController::class, 'index'])->middleware('add_role');
 
+Route::middleware(['auth', 'add_role', 'prevent.if.active'])->group(
+    function () {
+        Route::get('/payment', [PaymentController::class, 'index']);
+        Route::post('/payment/process', [PaymentController::class, 'process']);
+        Route::post('/payment/notification', [PaymentController::class, 'notification']);
+        Route::post('/midtrans/cancel', function (Request $request) {
+            Config::$serverKey = config('midtrans.server_key');
+            Config::$isProduction = config('midtrans.is_production');
 
-Route::get('/payment', [PaymentController::class, 'index']);
-Route::post('/payment/process', [PaymentController::class, 'process']);
-Route::post('/payment/notification', [PaymentController::class, 'notification']);
-Route::post('/midtrans/cancel', function (Request $request) {
-    Config::$serverKey = config('midtrans.server_key');
-    Config::$isProduction = config('midtrans.is_production');
+            $orderId = $request->order_id;
 
-    $orderId = $request->order_id;
+            try {
+                $response = Transaction::cancel($orderId);
+                return response()->json(['success' => true, 'message' => 'Transaksi dibatalkan!', 'data' => $response]);
+            } catch (Exception $e) {
+                return response()->json(['success' => false, 'message' => $e->getMessage()]);
+            }
+        });
+        Route::get('/payment/token/{order}', [PaymentController::class, 'getToken'])->name('midtrans.token');
+        Route::post('/payment/update-status', [PaymentController::class, 'updateStatus']);
+        Route::post('/payment/webhook', [PaymentController::class, 'webhook']);
+        Route::get('/order/cetak/{id}', [OrderController::class, 'cetak'])->name('order.cetak');
 
-    try {
-        $response = Transaction::cancel($orderId);
-        return response()->json(['success' => true, 'message' => 'Transaksi dibatalkan!', 'data' => $response]);
-    } catch (Exception $e) {
-        return response()->json(['success' => false, 'message' => $e->getMessage()]);
+
+        Route::get('/orderan', [OrderController::class, 'index']);
     }
-});
+);
 
 Route::middleware(['is_admin', 'auth'])->group(function () {
     Route::get('/discord/data-role/view', [DiscordController::class, 'roleUser']);
@@ -104,6 +115,7 @@ Route::middleware(['is_admin', 'auth'])->group(function () {
 
 
     Route::resource('/admin/keanggotaan', KeanggotaanController::class);
+    Route::get('/admin/orderan', [KeanggotaanController::class, 'orderan']);
     Route::post('/admin/periode/{period:id}', [KeanggotaanController::class, 'periode']);
 
     Route::get('/admin/pixel', [PixelController::class, 'index']);
@@ -124,6 +136,28 @@ Route::middleware(['auth',  'check.subscription'])->group(
         Route::post('/logout/discord', [KursusController::class, 'logout']);
 
         Route::get('/research', [ResearchController::class, 'show']);
+        Route::get('/payment', [PaymentController::class, 'index']);
+        Route::post('/payment/process', [PaymentController::class, 'process']);
+        Route::post('/payment/notification', [PaymentController::class, 'notification']);
+        Route::post('/midtrans/cancel', function (Request $request) {
+            Config::$serverKey = config('midtrans.server_key');
+            Config::$isProduction = config('midtrans.is_production');
+
+            $orderId = $request->order_id;
+
+            try {
+                $response = Transaction::cancel($orderId);
+                return response()->json(['success' => true, 'message' => 'Transaksi dibatalkan!', 'data' => $response]);
+            } catch (Exception $e) {
+                return response()->json(['success' => false, 'message' => $e->getMessage()]);
+            }
+        });
+        Route::get('/payment/token/{order}', [PaymentController::class, 'getToken'])->name('midtrans.token');
+        Route::post('/payment/update-status', [PaymentController::class, 'updateStatus']);
+        Route::post('/payment/webhook', [PaymentController::class, 'webhook']);
+        Route::get('/order/cetak/{id}', [OrderController::class, 'cetak'])->name('order.cetak');
+        Route::get('/orderan/user', [OrderController::class, 'orderUser']);
+        Route::get('/perpanjang/user', [OrderController::class, 'perpanjangUser']);
     }
 );
 

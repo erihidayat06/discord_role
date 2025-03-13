@@ -20,6 +20,9 @@
     {{-- Aos --}}
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
+    {{-- icon --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <!-- Masukkan di <head> -->
     <script>
         ! function(f, b, e, v, n, t, s) {
@@ -62,8 +65,8 @@
 </style>
 
 <body class="bg-black ">
-
-    <div class="elementor-background-overlay">
+    @include('sweetalert::alert')
+    <div class="elementor-background-top">
         @include('layouts.header')
         <main id="main">
             @yield('content')
@@ -124,6 +127,30 @@
 
     <!-- Bootstrap 5 Script -->
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let modals = document.querySelectorAll('.modal'); // Ambil semua modal
+            let background = document.querySelector('.elementor-background-top');
+
+            if (!modals || !background) return;
+
+            modals.forEach(modal => {
+                modal.addEventListener('show.bs.modal', function() {
+                    background.classList.remove(
+                        'elementor-background-top'); // Hapus class saat modal dibuka
+                });
+
+                modal.addEventListener('hidden.bs.modal', function() {
+                    background.classList.add(
+                        'elementor-background-top'); // Tambahkan class saat modal ditutup
+                });
+            });
+        });
+    </script>
+
+
+
+
 
 
 </body>

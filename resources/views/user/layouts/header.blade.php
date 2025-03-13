@@ -92,7 +92,12 @@
 
                     <div class="offcanvas-body p-0">
                         <div class="accordion w-100" id="accordionMenu">
-
+                            <div
+                                class="{{ \Carbon\Carbon::parse(auth()->user()->expired)->diffInDays(now()) < 7 ? 'bg-danger' : 'bg-success' }}  border-0  text-center accordion-item">
+                                <span class="d-block p-2 fw-bold">Sisa
+                                    {{ \Carbon\Carbon::now()->diffInDays(\Carbon\Carbon::parse(auth()->user()->expired)) }}
+                                    hari </span>
+                            </div>
                             <div class="accordion-item bg-dark border-0">
                                 <a class="d-block p-2 ms-2 fw-bold {{ Request::is('kursus*') ? 'active text-info' : 'text-white' }}"
                                     href="{{ url('/kursus') }}">
@@ -105,6 +110,23 @@
                                     Research
                                 </a>
                             </div>
+
+
+
+                            <div class="accordion-item bg-dark border-0">
+                                <a href="/perpanjang/user"
+                                    class="d-block p-2 ms-2 fw-bold {{ Request::is('perpanjang/user*') ? 'active text-info' : 'text-white' }}">Perpanjang</a>
+                            </div>
+                            <div class="accordion-item bg-dark border-0">
+                                <a href="/orderan/user"
+                                    class="d-block p-2 ms-2 fw-bold {{ Request::is('orderan/user*') ? 'active text-info' : 'text-white' }}">Riwayat
+                                    Orderan</a>
+                            </div>
+
+                            @if (auth()->user()->is_admin)
+                                <div class="accordion-item bg-dark border-0"><a class="d-block p-2 ms-2 fw-bold "
+                                        href="/discord/data-role/view">Manage Roles</a></div>
+                            @endif
                             @if (auth()->user()->discord_active == 0)
                                 <div class="accordion-item bg-dark border-0">
                                     <a class="d-block text-white p-2 ms-2 fw-bold" href="/login/discord">Login
@@ -141,7 +163,8 @@
                             @endif
                             <div class="accordion-item bg-dark border-0">
                                 <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button bg-dark text-white w-100 border-0 shadow-none pb-1 "
+                                    <button
+                                        class="accordion-button bg-dark text-white w-100 border-0 shadow-none pb-1 "
                                         type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
                                         aria-expanded="false" aria-controls="collapseThree">
                                         <span class="fw-bold">{{ auth()->user()->name }}</span>
@@ -223,6 +246,20 @@
                         <h6 class="text-white">{{ auth()->user()->name }}</h6>
 
                     </li>
+                    <li
+                        class="{{ \Carbon\Carbon::parse(auth()->user()->expired)->diffInDays(now()) < 7 ? 'bg-danger' : 'bg-success' }}  p-2  text-center">
+                        <span class="ms-2 fw-bold">Sisa
+                            {{ \Carbon\Carbon::now()->diffInDays(\Carbon\Carbon::parse(auth()->user()->expired)) }}
+                            hari </span>
+                    </li>
+
+
+                    <li>
+                        <a href="/perpanjang/user" class="dropdown-item">Perpanjang</a>
+                    </li>
+                    <li>
+                        <a href="/orderan/user" class="dropdown-item">Riwayat Orderan</a>
+                    </li>
 
                     @if (auth()->user()->is_admin)
                         <li><a class="dropdown-item" href="/discord/data-role/view">Manage Roles</a></li>
@@ -233,7 +270,8 @@
                         <form action="/logout" method="POST">
                             @csrf
 
-                            <button type="submit" class="dropdown-item d-flex align-items-center" href="#">
+                            <button type="submit" class="dropdown-item d-flex align-items-center text-danger"
+                                href="#">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Logout</span>
                             </button>

@@ -15,17 +15,17 @@
     --bs-btn-disabled-border-color: #9b25e3;
 }
 
-.elementor-background-overlay {
-    position: absolute; /* Bisa diganti ke fixed jika ingin tetap di layar saat scroll */
+.elementor-background-top {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; /* Pastikan menutupi seluruh layar */
+    height: 100vh;
     background-image: url("https://akademicrypto.com/wp-content/uploads/2024/04/glow-top-svg-3.svg");
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: -1; /* Letakkan di belakang elemen lain */
+    z-index: -999999999 !important; /* Pastikan lebih kecil dari modal */
     opacity: 1;
 }
 
@@ -187,8 +187,12 @@
     position: fixed !important; /* Tetap di layar, tidak terbatas slider */
     bottom: 0 !important; /* Pastikan tombol menyentuh bawah */
     z-index: 9999 !important; /* Pastikan di atas elemen lain */
-    padding: 0px 20px !important;
+    padding: 300px 20px !important;
     margin-bottom: 100px !important;
+    top: 50% !important; /* Posisi di tengah vertikal */
+    transform: translateY(
+        -50%
+    ) !important; /* Koreksi agar benar-benar di tengah */
 }
 
 /* Posisi tombol keluar dari slider */
@@ -216,18 +220,16 @@
 
 /* Responsif untuk mobile */
 @media (max-width: 768px) {
-    .swiper-button-prev {
-        left: 0px !important; /* Sedikit lebih dekat di layar kecil */
-        padding: 0px 5px !important;
-        color: white !important; /* Paksa ikon putih */
-        height: 30vh !important; /* Buat tombol setinggi layar */
-    }
+    .swiper-button-prev,
     .swiper-button-next {
-        right: 0px !important;
-        padding: 0px 5px !important;
+        top: 50% !important; /* Posisi di tengah vertikal */
+        transform: translateY(
+            -50%
+        ) !important; /* Koreksi agar benar-benar di tengah */
+        padding: 90px 5px !important; /* Padding hanya kiri-kanan */
         color: white !important; /* Paksa ikon putih */
-        height: 30vh !important; /* Buat tombol setinggi layar */
     }
+
     .swiper-slide iframe {
         height: 200px;
     }
@@ -490,6 +492,7 @@ p {
     display: flex; /* Pastikan elemen bisa menyesuaikan tinggi konten */
     align-items: stretch; /* Pastikan tinggi sesuai */
     min-height: 100%;
+    max-width: 300px;
 }
 
 .card-bg-grad::before {

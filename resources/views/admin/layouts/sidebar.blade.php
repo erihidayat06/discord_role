@@ -79,6 +79,12 @@
              </a>
          </li><!-- End Dashboard Nav -->
          <li class="nav-item">
+             <a class="nav-link {{ Request::is('admin/orderan*') ? '' : 'collapsed' }}" href="/admin/orderan">
+                 <i class="bi bi-currency-dollar"></i>
+                 <span>Orderan</span>
+             </a>
+         </li><!-- End Dashboard Nav -->
+         <li class="nav-item">
              <a class="nav-link {{ Request::is('admin/pixel*') ? '' : 'collapsed' }}" href="/admin/pixel ">
                  <i class="bi bi-facebook"></i>
                  <span>Pixel</span>

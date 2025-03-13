@@ -107,14 +107,14 @@ class DiscordController extends Controller
             $bot_token = env('DISCORD_BOT_TOKEN');
             $user_id = auth()->user()->discord_id;
             $role_id = '1287469825974603806'; // Role yang akan diberikan
-            Http::withHeaders([
-                'Authorization' => "Bot $bot_token",
-                'Content-Type' => 'application/json',
-            ])->put("https://discord.com/api/v10/guilds/{$guild_id}/members/{$user_id}/roles/{$role_id}");
+            // Http::withHeaders([
+            //     'Authorization' => "Bot $bot_token",
+            //     'Content-Type' => 'application/json',
+            // ])->put("https://discord.com/api/v10/guilds/{$guild_id}/members/{$user_id}/roles/{$role_id}");
 
 
             // Jika discord_id sudah digunakan di akun lain, kosongkan dulu
-            User::where('discord_id', $discord_id)->where('id', '!=', $user->id)->update(['discord_id' => null]);
+            User::where('discord_id', $discord_id)->where('id', '!=', $user->id)->update(['discord_id' => null, 'discord_active' => false, 'expired' => null]);
 
             // Update akun yang sedang login
             $user->update([
