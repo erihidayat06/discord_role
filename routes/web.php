@@ -42,7 +42,7 @@ Route::get('/', [HomeController::class, 'index'])->middleware('prevent.if.active
 
 Route::get('/akademicrypto', [AkademiController::class, 'index'])->middleware('add_role');
 
-Route::middleware(['auth', 'add_role', 'prevent.if.active'])->group(
+Route::middleware(['auth'])->group(
     function () {
         Route::get('/payment', [PaymentController::class, 'index']);
         Route::post('/payment/process', [PaymentController::class, 'process']);
@@ -64,6 +64,12 @@ Route::middleware(['auth', 'add_role', 'prevent.if.active'])->group(
         Route::post('/payment/update-status', [PaymentController::class, 'updateStatus']);
         Route::post('/payment/webhook', [PaymentController::class, 'webhook']);
         Route::get('/order/cetak/{id}', [OrderController::class, 'cetak'])->name('order.cetak');
+    }
+);
+
+Route::middleware(['auth', 'add_role', 'prevent.if.active'])->group(
+    function () {
+
 
 
         Route::get('/orderan', [OrderController::class, 'index']);
@@ -128,34 +134,6 @@ Route::post('/logout', [DiscordController::class, 'logout'])->name('logout')->mi
 
 Route::middleware(['auth',  'check.subscription'])->group(
     function () {
-        Route::get('/kursus', [KursusController::class, 'index']);
-        Route::get('/kursus/{kelas:slug}', [KursusController::class, 'show']);
-        Route::get('/kursus/{slug}/modul/{slug_modul}', [KursusController::class, 'showModul'])->name('modul.view');
-        Route::post('/modul/{slug}/{slug_modul}/next', [KursusController::class, 'nextModul'])->name('modul.next');
-        Route::get('/secure-video/{filename}', [KursusController::class, 'secureVideo'])->name('video.secure');
-        Route::post('/logout/discord', [KursusController::class, 'logout']);
-
-        Route::get('/research', [ResearchController::class, 'show']);
-        Route::get('/payment', [PaymentController::class, 'index']);
-        Route::post('/payment/process', [PaymentController::class, 'process']);
-        Route::post('/payment/notification', [PaymentController::class, 'notification']);
-        Route::post('/midtrans/cancel', function (Request $request) {
-            Config::$serverKey = config('midtrans.server_key');
-            Config::$isProduction = config('midtrans.is_production');
-
-            $orderId = $request->order_id;
-
-            try {
-                $response = Transaction::cancel($orderId);
-                return response()->json(['success' => true, 'message' => 'Transaksi dibatalkan!', 'data' => $response]);
-            } catch (Exception $e) {
-                return response()->json(['success' => false, 'message' => $e->getMessage()]);
-            }
-        });
-        Route::get('/payment/token/{order}', [PaymentController::class, 'getToken'])->name('midtrans.token');
-        Route::post('/payment/update-status', [PaymentController::class, 'updateStatus']);
-        Route::post('/payment/webhook', [PaymentController::class, 'webhook']);
-        Route::get('/order/cetak/{id}', [OrderController::class, 'cetak'])->name('order.cetak');
         Route::get('/orderan/user', [OrderController::class, 'orderUser']);
         Route::get('/perpanjang/user', [OrderController::class, 'perpanjangUser']);
     }
