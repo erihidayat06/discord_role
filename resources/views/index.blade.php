@@ -36,15 +36,18 @@
 
     <div class="container d-flex justify-content-center mt-5 w-100">
         <div class="video-container">
-            {{-- <iframe src="https://iframe.mediadelivery.net/embed/389019/ca6a9055-27a7-466c-ace0-d3a10c6cffa4" width="100%"
-                height="100%" allow="autoplay; fullscreen" frameborder="0" allowfullscreen disablePictureInPicture
+
+            <iframe class="m-0 p-0"
+                src="https://iframe.mediadelivery.net/embed/395415/7f30bdba-9a93-4adb-8c46-e0b486f33acf?autoplay=0&watermark={{ urlencode(env('BUNNY_STREAM_WATERMARK_URL')) }}"
+                width="100%" height="500" allow="fullscreen" frameborder="0" allowfullscreen disablePictureInPicture
                 referrerpolicy="no-referrer">
-            </iframe> --}}
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/mkLVWTv7zNM?si=eZiCoX8Fn_37KbJR"
+            </iframe>
+
+            {{-- <iframe width="100%" height="100%" src="https://www.youtube.com/embed/mkLVWTv7zNM?si=eZiCoX8Fn_37KbJR"
                 title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-            </iframe>
+            </iframe> --}}
         </div>
     </div>
 
