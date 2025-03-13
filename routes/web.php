@@ -98,7 +98,7 @@ Route::middleware(['is_admin', 'auth'])->group(function () {
     Route::get('/kelas/{kelas_id}/video/{id}', [KelasController::class, 'lihatVideo'])->name('lihat.video');
     Route::post('/keatas/kelas/{id}/up', [KelasController::class, 'moveUp'])->name('kelas.moveUp');
     Route::post('/kebawah/kelas/{id}/down', [KelasController::class, 'moveDown'])->name('kelas.moveDown');
-    Route::post('/kelas/subkelas/{kelas:id}', [KelasController::class, 'subKelas'])->name('kelas.moveDown');
+    Route::post('/kelas/subkelas/{kelas:id}', [KelasController::class, 'subKelas']);
 
     Route::resource('/kelas/modul', ModulController::class);
     // Route::post('/modul/store/', [ModulController::class, 'store'])->name('modul.store');
