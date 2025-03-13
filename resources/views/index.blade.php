@@ -1,7 +1,18 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="container " style="margin-top: 100px">
+    <style>
+        .mt-6 {
+            margin-top: 100px !important;
+        }
+
+        @media (max-width: 768px) {
+            .mt-6 {
+                margin-top: 30px !important;
+            }
+        }
+    </style>
+    <div class="container mt-6">
         <div class="text-center">
             <h1 class="text-white fw-bold text-title">Strategi Investasi Crypto Untuk</h1>
             <h1 class="text-title text-grad fw-bold">Gandain Uang Kalian</h1>
