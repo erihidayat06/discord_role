@@ -14,6 +14,8 @@ class HomeController extends Controller
         $period = Period::firstOrCreate([], [
             'periode' => now(),
         ]);
+
+        dd(config('midtrans.is_production'));
         $keanggotaans = Keanggotaan::get();
         return view('index', ['keanggotaans' => $keanggotaans, 'periode' => $period]);
     }

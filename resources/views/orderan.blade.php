@@ -151,4 +151,44 @@
             @endforeach
         </div>
     </div>
+
+    {{-- Midtrans Snap --}}
+    <script src="{{ config('midtrans.snap_url') }}" data-client-key="{{ config('midtrans.client_key') }}"></script>
+
+
+    <script>
+        document.querySelectorAll('.btn-bayar').forEach(button => {
+            button.addEventListener('click', async function() {
+                let orderId = this.getAttribute('data-id');
+
+                try {
+                    let response = await fetch(`/payment/token/${orderId}`);
+                    let data = await response.json();
+
+                    if (!data.token) {
+                        alert('Token pembayaran tidak ditemukan!');
+                        return;
+                    }
+
+                    snap.pay(data.token, {
+                        onSuccess: async function(result) {
+                            alert('Pembayaran berhasil!');
+                            window.location.href = '/kursus';
+                        },
+                        onPending: async function(result) {
+                            alert('Menunggu pembayaran...');
+                            window.location.href = '/orderan/user';
+                        },
+                        onError: async function(result) {
+                            alert('Pembayaran gagal!');
+                            window.location.href = '/orderan/user';
+                        }
+                    });
+
+                } catch (error) {
+                    alert('Terjadi kesalahan saat mengambil token pembayaran!');
+                }
+            });
+        });
+    </script>
 @endsection
