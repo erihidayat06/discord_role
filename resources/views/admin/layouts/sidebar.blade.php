@@ -74,7 +74,7 @@
          <li class="nav-heading">Pengaturan Home</li>
          <li class="nav-item">
              <a class="nav-link {{ Request::is('admin/keanggotaan*') ? '' : 'collapsed' }}" href="/admin/keanggotaan">
-                 <i class="bi bi-currency-dollar"></i>
+                 <i class="bi bi-list-stars"></i>
                  <span>Keanggotaan</span>
              </a>
          </li><!-- End Dashboard Nav -->

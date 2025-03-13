@@ -33,8 +33,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Harga</th>
-                                <th>Harga Setahun</th>
+                                <th>Harga Asli (dicoret)</th>
+                                <th>Harga Perbulan</th>
+                                <th>Harga Total</th>
                                 <th>Bulan</th>
                                 <th>URL</th>
                                 <th>Title</th>
@@ -47,6 +48,8 @@
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ number_format($keanggotaan->harga, 0, ',', '.') }}</td>
                                     <td>{{ number_format($keanggotaan->harga_setahun, 0, ',', '.') }}</td>
+                                    <td>{{ number_format($keanggotaan->harga_setahun * $keanggotaan->bulan, 0, ',', '.') }}
+                                    </td>
                                     <td>{{ $keanggotaan->bulan }}</td>
                                     <td><a href="{{ $keanggotaan->url }}" target="_blank">Link</a></td>
                                     <td>{{ $keanggotaan->title ? 'Ya' : 'Tidak' }}</td>

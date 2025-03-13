@@ -723,6 +723,7 @@
 
 
 
+
     <div class="container">
         <div class="row row-cols-1 row-cols-lg-3 g-4 justify-content-center">
             @foreach ($keanggotaans as $index => $keanggotaan)
@@ -733,13 +734,14 @@
                         <div class="card-body d-flex flex-column">
                             <p class="text-spacing fs-6">Keanggotaan {{ $keanggotaan->bulan }} Bulan</p>
                             <h1 class="fw-bold">
-                                Rp{{ number_format($keanggotaan->harga_setahun / $keanggotaan->bulan, 0, ',', '.') }}</h1>
+                                Rp{{ number_format($keanggotaan->harga_setahun, 0, ',', '.') }}</h1>
                             <span>/bulan</span>
                             <hr>
                             <p class="fw-bold text-danger text-decoration-line-through m-0" style="font-size: 14px">
                                 Rp{{ number_format($keanggotaan->harga * $keanggotaan->bulan, 0, ',', '.') }}
                             </p>
-                            <h2 class="fw-bold">Rp{{ number_format($keanggotaan->harga_setahun, 0, ',', '.') }}</h2>
+                            <h2 class="fw-bold">
+                                Rp{{ number_format($keanggotaan->harga_setahun * $keanggotaan->bulan, 0, ',', '.') }}</h2>
                             <p>*Pembayaran {{ $keanggotaan->bulan }} Bulan Penuh</p>
                             <div class="text-center mt-auto">
                                 <div class="button-wrapper">
@@ -786,9 +788,10 @@
                                         <tbody>
                                             <tr>
                                                 <td>{{ $keanggotaan->bulan }} Bulan</td>
-                                                <td>Rp{{ number_format($keanggotaan->harga_setahun / $keanggotaan->bulan, 0, ',', '.') }}
+                                                <td>Rp{{ number_format($keanggotaan->harga_setahun, 0, ',', '.') }}
                                                 </td>
-                                                <td>Rp{{ number_format($keanggotaan->harga_setahun, 0, ',', '.') }}</td>
+                                                <td>Rp{{ number_format($keanggotaan->harga_setahun * $keanggotaan->bulan, 0, ',', '.') }}
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -886,7 +889,6 @@
             @endforeach
         </div>
     </div>
-
 
     <!-- Tambahkan Midtrans Script -->
     <script src="{{ config('midtrans.snap_url') }}" data-client-key="{{ config('midtrans.client_key') }}"></script>

@@ -40,7 +40,7 @@ class KeanggotaanController extends Controller
             'harga' => 'required|numeric',
             'harga_setahun' => 'required|numeric',
             'bulan' => 'required|numeric',
-            'url' => 'required|url',
+            'url' => 'required',
             'title' => 'required|boolean',
         ]);
 
@@ -74,7 +74,7 @@ class KeanggotaanController extends Controller
             'harga' => 'required|numeric',
             'harga_setahun' => 'required|numeric',
             'bulan' => 'required|numeric',
-            'url' => 'required|url',
+            'url' => 'required',
             'title' => 'required|boolean',
         ]);
 
