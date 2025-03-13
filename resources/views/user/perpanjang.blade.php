@@ -172,8 +172,7 @@
 
 
     <!-- Tambahkan Midtrans Script -->
-    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}">
-    </script>
+    <script src="{{ env('MIDTRANS_URL') }}" data-client-key="{{ config('midtrans.client_key') }}"></script>
 
     <script>
         document.querySelectorAll('.pay-button').forEach(button => {

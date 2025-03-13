@@ -10,8 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Midtrans -->
-    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}">
-    </script>
+    <script src="{{ env('MIDTRANS_URL') }}" data-client-key="{{ config('midtrans.client_key') }}"></script>
 </head>
 
 <body class="container py-5">
