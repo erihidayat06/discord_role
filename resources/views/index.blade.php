@@ -120,13 +120,13 @@
         </div>
     </div>
 
-    {{-- <div class="container">
+    <div class="container">
         <div class="text-center mt-5">
             <a href="https://discord.gg/belajarsatupersen"> <img class="join-now"
                     src="https://akademicrypto.com/wp-content/uploads/2024/04/btn-join-discord.webp" class="img-fluid"
                     style="max-width: 350px;" alt=""></a>
         </div>
-    </div> --}}
+    </div>
 
     <style>
         @media (min-width: 992px) {
