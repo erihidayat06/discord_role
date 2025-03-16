@@ -120,9 +120,15 @@ class PaymentController extends Controller
         $status = $json['transaction_status'];
 
         if ($status == 'settlement') {
-            // Tambahkan bulan ke `expired`
-            $currentExpired = $user->expired ? Carbon::parse($user->expired) : now();
-            $newExpired = $currentExpired->addMonths($keanggotaan->bulan);
+            // Pastikan `bulan` adalah integer sebelum dikalikan dengan 30
+            $jumlahHari = (int) $keanggotaan->bulan * 30;
+
+            // Pastikan tanggal expired tidak berkurang jika diperpanjang
+            $currentExpired = $user->expired && Carbon::parse($user->expired)->gt(now())
+                ? Carbon::parse($user->expired)
+                : now();
+
+            $newExpired = $currentExpired->addDays($jumlahHari);
 
             $user->update(['expired' => $newExpired]);
 
@@ -131,7 +137,7 @@ class PaymentController extends Controller
                 'paid_at' => now(),
             ]);
 
-            // Coba kirim event ke Facebook Pixel tanpa mengganggu proses utama
+            // Kirim event ke Facebook Pixel
             try {
                 $this->sendFacebookPixelEvent($user, $order, 'Purchase');
             } catch (\Exception $e) {
@@ -140,7 +146,7 @@ class PaymentController extends Controller
         } elseif (in_array($status, ['expire', 'cancel', 'failure'])) {
             $order->update(['status' => 'failed']);
 
-            // Coba kirim event ke Facebook Pixel tanpa mengganggu proses utama
+            // Kirim event ke Facebook Pixel
             try {
                 $this->sendFacebookPixelEvent($user, $order, 'PurchaseFailed');
             } catch (\Exception $e) {
@@ -150,6 +156,7 @@ class PaymentController extends Controller
 
         return response()->json(['status' => 'success']);
     }
+
 
     private function sendFacebookPixelEvent($user, $order, $event)
     {
