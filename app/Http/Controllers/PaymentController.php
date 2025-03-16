@@ -45,7 +45,7 @@ class PaymentController extends Controller
         }
 
         $orderId = 'ORDER-' . uniqid();
-        $grossAmount = $keanggotaan->harga_setahun;
+        $grossAmount = $keanggotaan->harga_setahun * $keanggotaan->bulan;
         $paymentType = $request->payment_type;
 
 
@@ -59,7 +59,7 @@ class PaymentController extends Controller
             'item_details' => [
                 [
                     'id' => $keanggotaan->id,
-                    'price' => $keanggotaan->harga_setahun,
+                    'price' => $keanggotaan->harga_setahun * $keanggotaan->bulan,
                     'quantity' => 1,
                     'name' => "Peket " . $keanggotaan->bulan . " Bulan",
                 ],
