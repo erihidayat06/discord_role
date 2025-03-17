@@ -19,6 +19,13 @@ class LanggananController extends Controller
 
         return view('admin.langganan.index', ['users' => $users]);
     }
+    public function adminUser()
+    {
+
+        $users = User::where('is_admin', 1)->latest()->get();
+
+        return view('admin.langganan.admin', ['users' => $users]);
+    }
 
     public function updateExpired(Request $request, $id)
     {

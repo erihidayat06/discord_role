@@ -64,6 +64,12 @@
                  <span>Langganan User</span>
              </a>
          </li><!-- End Dashboard Nav -->
+         <li class="nav-item">
+             <a class="nav-link {{ Request::is('admin/user*') ? '' : 'collapsed' }}" href="/admin/user">
+                 <i class="bi bi-person-check"></i>
+                 <span>User Admin</span>
+             </a>
+         </li><!-- End Dashboard Nav -->
          <li class="nav-heading">Pengaturan Research</li>
          <li class="nav-item">
              <a class="nav-link {{ Request::is('admin/research*') ? '' : 'collapsed' }}" href="/admin/research">

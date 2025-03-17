@@ -105,6 +105,7 @@ Route::middleware(['is_admin', 'auth'])->group(function () {
     Route::get('/video/{id}', [ModulController::class, 'showVideo'])->name('video.show');
 
     Route::get('/langganan', [LanggananController::class, 'index']);
+    Route::get('/admin/user', [LanggananController::class, 'adminUser']);
     Route::patch('/admin/langganan/update-expired/{id}', [LanggananController::class, 'updateExpired'])
         ->name('admin.langganan.updateExpired');
     Route::post('/keatas/kategori/{id}/up', [KategoriController::class, 'moveUp'])->name('kategori.moveUp');
