@@ -162,9 +162,22 @@ Route::get('/sitemap.xml', function () {
             <changefreq>daily</changefreq>
             <priority>1.0</priority>
         </url>
+        <url>
+            <loc>' . url('/login') . '</loc>
+            <lastmod>' . now()->toDateString() . '</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.9</priority>
+        </url>
+        <url>
+            <loc>' . url('/register') . '</loc>
+            <lastmod>' . now()->toDateString() . '</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.9</priority>
+        </url>
     </urlset>';
 
     return response($xml, 200)->header('Content-Type', 'application/xml');
 });
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
