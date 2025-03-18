@@ -105,12 +105,34 @@ class DiscordController extends Controller
             $user = Auth::user();
             $guild_id = 1274717645236862976;
             $bot_token = env('DISCORD_BOT_TOKEN');
-            $user_id = auth()->user()->discord_id;
+            $user_id = $discord_id;
             $role_id = '1287469825974603806'; // Role yang akan diberikan
-            // Http::withHeaders([
-            //     'Authorization' => "Bot $bot_token",
-            //     'Content-Type' => 'application/json',
-            // ])->put("https://discord.com/api/v10/guilds/{$guild_id}/members/{$user_id}/roles/{$role_id}");
+
+            if ($user->discord_role > now()) {
+                $existingRole = UserRole::where('user_id', $user->discord_id)
+                    ->where('discord_id', $user->discord_id)
+                    ->where('role_id', $role_id)
+                    ->where('id_guild', $guild_id)
+                    ->whereDate('expires_at', auth()->user()->discord_role)
+                    ->exists();
+
+                Http::withHeaders([
+                    'Authorization' => "Bot $bot_token",
+                    'Content-Type' => 'application/json',
+                ])->put("https://discord.com/api/v10/guilds/{$guild_id}/members/{$user_id}/roles/{$role_id}");
+
+                if (!$existingRole) {
+                    UserRole::create([
+                        'user_id' => $discord_id,
+                        'discord_id' => $discord_id,
+                        'role_id' => $role_id,
+                        'expires_at' => $user->discord_role,
+                        'discord_active' => true,
+                        'id_guild' => $guild_id,
+                    ]);
+                }
+            }
+
 
 
             // Jika discord_id sudah digunakan di akun lain, kosongkan dulu

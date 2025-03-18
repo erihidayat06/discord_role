@@ -37,8 +37,9 @@
                                 <th>Harga Perbulan</th>
                                 <th>Harga Total</th>
                                 <th>Bulan</th>
-                                <th>URL</th>
                                 <th>Title</th>
+                                <th>Text title</th>
+                                <th>Akses role</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -51,8 +52,9 @@
                                     <td>{{ number_format($keanggotaan->harga_setahun * $keanggotaan->bulan, 0, ',', '.') }}
                                     </td>
                                     <td>{{ $keanggotaan->bulan }}</td>
-                                    <td><a href="{{ $keanggotaan->url }}" target="_blank">Link</a></td>
                                     <td>{{ $keanggotaan->title ? 'Ya' : 'Tidak' }}</td>
+                                    <td>{{ $keanggotaan->text_title ?? '-' }}</td>
+                                    <td>{{ $keanggotaan->akses_role ? 'Ya' : 'Tidak' }}</td>
                                     <td>
                                         <a href="{{ route('keanggotaan.edit', $keanggotaan->id) }}"
                                             class="btn btn-sm btn-primary">Edit</a>

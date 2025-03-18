@@ -730,9 +730,13 @@
                 <div class="col d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="{{ $index * 200 }}">
                     <div class="card text-white position-relative w-100 text-start mt-3">
                         <!-- Badge di atas -->
-                        <div class="top-badge {{ $keanggotaan->title ? 'd-block' : 'd-none' }}">Paling banyak dibeli</div>
+                        <div
+                            class="top-badge {{ $keanggotaan->title && $keanggotaan->text_title != null ? 'd-block' : 'd-none' }}">
+                            {{ $keanggotaan->text_title }}</div>
                         <div class="card-body d-flex flex-column">
                             <p class="text-spacing fs-6">Keanggotaan {{ $keanggotaan->bulan }} Bulan</p>
+                            <p class="fs-6  {{ $keanggotaan->title ? 'd-block' : 'd-none' }}">+ Akses discord
+                                role student</p>
                             <h1 class="fw-bold">
                                 Rp{{ number_format($keanggotaan->harga_setahun, 0, ',', '.') }}</h1>
                             <span>/bulan</span>

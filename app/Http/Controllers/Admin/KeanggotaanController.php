@@ -42,6 +42,8 @@ class KeanggotaanController extends Controller
             'bulan' => 'required|numeric',
             'url' => 'required',
             'title' => 'required|boolean',
+            'text_title' => 'nullable',
+            'akses_role' => 'required|boolean',
         ]);
 
         Keanggotaan::create($request->all());
@@ -74,9 +76,12 @@ class KeanggotaanController extends Controller
             'harga' => 'required|numeric',
             'harga_setahun' => 'required|numeric',
             'bulan' => 'required|numeric',
-            'url' => 'required',
             'title' => 'required|boolean',
+            'title' => 'required|boolean',
+            'text_title' => 'nullable',
         ]);
+
+        $request['url'] = "oke";
 
         $keanggotaan->update($request->all());
 

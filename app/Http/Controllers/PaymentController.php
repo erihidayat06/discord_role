@@ -7,9 +7,11 @@ use Midtrans\Snap;
 use App\Models\User;
 use Midtrans\Config;
 use App\Models\Order;
+use App\Models\UserRole;
 use App\Models\Keanggotaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class PaymentController extends Controller
@@ -120,7 +122,7 @@ class PaymentController extends Controller
         $status = $json['transaction_status'];
 
         if ($status == 'settlement') {
-            // Pastikan `bulan` adalah integer sebelum dikalikan dengan 30
+            // Konversi bulan ke hari
             $jumlahHari = (int) $keanggotaan->bulan * 30;
 
             // Pastikan tanggal expired tidak berkurang jika diperpanjang
@@ -130,8 +132,40 @@ class PaymentController extends Controller
 
             $newExpired = $currentExpired->addDays($jumlahHari);
 
+            // Simpan tanggal expired baru
             $user->update(['expired' => $newExpired]);
 
+            // Jika user mendapatkan role di Discord
+            if ($keanggotaan->akses_role && $user->discord_id) {
+                $guild_id = 1274717645236862976;
+                $bot_token = env('DISCORD_BOT_TOKEN');
+                $role_id = '1287469825974603806'; // Role yang akan diberikan
+                $user->update(['discord_role' => $newExpired]);
+
+                $existingRole = UserRole::where('user_id', $user->discord_id)
+                    ->where('discord_id', $user->discord_id)
+                    ->where('role_id', $role_id)
+                    ->where('id_guild', $guild_id)
+                    ->whereDate('expires_at', $user->discord_role) // Gunakan whereDate untuk hanya membandingkan tanggal
+                    ->exists();
+                Http::withHeaders([
+                    'Authorization' => "Bot $bot_token",
+                    'Content-Type' => 'application/json',
+                ])->put("https://discord.com/api/v10/guilds/{$guild_id}/members/{$user->discord_id}/roles/{$role_id}");
+                if (!$existingRole) {
+
+                    UserRole::create([
+                        'user_id' => $user->discord_id,
+                        'discord_id' => $user->discord_id,
+                        'role_id' => $role_id,
+                        'expires_at' => $newExpired,
+                        'discord_active' => true,
+                        'id_guild' => $guild_id,
+                    ]);
+                }
+            }
+
+            // Update status order
             $order->update([
                 'status' => 'paid',
                 'paid_at' => now(),
@@ -156,6 +190,7 @@ class PaymentController extends Controller
 
         return response()->json(['status' => 'success']);
     }
+
 
 
     private function sendFacebookPixelEvent($user, $order, $event)

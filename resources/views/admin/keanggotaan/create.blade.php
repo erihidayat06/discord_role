@@ -45,7 +45,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Title</label>
-                        <select name="title" class="form-control @error('title') is-invalid @enderror">
+                        <select name="title" id="titleSelect" class="form-control @error('title') is-invalid @enderror">
                             <option value="0" {{ old('title') == 0 ? 'selected' : '' }}>Tidak</option>
                             <option value="1" {{ old('title') == 1 ? 'selected' : '' }}>Ya</option>
                         </select>
@@ -53,6 +53,29 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
+
+                    <div class="mb-3" id="textTitleContainer" style="display: none;">
+                        <label class="form-label">Text Title</label>
+                        <input type="text" name="text_title"
+                            class="form-control @error('text_title') is-invalid @enderror" value="{{ old('text_title') }}">
+                        @error('text_title')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Akases Role Student</label>
+                        <select name="akses_role" id="akses_roleSelect"
+                            class="form-control @error('akses_role') is-invalid @enderror">
+                            <option value="0" {{ old('akses_role') == 0 ? 'selected' : '' }}>Tidak</option>
+                            <option value="1" {{ old('akses_role') == 1 ? 'selected' : '' }}>Ya</option>
+                        </select>
+                        @error('akses_role')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
 
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <a href="{{ route('keanggotaan.index') }}" class="btn btn-secondary">Kembali</a>
@@ -62,6 +85,27 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let titleSelect = document.getElementById("titleSelect");
+            let textTitleContainer = document.getElementById("textTitleContainer");
+
+            function toggleTextTitle() {
+                if (titleSelect.value === "1") {
+                    textTitleContainer.style.display = "block";
+                } else {
+                    textTitleContainer.style.display = "none";
+                }
+            }
+
+            // Jalankan saat halaman dimuat (agar tetap tampil jika sebelumnya dipilih)
+            toggleTextTitle();
+
+            // Tambahkan event listener untuk perubahan pilihan
+            titleSelect.addEventListener("change", toggleTextTitle);
+        });
+    </script>
+
     <script>
         $(document).ready(function() {
             function hitungTotalHarga() {
