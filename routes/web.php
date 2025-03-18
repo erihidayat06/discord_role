@@ -154,8 +154,17 @@ Route::middleware([])->group(function () {
 Auth::routes();
 
 Route::get('/sitemap.xml', function () {
-    $content = view('sitemap'); // Pastikan ada file `sitemap.blade.php` di resources/views
-    return Response::make($content, 200, ['Content-Type' => 'application/xml']);
+    $xml = '<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        <url>
+            <loc>' . url('/') . '</loc>
+            <lastmod>' . now()->toDateString() . '</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>1.0</priority>
+        </url>
+    </urlset>';
+
+    return response($xml, 200)->header('Content-Type', 'application/xml');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
