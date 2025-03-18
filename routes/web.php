@@ -1,12 +1,16 @@
 <?php
 
+use Midtrans\Config;
 use App\Models\Modul;
+use Midtrans\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Response;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\KursusController;
 use App\Http\Controllers\AkademiController;
 use App\Http\Controllers\PaymentController;
@@ -21,10 +25,7 @@ use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\ResearchController;
 use App\Http\Controllers\Admin\LanggananController;
 use App\Http\Controllers\Admin\KeanggotaanController;
-use App\Http\Controllers\OrderController;
 use Symfony\Component\HttpFoundation\StreamedResponse;
-use Midtrans\Config;
-use Midtrans\Transaction;
 
 /*
 |--------------------------------------------------------------------------
@@ -151,5 +152,10 @@ Route::middleware([])->group(function () {
 });
 
 Auth::routes();
+
+Route::get('/sitemap.xml', function () {
+    $content = view('sitemap'); // Pastikan ada file `sitemap.blade.php` di resources/views
+    return Response::make($content, 200, ['Content-Type' => 'application/xml']);
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
