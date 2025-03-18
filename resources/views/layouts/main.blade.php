@@ -12,6 +12,16 @@
     <link href="/assets/img/logo.png" rel="icon">
     <link href="/assets/img/logo.png" rel="apple-touch-icon">
 
+    {{-- SEO --}}
+    <title>Belajar Satu Persen - Platform Belajar Online</title>
+    <meta name="description"
+        content="Belajar Satu Persen adalah platform edukasi yang membantu meningkatkan skill & mindset.">
+    <meta name="keywords" content="Belajar Satu Persen, Belajar Online, Pengembangan Diri, Pendidikan">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Belajar Satu Persen">
+    <link rel="canonical" href="https://belajarsatupersen.com">
+
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -148,6 +158,19 @@
         });
     </script>
 
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Belajar Satu Persen",
+            "url": "https://belajarsatupersen.com",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://belajarsatupersen.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+</script>
 
 
 
