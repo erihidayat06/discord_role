@@ -40,7 +40,7 @@
                                 <th>Title</th>
                                 <th>Text title</th>
                                 <th>Akses role</th>
-                                <th>Aksi</th>
+                                {{-- <th>Aksi</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -55,7 +55,7 @@
                                     <td>{{ $keanggotaan->title ? 'Ya' : 'Tidak' }}</td>
                                     <td>{{ $keanggotaan->text_title ?? '-' }}</td>
                                     <td>{{ $keanggotaan->akses_role ? 'Ya' : 'Tidak' }}</td>
-                                    <td>
+                                    {{-- <td>
                                         <a href="{{ route('keanggotaan.edit', $keanggotaan->id) }}"
                                             class="btn btn-sm btn-primary">Edit</a>
                                         <form action="{{ route('keanggotaan.destroy', $keanggotaan->id) }}" method="POST"
@@ -65,7 +65,7 @@
                                             <button type="submit" class="btn btn-sm btn-danger"
                                                 onclick="return confirm('Apakah Anda yakin ingin menghapus ini?');">Hapus</button>
                                         </form>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>
