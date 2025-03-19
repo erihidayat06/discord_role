@@ -33,14 +33,14 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Harga Asli (dicoret)</th>
-                                <th>Harga Perbulan</th>
-                                <th>Harga Total</th>
+                                <th>Harga&nbsp;Asli&nbsp;(dicoret)</th>
+                                <th>Harga&nbsp;Perbulan</th>
+                                <th>Harga&nbsp;Total</th>
                                 <th>Bulan</th>
                                 <th>Title</th>
-                                <th>Text title</th>
-                                <th>Akses role</th>
-                                {{-- <th>Aksi</th> --}}
+                                <th>Text&nbsp;title</th>
+                                <th>Akses&nbsp;role</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,17 +55,19 @@
                                     <td>{{ $keanggotaan->title ? 'Ya' : 'Tidak' }}</td>
                                     <td>{{ $keanggotaan->text_title ?? '-' }}</td>
                                     <td>{{ $keanggotaan->akses_role ? 'Ya' : 'Tidak' }}</td>
-                                    {{-- <td>
-                                        <a href="{{ route('keanggotaan.edit', $keanggotaan->id) }}"
-                                            class="btn btn-sm btn-primary">Edit</a>
-                                        <form action="{{ route('keanggotaan.destroy', $keanggotaan->id) }}" method="POST"
-                                            style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                onclick="return confirm('Apakah Anda yakin ingin menghapus ini?');">Hapus</button>
-                                        </form>
-                                    </td> --}}
+                                    <td>
+                                        <div class="d-flex justify-content-center">
+                                            <a href="{{ route('keanggotaan.edit', $keanggotaan->id) }}"
+                                                class="btn btn-sm btn-primary">Edit</a>
+                                            <form action="{{ route('keanggotaan.destroy', $keanggotaan->id) }}"
+                                                method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger ms-2"
+                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus ini?');">Hapus</button>
+                                            </form>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
