@@ -149,15 +149,19 @@
     <div class="container kenapa">
         <div class="row row-cols-1 row-cols-lg-2 mt-2 mt-lg-5  position-relative">
             <div class="col border-end border-white">
-                <h3 class="pe-3 ps-5" data-aos="fade-up"><span class="text-grad fw-bold"> Kalian akan dibimbing dari 0
-                        sampai mahir
-                        berinvestasi
-                        di crypto dan
-                        melipatgandakan
-                        portofolio kalian,</span> <span class="text-white">dengan 1000+ modul pembelajaran yang di update
-                        setiap
-                        minggu dan diajar langsung
-                        oleh pakarnya.</span></h3>
+                <h3 class="pe-3 ps-5" data-aos="fade-up">
+                    <span class="text-grad fw-bold">
+                        Mulai dari nol hingga mahir dalam berinvestasi di crypto bersama <strong>Belajar Satu
+                            Persen</strong>,
+                        serta kembangkan portofolio kalian secara maksimal.
+                    </span>
+                    <span class="text-white">
+                        Dapatkan akses ke 1000+ modul pembelajaran yang diperbarui setiap minggu dan dipandu langsung oleh
+                        para ahli.
+                    </span>
+                </h3>
+
+
             </div>
             <img class="peringkat-1" src="https://akademicrypto.com/wp-content/uploads/2024/04/no-1.svg" alt="">
             <div class="vertical-line"></div>
@@ -179,23 +183,35 @@
 
             <!-- Kolom gambar -->
             <div class="col py-1 py-lg-5 order-1 order-lg-2">
-                <h3 class="ps-5 " data-aos="fade-up">
-                    <span class="text-grad fw-bold">Kalian akan mendapatkan akses ke AC Research, dimana kalian akan
-                        mendapatkan coin picks setiap bulannya, analisa onchain detail setiap harinya,</span>
-                    <span class="text-white">Berita market A1 yang tidak akan bisa didapatkan di tempat lain.</span>
+                <h3 class="ps-5" data-aos="fade-up">
+                    <span class="text-grad fw-bold">
+                        Dengan akses ke AC Research melalui <strong>Belajar Satu Persen</strong>, kalian bisa mendapatkan
+                        coin picks setiap bulan dan analisis on-chain yang mendalam setiap hari.
+                    </span>
+                    <span class="text-white">
+                        Selain itu, kalian juga akan mendapatkan berita market A1 yang eksklusif dan tidak bisa ditemukan di
+                        tempat lain.
+                    </span>
                 </h3>
+
             </div>
         </div>
 
         <div class="row row-cols-1 row-cols-lg-2 mt-2 mt-lg-5 position-relative">
             <div class="col ">
                 <h3 class="pe-5 ps-5" data-aos="fade-up">
-                    <span class="text-grad fw-bold">Kalian akan mendapatkan event ekslusif khusus bersama komunitas dengan
-                        tujuan
-                        yang sama, yaitu membuat kekayaan dari crypto.</span>
-                    <span class="text-white">Sukses tidak bisa dicapai sendirian, kalian membutuhkan komunitas offline yang
-                        saling support dan mau maju bersama.</span>
+                    <span class="text-grad fw-bold">
+                        Kalian akan belajar dan berkembang bersama <strong>Belajar Satu Persen</strong> melalui event
+                        eksklusif
+                        dengan komunitas yang memiliki tujuan yang sama—membangun kekayaan dari crypto.
+                    </span>
+                    <span class="text-white">
+                        Kesuksesan tidak bisa dicapai sendirian—kalian butuh komunitas offline yang saling mendukung dan
+                        maju bersama.
+                    </span>
                 </h3>
+
+
             </div>
             <img class="peringkat" src="https://akademicrypto.com/wp-content/uploads/2024/04/03-a.svg" alt="">
             <div class="col py-3 py-lg-5">
@@ -232,18 +248,22 @@
                 <div class="col ps-5 text-white">
                     <h1 class="fw-semibold text-white" data-aos="fade-up">Crypto <span class="text-grad">Investing</span>
                     </h1>
-                    <p class="mt-3" data-aos="fade-up">Di modul ini kalian akan gua pandu pribadi step by step dari
-                        Mindset berinvestasi di
-                        crypto, cara melihat siklus pasar untuk tau kapan masuk dan keluar, menganalisa tipe-tipe
-                        cryptocurrency, cara melihat attention economy didalam crypto, cara meriset crypto dan menghitung
-                        harga
-                        wajarnya,</p>
+                    <p class="mt-3" data-aos="fade-up">
+                        Di modul ini, kalian akan belajar langsung bersama <strong>Belajar Satu Persen</strong>, dipandu
+                        step by step dari
+                        mindset berinvestasi di crypto, memahami siklus pasar untuk mengetahui kapan masuk dan keluar,
+                        menganalisis berbagai jenis cryptocurrency, memahami attention economy dalam crypto, hingga cara
+                        meriset dan menghitung harga wajarnya.
+                    </p>
 
-                    <p class="mt-3" data-aos="fade-up">Bagaimana cara mengatur resiko didalam portofolio, cara melihat
-                        korelasi anatara
-                        bitcoin
-                        dan altcoin, bagaimana cara nyontek “smart money” sampai contekan portofolio gua supaya kalian bisa
-                        dapat gambaran bagaimana menyusun portofolio yang baik.</p>
+                    <p class="mt-3" data-aos="fade-up">
+                        Kalian juga akan belajar bagaimana mengelola risiko dalam portofolio, memahami korelasi antara
+                        Bitcoin dan Altcoin,
+                        serta cara mengamati pergerakan “smart money.” Bahkan, gua bakal kasih contekan portofolio gua,
+                        supaya kalian bisa punya gambaran dalam menyusun portofolio yang solid.
+                    </p>
+
+
                 </div>
             </div>
             <div class="vertical-line-dotted"></div>
@@ -260,14 +280,15 @@
                 <div class="col ps-5 text-white">
                     <h1 class="fw-semibold text-white" data-aos="fade-up">Crypto <span class="text-grad">Trading</span>
                     </h1>
-                    <p class="mt-3" data-aos="fade-up">Di modul ini kalian akan belajar dari 0 sampai bisa trading
-                        crypto secara mahir, dari
-                        pengenalan trading crypto, dow theory, dasar dari analisa teknikal, bagaimana cara mengukur setup
-                        sebuah
-                        trade, dasar dari kontrak futures, manajemen resiko, bagaimana cara masuk ke sebuah posisi dan
-                        mengukur
-                        resiko, behavioural dari market, pattern recognition, psikologi dalam trading, sampai live trading
-                        bareng bersama komunitas.</p>
+                    <p class="mt-3" data-aos="fade-up">
+                        Di modul ini, kalian akan belajar dari nol hingga mahir dalam trading crypto bersama
+                        <strong>Belajar Satu Persen</strong>. Materinya mencakup pengenalan trading crypto, Dow Theory,
+                        dasar analisis teknikal, cara mengukur setup sebuah trade, dasar kontrak futures, manajemen risiko,
+                        strategi masuk posisi dan mengukur risikonya, memahami perilaku market, pattern recognition,
+                        psikologi dalam trading,
+                        hingga live trading bareng bersama komunitas.
+                    </p>
+
 
 
                 </div>
@@ -283,15 +304,17 @@
                 <div class="col ps-5 text-white">
                     <h1 class="fw-semibold text-white" data-aos="fade-up">Crypto <span class="text-grad">Trading <br>
                             Psychology</span></h1>
-                    <p class="mt-3" data-aos="fade-up">Di modul ini kalian akan belajar tentang strategi rahasia
-                        mengatur psikologi dan
-                        emosi
-                        dalam trading, Mekanisme dalam otak yang menyebabkan bias, pola prilaku para trader dan investor,
-                        overconfidence bias, herding behaviour bias, dan kenapa trader memiliki loss aversion bias supaya
-                        kamu
-                        bisa menjadi trader crypto yang lebih konsisten, mengerti manajemen emosi dan resiko setiap
-                        melakukan
-                        trading.</p>
+                    <p class="mt-3" data-aos="fade-up">
+                        Di modul ini, kalian akan belajar bersama <strong>Belajar Satu Persen</strong> tentang strategi
+                        rahasia
+                        dalam mengatur psikologi dan emosi saat trading. Kalian akan memahami mekanisme dalam otak yang
+                        menyebabkan bias,
+                        pola perilaku para trader dan investor, overconfidence bias, herding behaviour bias, serta alasan di
+                        balik
+                        loss aversion bias. Dengan pemahaman ini, kalian bisa menjadi trader crypto yang lebih konsisten,
+                        serta menguasai manajemen emosi dan risiko dalam setiap transaksi trading.
+                    </p>
+
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-lg-2 position-relative ">
@@ -306,14 +329,17 @@
                     <h1 class="fw-semibold text-white" data-aos="fade-up">Crypto <span class="text-grad">Research</span>
                     </h1>
                     <p class="mt-3" data-aos="fade-up">
-
-                        Di modul ini kalian akan belajar bagaimana cara mencari project crypto atau altcoin yang akan naik
-                        sampai 10x dengan strategi screening altcoin proprietary akademi crypto menggunakan narrative
-                        research, technical research, dan juga fundamental research. <br><br>
-
-                        Disini kalian juga akan belajar bagaimana cara menggunakan tools seperti token terminal, glassnode
-                        secara efisien untuk mencari alpha di market dan mendapatkan profit yang konsisten.
+                        Di modul ini, kalian akan belajar bersama <strong>Belajar Satu Persen</strong> bagaimana cara
+                        menemukan
+                        project crypto atau altcoin yang berpotensi naik hingga 10x menggunakan strategi screening altcoin
+                        proprietary Akademi Crypto. Metode ini mencakup narrative research, technical research, dan
+                        fundamental research.
+                        <br><br>
+                        Kalian juga akan mempelajari cara menggunakan tools seperti Token Terminal dan Glassnode secara
+                        efisien
+                        untuk menemukan alpha di market dan mendapatkan profit yang konsisten.
                     </p>
+
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-lg-2 position-relative ">
@@ -329,11 +355,14 @@
                             class="text-grad">Transaction</span> in <br> Depth
                     </h1>
                     <p class="mt-3" data-aos="fade-up">
-
-                        Di modul ini kita akan mempelajari transaksi bitcoin secara dalam seperti cara kerja base58check
-                        encoding, Bitcoin scripting, Pay to Adress (P2A), Pay to public key (P2PK), Hash locked transaction
-                        (HLT), Check lock time verify (CLTV), dan praktek langsung dengan IDE.
+                        Di modul ini, kita akan mempelajari transaksi Bitcoin secara mendalam bersama <strong>Belajar Satu
+                            Persen</strong>.
+                        Materi mencakup cara kerja Base58Check encoding, Bitcoin scripting, Pay to Address (P2A), Pay to
+                        Public Key (P2PK),
+                        Hash Locked Transaction (HLT), Check Lock Time Verify (CLTV), serta praktik langsung menggunakan
+                        IDE.
                     </p>
+
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-lg-2 position-relative ">
@@ -349,17 +378,21 @@
                             class="text-grad">Programmable</span> <br>money
                     </h1>
                     <p class="mt-3" data-aos="fade-up">
-
-                        Di modul ini kalian akan belajar semua yang perlu kalian tau tentang ethereum atau biasa disebut
-                        “the world computer”. Mulai dari pengenalan ethereum, perbedaan Bitcoin dan Ethereum, dari awal
-                        sejarahnya, komponen dari ethereum, basic dari denominasi ethereum, wallet, dan networks, struktur
-                        transaksinya, transaction nonce, gas, & gas limit,<br><br>
-
-                        the Merge yaitu transisi dari PoW (Proof of Work) ke PoS (Proof of stake) yang di eksekusi 15
-                        september 2022 kemarin, integrasi beacon chain dan mainnet, basic dari EVM (Ethereum Virtual
-                        Machine) sampai cara staking ethereum untuk mendapatkan bunga.
-
+                        Di modul ini, kalian akan belajar semua yang perlu diketahui tentang Ethereum, atau yang sering
+                        disebut
+                        <strong>"The World Computer"</strong>, bersama <strong>Belajar Satu Persen</strong>.
+                        Materinya mencakup pengenalan Ethereum, perbedaan antara Bitcoin dan Ethereum, sejarah awalnya,
+                        komponen Ethereum, dasar denominasi Ethereum, wallet, networks, struktur transaksi, transaction
+                        nonce,
+                        gas, dan gas limit.
+                        <br><br>
+                        Kalian juga akan mempelajari <strong>The Merge</strong>, yaitu transisi dari PoW (Proof of Work) ke
+                        PoS (Proof of Stake)
+                        yang dieksekusi pada 15 September 2022, integrasi Beacon Chain dan Mainnet, dasar dari EVM (Ethereum
+                        Virtual Machine),
+                        hingga cara staking Ethereum untuk mendapatkan bunga.
                     </p>
+
                 </div>
             </div>
             <img class="shadow-right" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
@@ -377,11 +410,18 @@
                     <h1 class="fw-semibold text-white" data-aos="fade-up">Monero: <span
                             class="text-grad">Anonymity</span></h1>
                     <p class="mt-3" data-aos="fade-up">
-                        Di modul ini kalian akan belajar secara mendalam tentang salah satu cryptocurrency yang paling
-                        terkenal dengan anonimitasnya yaitu monero, dari ransom case di norwa tahun 2018, sejarah dari
-                        monero, backrground dari cryptocurrency privacy, transaksi monero secara detail, problem anonimitas
-                        yang ada, Monero Ring Attack (MRA), masalah dari Key reuse.
+                        Di modul ini, kalian akan belajar secara mendalam tentang salah satu cryptocurrency yang terkenal
+                        dengan anonimitasnya,
+                        yaitu <strong>Monero</strong>, bersama <strong>Belajar Satu Persen</strong>.
+                        Materinya mencakup kasus ransomware di Norwegia tahun 2018, sejarah Monero, latar belakang
+                        cryptocurrency privacy,
+                        serta detail transaksi Monero.
+                        <br><br>
+                        Kalian juga akan mempelajari berbagai tantangan dalam anonimitas, seperti Monero Ring Attack (MRA)
+                        dan
+                        masalah Key Reuse yang dapat memengaruhi privasi transaksi.
                     </p>
+
                 </div>
             </div>
             <img class="shadow-right" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
@@ -401,15 +441,20 @@
                     <h1 class="fw-semibold text-white" data-aos="fade-up">Crypto <span class="text-grad">Self
                             Custody</span></h1>
                     <p class="mt-3" data-aos="fade-up">
-                        Di modul ini kalian akan belajar salah satu hal paling penting di crypto yaitu gimana cara
-                        mengamankan coin kalian sendiri. Kita akan belajar dari cara menyimpan crypto dengan aman dengan
-                        memegang private key kalian sendiri (gak membiarkan coin kalian ada di CEX seperti binance).
+                        Di modul ini, kalian akan belajar salah satu aspek terpenting dalam crypto, yaitu bagaimana cara
+                        mengamankan aset kalian sendiri bersama <strong>Belajar Satu Persen</strong>.
+                        Kalian akan memahami cara menyimpan crypto dengan aman dengan memegang private key sendiri
+                        (tanpa membiarkan coin kalian tersimpan di CEX seperti Binance).
                     </p>
+
                     <p class="mt-3" data-aos="fade-up">
-                        Perbedaan hot dan cold wallet, cara setup cold wallet, cara reset dan recover cold wallet kalian,
-                        cara menghubungkan cold wallet kalian ke desktop app, testnet di ledger, cara menyambungkan cold
-                        wallet dengan metamask, dan cara transaksi dengan cold wallet kalian.
+                        Selain itu, kalian juga akan mempelajari perbedaan antara hot dan cold wallet, cara setup cold
+                        wallet,
+                        proses reset dan recovery, serta cara menghubungkan cold wallet ke desktop app.
+                        Materi juga mencakup penggunaan testnet di Ledger, cara menghubungkan cold wallet dengan Metamask,
+                        dan langkah-langkah melakukan transaksi dengan cold wallet kalian.
                     </p>
+
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-lg-2 position-relative ">
@@ -424,12 +469,22 @@
                     <h1 class="fw-semibold text-white" data-aos="fade-up">Cryptocurrency <span
                             class="text-grad">Security</span></h1>
                     <p class="mt-3" data-aos="fade-up">
-                        Di modul ini kita akan belajar mengenai keamanan crypto secara mendalam, dari Blockchain & security
-                        overview, komponen sistem dari blockchain, blockchain execution environment, masalah keamanan
-                        didalam blockchain, teknik kriptografi, blockchain memory pool (Mempool), miner extractable value
-                        (MEV), finality issues, solidity issues, permanent contract & upgradable contract, decentralized
-                        finance issues, user issues, dan best practices untuk security crypto.
+                        Di modul ini, kita akan belajar secara mendalam tentang keamanan crypto bersama
+                        <strong>Belajar Satu Persen</strong>. Materi mencakup <strong>Blockchain & Security
+                            Overview</strong>,
+                        komponen sistem dalam blockchain, blockchain execution environment, serta berbagai tantangan
+                        keamanan
+                        yang ada di dalamnya.
                     </p>
+
+                    <p class="mt-3" data-aos="fade-up">
+                        Kalian juga akan mempelajari teknik kriptografi, blockchain memory pool (Mempool), miner extractable
+                        value (MEV),
+                        finality issues, serta tantangan dalam Solidity, seperti permanent contract dan upgradable contract.
+                        Selain itu, kita akan membahas risiko dalam DeFi, masalah keamanan yang sering dihadapi pengguna,
+                        dan best practices untuk menjaga keamanan aset crypto kalian.
+                    </p>
+
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-lg-2 position-relative ">
@@ -444,11 +499,21 @@
                     <h1 class="fw-semibold" data-aos="fade-up"><span class=" text-grad">Smart Contract</span> <span
                             class="text-white">Security</span></h1>
                     <p class="mt-3" data-aos="fade-up">
-                        Di modul ini kalian akan belajar secara advanced tentang smart contract security, modul ini dibuat
-                        untuk kalian yang mau bekerja dibidang auditor smart contract. Kalian akan belajar dari cara menjadi
-                        auditor security dari pengalaman dan resikonya, proses auditing security, tools dan techniques yang
-                        digunakan, sampai praktik cara mencari angka tersembunyi dari sebuah smart contract.
+                        Di modul ini, kalian akan belajar secara <strong>advanced</strong> tentang <strong>smart contract
+                            security</strong>
+                        bersama <strong>Belajar Satu Persen</strong>. Modul ini dirancang khusus bagi kalian yang ingin
+                        bekerja
+                        sebagai auditor smart contract.
                     </p>
+
+                    <p class="mt-3" data-aos="fade-up">
+                        Kalian akan mempelajari bagaimana menjadi auditor security, memahami tantangan serta risikonya,
+                        dan mendalami proses auditing smart contract. Selain itu, kalian akan mengenal berbagai tools dan
+                        teknik
+                        yang digunakan dalam auditing serta berlatih mencari angka tersembunyi di dalam sebuah smart
+                        contract.
+                    </p>
+
                 </div>
             </div>
             <img class="shadow-right" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
@@ -466,16 +531,22 @@
                             class="text-grad">Interoperability</span>
                     </h1>
                     <p class="mt-3" data-aos="fade-up">
-                        Di modul ini kalian akan belajar tentang konsep dari blockchain interoperability yaitu sebuah ide
-                        untuk mengaktifkan jaringan blockchain yang berbeda untuk berinteraksi, berintegrasi, berkomunikasi
-                        secara mulus untuk memungkinkan transfer data antar chain.
+                        Di modul ini, kalian akan belajar tentang <strong>blockchain interoperability</strong>
+                        bersama <strong>Belajar Satu Persen</strong>—sebuah konsep yang memungkinkan berbagai jaringan
+                        blockchain
+                        untuk berinteraksi, berintegrasi, dan berkomunikasi secara mulus guna mendukung transfer data antar
+                        chain.
                     </p>
+
                     <p class="mt-3" data-aos="fade-up">
-                        Kalian akan belajar secara lengkap dari landscape blockchain interoperability, blockchain dbms,
-                        multi blockchain environment, blockchain joint, blockchain extension (sidechain), desentralized
-                        exchange, state pinning, consensus, communication & standardisation, bridge, benefit & drawbacks,
-                        dan studi kasus blockchain in SCM approach.
+                        Materi yang akan dipelajari mencakup landscape blockchain interoperability, blockchain DBMS,
+                        multi-blockchain environment, blockchain joint, serta blockchain extension seperti sidechain.
+                        Selain itu, kalian juga akan memahami konsep decentralized exchange, state pinning, konsensus,
+                        komunikasi & standarisasi, bridge, serta kelebihan dan kekurangannya.
+                        Studi kasus tentang penerapan blockchain dalam <strong>Supply Chain Management (SCM)</strong> juga
+                        akan dibahas.
                     </p>
+
                 </div>
             </div>
             <img class="shadow-right" src="https://akademicrypto.com/wp-content/uploads/2024/04/glow-2-a.svg"
@@ -493,17 +564,27 @@
                             class="text-white">Development</span>
                     </h1>
                     <p class="mt-3" data-aos="fade-up">
-                        Di modul ini kalian akan belajar tentang konsep dari blockchain interoperability yaitu sebuah ide
-                        untuk mengaktifkan jaringan blockchain yang berbeda untuk berinteraksi, berintegrasi, berkomunikasi
-                        secara mulus untuk memungkinkan transfer data antar chain.di modul ini kalian akan belajar skill
-                        programming paling mahal di dunia yaitu belajar coding di internet masa depan dengan teknologi smart
-                        contract atau biasa disebut dengan web3. ini adalah materi yang kalian gaakan temuin di universitas
-                        manapun di Indonesia.
+                        Di modul ini, kalian akan belajar tentang <strong>blockchain interoperability</strong>,
+                        yaitu konsep yang memungkinkan berbagai jaringan blockchain untuk berinteraksi, berintegrasi,
+                        dan berkomunikasi secara mulus guna mendukung transfer data antar chain.
                     </p>
+
                     <p class="mt-3" data-aos="fade-up">
-                        disini kalian akan di bimbing oleh praktisi langsung step by step dari bahasa pemrograman solidity,
-                        struktur smart contract, Remix interface, Mnemonic phrases, sampai deployment smart contract.
+                        Selain itu, kalian juga akan mempelajari <strong>skill programming paling mahal di
+                            dunia</strong>—belajar coding
+                        di internet masa depan dengan teknologi <strong>smart contract</strong>, atau yang lebih dikenal
+                        sebagai <strong>Web3</strong>.
+                        Ini adalah materi eksklusif yang tidak akan kalian temui di universitas mana pun di Indonesia,
+                        dan hanya tersedia di <strong>Belajar Satu Persen</strong>.
                     </p>
+
+                    <p class="mt-3" data-aos="fade-up">
+                        Kalian akan dibimbing langsung oleh praktisi berpengalaman, belajar <strong>step by step</strong>
+                        dari dasar-dasar bahasa pemrograman <strong>Solidity</strong>, struktur smart contract,
+                        penggunaan <strong>Remix Interface</strong>, pemahaman <strong>Mnemonic Phrases</strong>,
+                        hingga <strong>deployment smart contract</strong>.
+                    </p>
+
                 </div>
             </div>
 
@@ -522,11 +603,20 @@
                     <h1 class="fw-semibold  text-white" data-aos="fade-up">Sales <span class="text-grad">Mastery</span>
                     </h1>
 
-                    <p class="mt-3" data-aos="fade-up">Sales Mastery adalah bonus modul tambahan di Akademi Crypto,
-                        disini kalian akan mendapatkan ilmu
-                        fundamental dari jualan supaya kalian bisa jual apapun, kapanpun, ke siapapun, dimanapun. Kalian
-                        akan belajar secara detail dari psikologi jualan, mentalitas seorang sales, decision making flow,
-                        seni dari storytelling, seni persuasi orang, funnel sales, sampai objection handling client.</p>
+                    <p class="mt-3" data-aos="fade-up">
+                        <strong>Sales Mastery</strong> adalah bonus modul tambahan di <strong>Akademi Crypto</strong>
+                        yang tersedia eksklusif di <strong>Belajar Satu Persen</strong>.
+                        Di sini, kalian akan mendapatkan ilmu fundamental tentang seni menjual,
+                        sehingga kalian bisa menjual apa pun, kapan pun, kepada siapa pun, dan di mana pun.
+                    </p>
+
+                    <p class="mt-3" data-aos="fade-up">
+                        Kalian akan belajar secara mendalam tentang <strong>psikologi jualan</strong>,
+                        <strong>mentalitas seorang sales</strong>, <strong>decision-making flow</strong>,
+                        <strong>seni storytelling</strong>, <strong>teknik persuasi</strong>, <strong>funnel sales</strong>,
+                        hingga <strong>strategi menangani keberatan (objection handling)</strong> dari calon klien.
+                    </p>
+
 
                 </div>
             </div>
@@ -563,13 +653,11 @@
 
 
 
-            <p class="text-white mt-5 mx-auto" style="max-width: 600px" data-aos="fade-up">5 Tahun dari sekarang kalian
-                akan berharap kalian
-                mulai
-                berinvestasi
-                menggunakan AC
-                Research. Kalian tidak perlu
-                pusing screening jutaan coin, tinggal nyontek riset internal dan nikmati hasilnya.</p>
+            <p class="text-white mt-5 mx-auto" style="max-width: 600px" data-aos="fade-up">
+                Lima tahun dari sekarang, kalian akan bersyukur telah memulai investasi dengan <strong>AC Research</strong>.
+                Tidak perlu repot menyaring jutaan koin—cukup ikuti riset internal kami dan nikmati hasilnya.
+            </p>
+
         </div>
 
     </div>
