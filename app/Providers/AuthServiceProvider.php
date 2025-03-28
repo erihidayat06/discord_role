@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('admin-khusus', function (User $user) {
-            return $user->email === 'erihidayat17@gmail.com';
+            return $user->email === 'erihidayat17@gmail.com' || $user->email === 'erihidayat549@gmail.com';
         });
     }
 }
