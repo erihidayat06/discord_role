@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Keanggotaan;
 use App\Models\Order;
 use App\Models\Period;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class KeanggotaanController extends Controller
@@ -112,5 +113,14 @@ class KeanggotaanController extends Controller
     {
         $orders = Order::latest()->get();
         return view('admin.keanggotaan.orderan', ['orders' => $orders]);
+    }
+
+    public function admin(Request $request, User $user)
+    {
+        $user->is_admin = $request->admin;
+
+        $user->update();
+
+        return back()->with('success', 'admin di ganti');
     }
 }

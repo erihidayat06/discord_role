@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\ResearchController;
 use App\Http\Controllers\Admin\LanggananController;
 use App\Http\Controllers\Admin\KeanggotaanController;
+use App\Models\Keanggotaan;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /*
@@ -122,6 +123,7 @@ Route::middleware(['is_admin', 'auth'])->group(function () {
 
     Route::get('/admin/pixel', [PixelController::class, 'index']);
     Route::put('/admin/pixel/{id}', [PixelController::class, 'update'])->name('pixel.update');
+    Route::put('/admin/update-admin/{user:id}', [KeanggotaanController::class, 'admin'])->name('pixel.update');
 });
 
 Route::post('/logout', [DiscordController::class, 'logout'])->name('logout')->middleware('auth');

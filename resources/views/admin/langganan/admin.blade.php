@@ -13,6 +13,9 @@
                                 <th>#</th>
                                 <th>Discord ID</th>
                                 <th>Nama</th>
+                                @can('admin-khusus')
+                                    <th>Ganti Admin</th>
+                                @endcan
                                 <th>Email</th>
 
 
@@ -24,6 +27,18 @@
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $user->discord_id }}</td>
                                     <td>{{ $user->name }}</td>
+                                    @can('admin-khusus')
+                                        <td>
+                                            <form action="/admin/update-admin/{{ $user->id }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="admin" value="0">
+
+                                                <button type="submit"
+                                                    onclick="return confirm('Apakah yakin akan diubah?')">ganti</button>
+                                            </form>
+                                        </td>
+                                    @endcan
                                     <td>{{ $user->email }}</td>
 
 
