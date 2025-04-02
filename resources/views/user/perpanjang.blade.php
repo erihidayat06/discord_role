@@ -175,8 +175,7 @@
     </div>
 
 
-    <!-- Tambahkan Midtrans Script -->
-    <script src="{{ config('midtrans.snap_url') }}" data-client-key="{{ config('midtrans.client_key') }}"></script>
+
 
 
     <script>
@@ -315,4 +314,7 @@
             }
         }
     </script>
+
+    <!-- Tambahkan Midtrans Script -->
+    <script src="{{ config('midtrans.snap_url') }}" data-client-key="{{ config('midtrans.client_key') }}"></script>
 @endsection
