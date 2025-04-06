@@ -3,50 +3,120 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="container">
         <h2 class="mb-4">Daftar Langganan Pengguna</h2>
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                    type="button" role="tab" aria-controls="pills-home" aria-selected="true">User Langganan</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Datar user</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
+                tabindex="0">
 
-        <div class="card">
-            <div class="card-body mt-3">
-                <div class="table-responsive">
-                    <table class="table table-striped datatable">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>#</th>
-                                <th>Discord ID</th>
-                                <th>Nama</th>
-                                <th>Email</th>
-                                <th>Expired (Tanggal)</th>
-                                <th>Discord Active</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($users as $index => $user)
-                                <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $user->discord_id }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>
-                                        <input type="date" class="expired-input form-control"
-                                            data-user-id="{{ $user->id }}"
-                                            value="{{ \Carbon\Carbon::parse($user->expired)->format('Y-m-d') }}">
-                                    </td>
-                                    <td>
-                                        <span
-                                            class="badge discord-active-badge {{ $user->discord_active ? 'bg-success' : 'bg-danger' }}">
-                                            {{ $user->discord_active ? 'Aktif' : 'Tidak Aktif' }}
-                                        </span>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="6" class="text-center">Tidak ada data pengguna</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                <div class="card">
+                    <div class="card-body mt-3">
+                        <div class="table-responsive">
+                            <table class="table table-striped datatable">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Discord ID</th>
+                                        <th>Nama</th>
+                                        <th>Email</th>
+                                        <th>Expired (Tanggal)</th>
+                                        <th>Discord Active</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($users as $index => $user)
+                                        @if ($user->expired != null && $user->expired > now())
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $user->discord_id }}</td>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->email }}</td>
+                                                <td>
+                                                    <input type="date" class="expired-input form-control"
+                                                        data-user-id="{{ $user->id }}"
+                                                        value="{{ \Carbon\Carbon::parse($user->expired)->format('Y-m-d') }}">
+                                                </td>
+                                                <td>
+                                                    <span
+                                                        class="badge discord-active-badge {{ $user->discord_active ? 'bg-success' : 'bg-danger' }}">
+                                                        {{ $user->discord_active ? 'Aktif' : 'Tidak Aktif' }}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @empty
+                                        <tr>
+                                            <td colspan="6" class="text-center">Tidak ada data pengguna</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+                tabindex="0">
+
+                <div class="card">
+                    <div class="card-body mt-3">
+                        <div class="table-responsive">
+                            <table class="table table-striped datatable">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Discord ID</th>
+                                        <th>Nama</th>
+                                        <th>Email</th>
+                                        <th>Expired (Tanggal)</th>
+                                        <th>Discord Active</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($users as $index => $user)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $user->discord_id }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>
+                                                <input type="date" class="expired-input form-control"
+                                                    data-user-id="{{ $user->id }}"
+                                                    value="{{ \Carbon\Carbon::parse($user->expired)->format('Y-m-d') }}">
+                                            </td>
+                                            <td>
+                                                <span
+                                                    class="badge discord-active-badge {{ $user->discord_active ? 'bg-success' : 'bg-danger' }}">
+                                                    {{ $user->discord_active ? 'Aktif' : 'Tidak Aktif' }}
+                                                </span>
+                                            </td>
+                                        </tr>
+
+                                    @empty
+                                        <tr>
+                                            <td colspan="6" class="text-center">Tidak ada data pengguna</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
+
+
     </div>
 
     <style>
