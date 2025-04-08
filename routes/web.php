@@ -144,6 +144,7 @@ Route::middleware(['auth', 'admin.super'])->group(function () {
 
     Route::get('/admin/website/user', [AdminController::class, 'user']);
     Route::get('/admin/website/user-admin', [AdminController::class, 'admin']);
+    Route::patch('/admin/users/{id}/toggle-admin', [AdminController::class, 'toggleAdmin'])->name('users.toggleAdmin');
 });
 
 
@@ -164,8 +165,6 @@ Route::middleware(['auth',  'check.subscription', 'verified'])->group(
 
         Route::get('/orderan/user', [OrderController::class, 'orderUser']);
         Route::get('/perpanjang/user', [OrderController::class, 'perpanjangUser']);
-
-        Route::patch('/admin/users/{id}/toggle-admin', [AdminController::class, 'toggleAdmin'])->name('users.toggleAdmin');
     }
 );
 
