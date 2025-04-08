@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container d-flex justify-content-between align-items-center">
         <a class="navbar-brand" href="/">
-            <img src="{{ asset(profil_web()->logo) }}" alt="Logo" style="height: 50px;">
+            <img src="{{ asset(profil_web()->logo) }}" alt="Logo" style="height: 30px;">
         </a>
 
         <style>
