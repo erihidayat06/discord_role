@@ -48,7 +48,7 @@ return [
 
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'host' =>  'smtp.gmail.com',
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME'),
@@ -56,7 +56,6 @@ return [
             'timeout' => null,
             'auth_mode' => null,
 
-            // Optional: Untuk bypass SSL verification (hanya jika error SSL terjadi)
             'stream' => [
                 'ssl' => [
                     'allow_self_signed' => true,
@@ -65,6 +64,7 @@ return [
                 ],
             ],
         ],
+
 
         'ses' => [
             'transport' => 'ses',
