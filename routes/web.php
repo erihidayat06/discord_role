@@ -227,7 +227,7 @@ Route::middleware(['auth'])->group(
 
 Route::get('/test-email', function () {
     Mail::raw('Ini adalah email test dari VPS!', function ($message) {
-        $message->to('erihidayat18@gmail.com')
+        $message->to('erihidayat549@gmail.com')
             ->subject('Test Email dari VPS');
     });
 
