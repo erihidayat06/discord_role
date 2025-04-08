@@ -16,11 +16,6 @@ class SuperAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Cek domain
-        if ($request->getHost() !== 'belajarsatupersen.test') {
-            return redirect('/'); // atau bisa juga abort(403);
-        }
-
         // Cek apakah pengguna sudah login dan is_admin = 3
         if (Auth::check() && Auth::user()->is_admin === "3") {
             return $next($request);
