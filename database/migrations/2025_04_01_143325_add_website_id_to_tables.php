@@ -22,10 +22,17 @@ return new class extends Migration {
             'user_roles'
         ];
 
-        foreach ($tables as $table) {
-            Schema::table($table, function (Blueprint $table) {
-                $table->unsignedBigInteger('website_id')->after('id')->nullable();
-                $table->foreign('website_id')->references('id')->on('websites')->onDelete('cascade');
+        foreach ($tables as $tableName) {
+            Schema::table($tableName, function (Blueprint $table) use ($tableName) {
+                $table->unsignedBigInteger('website_id')
+                    ->after('id')
+                    ->default(1) // Set default value to 1
+                    ->nullable(); // Optional: if you want to allow nulls
+
+                $table->foreign('website_id')
+                    ->references('id')
+                    ->on('websites')
+                    ->onDelete('cascade');
             });
         }
     }
@@ -47,10 +54,10 @@ return new class extends Migration {
             'user_roles'
         ];
 
-        foreach ($tables as $table) {
-            Schema::table($table, function (Blueprint $table) {
-                $table->dropForeign(["website_id"]);
-                $table->dropColumn("website_id");
+        foreach ($tables as $tableName) {
+            Schema::table($tableName, function (Blueprint $table) {
+                $table->dropForeign(['website_id']);
+                $table->dropColumn('website_id');
             });
         }
     }
