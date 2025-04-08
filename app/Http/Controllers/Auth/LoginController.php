@@ -30,21 +30,21 @@ class LoginController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
-            'cf-turnstile-response' => 'required',
         ]);
+
 
         // Verifikasi CAPTCHA dengan Cloudflare
-        $response = Http::asForm()->post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
-            'secret' => env('CLOUDFLARE_SECRET_KEY'),
-            'response' => $request->input('cf-turnstile-response'),
-            'remoteip' => $request->ip(),
-        ]);
+        // $response = Http::asForm()->post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
+        //     'secret' => env('CLOUDFLARE_SECRET_KEY'),
+        //     'response' => $request->input('cf-turnstile-response'),
+        //     'remoteip' => $request->ip(),
+        // ]);
 
-        $captchaData = $response->json();
+        // $captchaData = $response->json();
 
-        if (!$captchaData['success']) {
-            return back()->withErrors(['cf-turnstile-response' => 'Verifikasi CAPTCHA gagal.']);
-        }
+        // if (!$captchaData['success']) {
+        //     return back()->withErrors(['cf-turnstile-response' => 'Verifikasi CAPTCHA gagal.']);
+        // }
 
         // Lanjutkan proses login
         $credentials = $request->only('email', 'password');
