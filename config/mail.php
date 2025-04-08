@@ -54,11 +54,18 @@ return [
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
+            'auth_mode' => null,
 
-
-            'auth_mode'  => null,
-            'verify_peer'       => false,
+            // Optional: Untuk bypass SSL verification (hanya jika error SSL terjadi)
+            'stream' => [
+                'ssl' => [
+                    'allow_self_signed' => true,
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                ],
+            ],
         ],
+
         'ses' => [
             'transport' => 'ses',
         ],
