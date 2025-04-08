@@ -11,7 +11,7 @@ return new class extends Migration {
         // Pastikan ID 1 tersedia di tabel `websites` (jika belum ada)
         DB::table('websites')->updateOrInsert(
             ['id' => 1],
-            ['domain' => 'default.example.com', 'user_id' => 1, 'created_at' => now(), 'updated_at' => now()]
+            ['domain' => 'default.example.com', 'user_id' => 6, 'created_at' => now(), 'updated_at' => now()]
         );
 
         $tables = [
