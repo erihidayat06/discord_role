@@ -4,10 +4,10 @@
         <a href='{{ isset($prevModul) || isset($nextModul) ? "/kursus/$kelas->slug" : '/kursus' }}'><i
                 class="bi bi-arrow-left-circle-fill text-white"></i></a>
         <a href="/kursus" class="logo d-flex align-items-center ms-2 d-none d-lg-flex">
-            <img src="/assets/img/logo-main.png" alt="">
+            <img src="{{ asset(profil_web()->logo) }}" alt="">
         </a>
         <a href="/kursus" class="logo d-flex align-items-center ms-2 d-block d-lg-none">
-            <img src="/assets/img/logo.png" alt="">
+            <img src="{{ asset(profil_web()->logo_title) }}" alt="">
         </a>
 
         {{-- <i class="bi bi-list toggle-sidebar-btn text-white  d-none d-lg-flex"></i> --}}

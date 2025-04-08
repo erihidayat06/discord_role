@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Midtrans -->
-    <script src="{{ config('midtrans.snap_url') }}" data-client-key="{{ config('midtrans.client_key') }}"></script>
+    <script src="{{ config('midtrans.snap_url') }}" data-client-key="{{ profil_web()->midtrans_client_key }}"></script>
 
 </head>
 

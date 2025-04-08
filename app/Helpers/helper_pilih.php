@@ -63,3 +63,12 @@ if (!function_exists('pixel')) {
         return $pixel;
     }
 }
+
+
+
+if (!function_exists('profil_web')) {
+    function profil_web()
+    {
+        return \App\Models\ProfilWeb::first();
+    }
+}

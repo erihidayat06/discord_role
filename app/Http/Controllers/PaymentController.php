@@ -31,7 +31,7 @@ class PaymentController extends Controller
 
     public function process(Request $request)
     {
-        Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+        Config::$serverKey = profil_web()->midtrans_server_key;
         Config::$isProduction = config('midtrans.is_production');
         Config::$isSanitized = true;
         Config::$is3ds = true;
@@ -253,7 +253,7 @@ class PaymentController extends Controller
             }
 
             // Konfigurasi Midtrans
-            Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+            Config::$serverKey = profil_web()->midtrans_server_key;
             Config::$isProduction = config('midtrans.is_production');
             Config::$isSanitized = true;
             Config::$is3ds = true;

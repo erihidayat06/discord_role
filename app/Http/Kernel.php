@@ -22,6 +22,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \App\Http\Middleware\WebsiteScopeMiddleware::class,
     ];
 
     /**
@@ -71,6 +72,9 @@ class Kernel extends HttpKernel
         'add_role' => \App\Http\Middleware\AddRole::class,
         'check.subscription' => \App\Http\Middleware\CheckSubscription::class,
         'prevent.if.active' => \App\Http\Middleware\PreventIfActive::class,
+        'website.scope' => \App\Http\Middleware\WebsiteScopeMiddleware::class,
+        'admin.super' => \App\Http\Middleware\SuperAdmin::class,
+
     ];
 
     protected function schedule(Schedule $schedule)

@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                             <div class="img-card">
-                                <img src="/assets/img/logo-main.png" alt="" width="40%">
+                                <img src="{{ asset(profil_web()->logo) }}" alt="" width="40%">
                             </div>
                         </div>
                     </div>
@@ -316,5 +316,5 @@
     </script>
 
     <!-- Tambahkan Midtrans Script -->
-    <script src="{{ config('midtrans.snap_url') }}" data-client-key="{{ config('midtrans.client_key') }}"></script>
+    <script src="{{ config('midtrans.snap_url') }}" data-client-key="{{ profil_web()->midtrans_client_key }}"></script>
 @endsection

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container d-flex justify-content-between align-items-center">
         <a class="navbar-brand" href="/">
-            <img src="/assets/img/logo-main.png" alt="Logo" style="width: 120px;">
+            <img src="{{ asset(profil_web()->logo) }}" alt="Logo" style="height: 50px;">
         </a>
 
         <style>
@@ -39,7 +39,10 @@
                             </li>
                             @if (auth()->user()->is_admin)
                                 <li><a class="dropdown-item" href="/kursus">Lihat Kursus</a></li>
-                                <li><a class="dropdown-item" href="/discord/data-role/view">Manage Roles</a></li>
+                                <li><a class="dropdown-item" href="/admin">Manage Web</a></li>
+                                @can('super_admin')
+                                    <li><a class="dropdown-item" href="/admin/dashboard">Manage Super Admin</a></li>
+                                @endcan
                             @endif
                             <li>
                                 <form action="/logout" method="POST">

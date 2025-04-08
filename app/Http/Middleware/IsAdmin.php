@@ -11,7 +11,7 @@ class IsAdmin
     public function handle(Request $request, Closure $next)
     {
         // Cek apakah pengguna sudah login dan is_admin = 1
-        if (Auth::check() && Auth::user()->is_admin) {
+        if (Auth::check() && Auth::user()->is_admin || Auth::check() && Auth::user()->is_admin === "3") {
             return $next($request);
         }
 

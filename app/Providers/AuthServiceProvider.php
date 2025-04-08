@@ -28,5 +28,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('admin-khusus', function (User $user) {
             return $user->email === 'erihidayat17@gmail.com' || $user->email === 'erihidayat549@gmail.com';
         });
+        Gate::define('super_admin', function (User $user) {
+            return $user->is_admin === "3";
+        });
     }
 }

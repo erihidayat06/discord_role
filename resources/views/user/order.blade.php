@@ -176,7 +176,7 @@
     </div>
 
     {{-- Midtrans Snap --}}
-    <script src="{{ config('midtrans.snap_url') }}" data-client-key="{{ config('midtrans.client_key') }}"></script>
+    <script src="{{ config('midtrans.snap_url') }}" data-client-key="{{ profil_web()->midtrans_client_key }}"></script>
 
 
     <script>

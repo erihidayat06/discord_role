@@ -3,6 +3,7 @@
 use Midtrans\Config;
 use App\Models\Modul;
 use Midtrans\Transaction;
+use App\Models\Keanggotaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -14,10 +15,12 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\KursusController;
 use App\Http\Controllers\AkademiController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProfilWebController;
 use App\Http\Controllers\Admin\GuildController;
 use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\ModulController;
 use App\Http\Controllers\Admin\PixelController;
+use App\Http\Controllers\Super\AdminController;
 use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\RedirectController;
 use App\Http\Controllers\Admin\GetUsersController;
@@ -25,8 +28,10 @@ use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\ResearchController;
 use App\Http\Controllers\Admin\LanggananController;
 use App\Http\Controllers\Admin\KeanggotaanController;
-use App\Models\Keanggotaan;
+use App\Http\Controllers\Super\WebsiteController;
+use App\Models\Website;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +78,7 @@ Route::middleware(['auth'])->group(
 );
 
 Route::middleware(['is_admin', 'auth'])->group(function () {
+    Route::get('/admin', [DiscordController::class, 'roleUser']);
     Route::get('/discord/data-role/view', [DiscordController::class, 'roleUser']);
     Route::get('/discord/add-role/view', [DiscordController::class, 'index']);
     Route::get('/discord/edit/view/{userRole}', [DiscordController::class, 'editRoleUser'])
@@ -124,13 +130,28 @@ Route::middleware(['is_admin', 'auth'])->group(function () {
     Route::get('/admin/pixel', [PixelController::class, 'index']);
     Route::put('/admin/pixel/{id}', [PixelController::class, 'update'])->name('pixel.update');
     Route::put('/admin/update-admin/{user:id}', [KeanggotaanController::class, 'admin'])->name('pixel.update');
+
+    Route::get('/admin', [ProfilWebController::class, 'index'])->name('admin.profil-web');
+    Route::post('/admin/profil-web/save', [ProfilWebController::class, 'update'])->name('admin.profil-web.save');
 });
+
+// Super Admin
+Route::middleware(['auth', 'admin.super'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index']);
+
+    // Webiste
+    Route::resource('/admin/websites', WebsiteController::class);
+
+    Route::get('/admin/website/user', [AdminController::class, 'user']);
+    Route::get('/admin/website/user-admin', [AdminController::class, 'admin']);
+});
+
 
 Route::post('/logout', [DiscordController::class, 'logout'])->name('logout')->middleware('auth');
 
 
 
-Route::middleware(['auth',  'check.subscription'])->group(
+Route::middleware(['auth',  'check.subscription', 'verified'])->group(
     function () {
         Route::get('/kursus', [KursusController::class, 'index']);
         Route::get('/kursus/{kelas:slug}', [KursusController::class, 'show']);
@@ -143,6 +164,8 @@ Route::middleware(['auth',  'check.subscription'])->group(
 
         Route::get('/orderan/user', [OrderController::class, 'orderUser']);
         Route::get('/perpanjang/user', [OrderController::class, 'perpanjangUser']);
+
+        Route::patch('/admin/users/{id}/toggle-admin', [AdminController::class, 'toggleAdmin'])->name('users.toggleAdmin');
     }
 );
 
@@ -153,7 +176,7 @@ Route::middleware([])->group(function () {
     Route::get('/auth/discord', [DiscordController::class, 'redirect'])->name('discord.login');
 });
 
-Auth::routes();
+
 
 Route::get('/sitemap.xml', function () {
     $xml = '<?xml version="1.0" encoding="UTF-8"?>
@@ -182,4 +205,25 @@ Route::get('/sitemap.xml', function () {
 });
 
 
+Route::middleware(['auth'])->group(
+    function () {
+
+        // Verifikasi emain
+        Route::get('/email/verify', function () {
+            return view('auth.verify'); // tampilan verifikasi
+        })->middleware('auth')->name('verification.notice');
+
+        Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+            $request->fulfill(); // mark email as verified
+            return redirect('/kursus'); // ganti dengan halaman setelah berhasil
+        })->middleware(['auth', 'signed'])->name('verification.verify');
+
+        Route::post('/email/verification-notification', function (Request $request) {
+            $request->user()->sendEmailVerificationNotification();
+            return back()->with('message', 'Link verifikasi telah dikirim!');
+        })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+    }
+);
+
+Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

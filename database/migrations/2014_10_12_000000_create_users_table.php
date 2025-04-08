@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name')->nullable();  // Nama pengguna Discord
             $table->string('avatar')->nullable();  // URL avatar pengguna Discord
             $table->string('email')->nullable();  // Email pengguna Discord (jika tersedia)
-            $table->boolean('is_admin')->default(false);  // Nama pengguna Discord
+            $table->string('is_admin')->default('1');  // Nama pengguna Discord
             $table->string('token')->nullable();  // Token akses Discord (jika diperlukan)
             $table->timestamps();
         });

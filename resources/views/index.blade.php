@@ -185,7 +185,8 @@
             <div class="col py-1 py-lg-5 order-1 order-lg-2">
                 <h3 class="ps-5" data-aos="fade-up">
                     <span class="text-grad fw-bold">
-                        Dengan akses ke AC Research melalui <strong>Belajar Satu Persen</strong>, kalian bisa mendapatkan
+                        Dengan akses ke AC Research melalui <strong>{{ profil_web()->nama_website }}</strong>, kalian bisa
+                        mendapatkan
                         coin picks setiap bulan dan analisis on-chain yang mendalam setiap hari.
                     </span>
                     <span class="text-white">
@@ -201,7 +202,8 @@
             <div class="col ">
                 <h3 class="pe-5 ps-5" data-aos="fade-up">
                     <span class="text-grad fw-bold">
-                        Kalian akan belajar dan berkembang bersama <strong>Belajar Satu Persen</strong> melalui event
+                        Kalian akan belajar dan berkembang bersama <strong>{{ profil_web()->nama_website }}</strong> melalui
+                        event
                         eksklusif
                         dengan komunitas yang memiliki tujuan yang sama—membangun kekayaan dari crypto.
                     </span>
@@ -249,7 +251,8 @@
                     <h1 class="fw-semibold text-white" data-aos="fade-up">Crypto <span class="text-grad">Investing</span>
                     </h1>
                     <p class="mt-3" data-aos="fade-up">
-                        Di modul ini, kalian akan belajar langsung bersama <strong>Belajar Satu Persen</strong>, dipandu
+                        Di modul ini, kalian akan belajar langsung bersama
+                        <strong>{{ profil_web()->nama_website }}</strong>, dipandu
                         step by step dari
                         mindset berinvestasi di crypto, memahami siklus pasar untuk mengetahui kapan masuk dan keluar,
                         menganalisis berbagai jenis cryptocurrency, memahami attention economy dalam crypto, hingga cara
@@ -282,7 +285,8 @@
                     </h1>
                     <p class="mt-3" data-aos="fade-up">
                         Di modul ini, kalian akan belajar dari nol hingga mahir dalam trading crypto bersama
-                        <strong>Belajar Satu Persen</strong>. Materinya mencakup pengenalan trading crypto, Dow Theory,
+                        <strong>{{ profil_web()->nama_website }}</strong>. Materinya mencakup pengenalan trading crypto, Dow
+                        Theory,
                         dasar analisis teknikal, cara mengukur setup sebuah trade, dasar kontrak futures, manajemen risiko,
                         strategi masuk posisi dan mengukur risikonya, memahami perilaku market, pattern recognition,
                         psikologi dalam trading,
@@ -305,7 +309,8 @@
                     <h1 class="fw-semibold text-white" data-aos="fade-up">Crypto <span class="text-grad">Trading <br>
                             Psychology</span></h1>
                     <p class="mt-3" data-aos="fade-up">
-                        Di modul ini, kalian akan belajar bersama <strong>Belajar Satu Persen</strong> tentang strategi
+                        Di modul ini, kalian akan belajar bersama <strong>{{ profil_web()->nama_website }}</strong> tentang
+                        strategi
                         rahasia
                         dalam mengatur psikologi dan emosi saat trading. Kalian akan memahami mekanisme dalam otak yang
                         menyebabkan bias,
@@ -329,7 +334,8 @@
                     <h1 class="fw-semibold text-white" data-aos="fade-up">Crypto <span class="text-grad">Research</span>
                     </h1>
                     <p class="mt-3" data-aos="fade-up">
-                        Di modul ini, kalian akan belajar bersama <strong>Belajar Satu Persen</strong> bagaimana cara
+                        Di modul ini, kalian akan belajar bersama <strong>{{ profil_web()->nama_website }}</strong>
+                        bagaimana cara
                         menemukan
                         project crypto atau altcoin yang berpotensi naik hingga 10x menggunakan strategi screening altcoin
                         proprietary Akademi Crypto. Metode ini mencakup narrative research, technical research, dan
@@ -380,7 +386,7 @@
                     <p class="mt-3" data-aos="fade-up">
                         Di modul ini, kalian akan belajar semua yang perlu diketahui tentang Ethereum, atau yang sering
                         disebut
-                        <strong>"The World Computer"</strong>, bersama <strong>Belajar Satu Persen</strong>.
+                        <strong>"The World Computer"</strong>, bersama <strong>{{ profil_web()->nama_website }}</strong>.
                         Materinya mencakup pengenalan Ethereum, perbedaan antara Bitcoin dan Ethereum, sejarah awalnya,
                         komponen Ethereum, dasar denominasi Ethereum, wallet, networks, struktur transaksi, transaction
                         nonce,
@@ -412,7 +418,7 @@
                     <p class="mt-3" data-aos="fade-up">
                         Di modul ini, kalian akan belajar secara mendalam tentang salah satu cryptocurrency yang terkenal
                         dengan anonimitasnya,
-                        yaitu <strong>Monero</strong>, bersama <strong>Belajar Satu Persen</strong>.
+                        yaitu <strong>Monero</strong>, bersama <strong>{{ profil_web()->nama_website }}</strong>.
                         Materinya mencakup kasus ransomware di Norwegia tahun 2018, sejarah Monero, latar belakang
                         cryptocurrency privacy,
                         serta detail transaksi Monero.
@@ -442,7 +448,7 @@
                             Custody</span></h1>
                     <p class="mt-3" data-aos="fade-up">
                         Di modul ini, kalian akan belajar salah satu aspek terpenting dalam crypto, yaitu bagaimana cara
-                        mengamankan aset kalian sendiri bersama <strong>Belajar Satu Persen</strong>.
+                        mengamankan aset kalian sendiri bersama <strong>{{ profil_web()->nama_website }}</strong>.
                         Kalian akan memahami cara menyimpan crypto dengan aman dengan memegang private key sendiri
                         (tanpa membiarkan coin kalian tersimpan di CEX seperti Binance).
                     </p>
@@ -470,7 +476,7 @@
                             class="text-grad">Security</span></h1>
                     <p class="mt-3" data-aos="fade-up">
                         Di modul ini, kita akan belajar secara mendalam tentang keamanan crypto bersama
-                        <strong>Belajar Satu Persen</strong>. Materi mencakup <strong>Blockchain & Security
+                        <strong>{{ profil_web()->nama_website }}</strong>. Materi mencakup <strong>Blockchain & Security
                             Overview</strong>,
                         komponen sistem dalam blockchain, blockchain execution environment, serta berbagai tantangan
                         keamanan
@@ -501,7 +507,8 @@
                     <p class="mt-3" data-aos="fade-up">
                         Di modul ini, kalian akan belajar secara <strong>advanced</strong> tentang <strong>smart contract
                             security</strong>
-                        bersama <strong>Belajar Satu Persen</strong>. Modul ini dirancang khusus bagi kalian yang ingin
+                        bersama <strong>{{ profil_web()->nama_website }}</strong>. Modul ini dirancang khusus bagi kalian
+                        yang ingin
                         bekerja
                         sebagai auditor smart contract.
                     </p>
@@ -532,7 +539,8 @@
                     </h1>
                     <p class="mt-3" data-aos="fade-up">
                         Di modul ini, kalian akan belajar tentang <strong>blockchain interoperability</strong>
-                        bersama <strong>Belajar Satu Persen</strong>—sebuah konsep yang memungkinkan berbagai jaringan
+                        bersama <strong>{{ profil_web()->nama_website }}</strong>—sebuah konsep yang memungkinkan berbagai
+                        jaringan
                         blockchain
                         untuk berinteraksi, berintegrasi, dan berkomunikasi secara mulus guna mendukung transfer data antar
                         chain.
@@ -575,7 +583,7 @@
                         di internet masa depan dengan teknologi <strong>smart contract</strong>, atau yang lebih dikenal
                         sebagai <strong>Web3</strong>.
                         Ini adalah materi eksklusif yang tidak akan kalian temui di universitas mana pun di Indonesia,
-                        dan hanya tersedia di <strong>Belajar Satu Persen</strong>.
+                        dan hanya tersedia di <strong>{{ profil_web()->nama_website }}</strong>.
                     </p>
 
                     <p class="mt-3" data-aos="fade-up">
@@ -605,7 +613,7 @@
 
                     <p class="mt-3" data-aos="fade-up">
                         <strong>Sales Mastery</strong> adalah bonus modul tambahan di <strong>Akademi Crypto</strong>
-                        yang tersedia eksklusif di <strong>Belajar Satu Persen</strong>.
+                        yang tersedia eksklusif di <strong>{{ profil_web()->nama_website }}</strong>.
                         Di sini, kalian akan mendapatkan ilmu fundamental tentang seni menjual,
                         sehingga kalian bisa menjual apa pun, kapan pun, kepada siapa pun, dan di mana pun.
                     </p>
@@ -837,27 +845,30 @@
                             <p>*Pembayaran {{ $keanggotaan->bulan }} Bulan Penuh</p>
                             <div class="text-center mt-auto">
                                 <div class="button-wrapper">
-                                    <a {!! auth()->check()
-                                        ? 'data-bs-toggle="modal" data-bs-target="#paymentModal' . $keanggotaan->id . '"'
-                                        : 'href="/register"' !!} class="text-decoration-none">
+                                    <a @if (!auth()->check()) href="/register"
+            @elseif (!auth()->user()->hasVerifiedEmail())
+                href="{{ route('verification.notice') }}"
+            @else
+                data-bs-toggle="modal" data-bs-target="#paymentModal{{ $keanggotaan->id }}" @endif
+                                        class="text-decoration-none">
                                         <button class="custom-bergabung-border2"></button>
                                         <button class="custom-bergabung-border"></button>
                                         <button class="custom-bergabung text-spacing fs-6"
-                                            style="font-size: 14px !important">Bergabung
-                                            Sekarang</button>
+                                            style="font-size: 14px !important">
+                                            Bergabung Sekarang
+                                        </button>
                                     </a>
                                 </div>
                             </div>
+
                             <div class="img-card">
-                                <img src="/assets/img/logo-main.png" alt="" width="40%">
+                                <img src="{{ asset(profil_web()->logo) }}" alt="" width="40%">
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Modal -->
                 @auth
-
-
                     <div class="modal fade text-dark" id="paymentModal{{ $keanggotaan->id }}" tabindex="-1"
                         aria-labelledby="paymentModal{{ $keanggotaan->id }}Label" aria-hidden="true">
                         <div class="modal-dialog">
@@ -1122,7 +1133,7 @@
     </script>
 
     <!-- Tambahkan Midtrans Script -->
-    <script src="{{ config('midtrans.snap_url') }}" data-client-key="{{ config('midtrans.client_key') }}"></script>
+    <script src="{{ config('midtrans.snap_url') }}" data-client-key="{{ profil_web()->midtrans_client_key }}"></script>
 
 
 

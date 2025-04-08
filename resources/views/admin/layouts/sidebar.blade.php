@@ -4,6 +4,13 @@
      <ul class="sidebar-nav" id="sidebar-nav">
 
          <li class="nav-item">
+             <a class="nav-link {{ Request::is('admin*') ? '' : 'collapsed' }}" href="/admin">
+                 <i class="bi bi-grid"></i>
+                 <span>Profil Web</span>
+             </a>
+         </li><!-- End Dashboard Nav -->
+         <li class="nav-heading">Pengaturan Discord</li>
+         <li class="nav-item">
              <a class="nav-link {{ Request::is('discord*') ? '' : 'collapsed' }}" href="/discord/data-role/view">
                  <i class="bi bi-grid"></i>
                  <span>Role Data</span>

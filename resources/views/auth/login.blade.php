@@ -9,8 +9,8 @@
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="/assets/img/logo.png" rel="icon">
-    <link href="/assets/img/logo.png" rel="apple-touch-icon">
+    <link href="{{ asset(profil_web()->logo_title) }}" rel="icon">
+    <link href="{{ asset(profil_web()->logo_title) }}" rel="apple-touch-icon">
 
     {{-- Icon --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -118,7 +118,7 @@
             <div class="container">
                 <a href="/">
 
-                    <img src="/assets/img/logo-main.png" alt="" width="150">
+                    <img src="{{ asset(profil_web()->logo) }}" alt="" width="150">
                 </a>
                 <h3 class="mt-3 text-white fw-bold">LOGIN</h3>
 

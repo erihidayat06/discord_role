@@ -16,7 +16,7 @@
     </style>
     <div class="lebar d-flex align-items-center">
         <a href="/kursus" class="logo ">
-            <img src="/assets/img/logo-main.png" alt="">
+            <img src="{{ asset(profil_web()->logo) }}" alt="">
         </a>
 
         @if (Request::is('kursus*'))
@@ -83,7 +83,7 @@
                     id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                     <div class="offcanvas-header border-0">
                         <a href="/kursus" class="logo ">
-                            <img src="/assets/img/logo-main.png" alt="">
+                            <img src="{{ asset(profil_web()->logo) }}" alt="">
                         </a>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
@@ -125,7 +125,7 @@
 
                             @if (auth()->user()->is_admin)
                                 <div class="accordion-item bg-dark border-0"><a class="d-block p-2 ms-2 fw-bold "
-                                        href="/discord/data-role/view">Manage Roles</a></div>
+                                        href="/admin">Manage Web</a></div>
                             @endif
                             @if (auth()->user()->discord_active == 0)
                                 <div class="accordion-item bg-dark border-0">
@@ -262,7 +262,10 @@
                     </li>
 
                     @if (auth()->user()->is_admin)
-                        <li><a class="dropdown-item" href="/discord/data-role/view">Manage Roles</a></li>
+                        <li><a class="dropdown-item" href="/admin">Manage Web</a></li>
+                        @can('super_admin')
+                            <li><a class="dropdown-item" href="/admin/dashboard">Manage Super Admin</a></li>
+                        @endcan
                     @endif
 
                     <li>

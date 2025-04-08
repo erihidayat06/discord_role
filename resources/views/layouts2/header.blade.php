@@ -88,7 +88,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("/assets/img/logo-main.png") no-repeat center;
+            background: url("{{ asset(profil_web()->logo) }}") no-repeat center;
             background-size: contain;
             opacity: 0;
             mix-blend-mode: screen;
@@ -109,7 +109,7 @@
         <a href="index.html" class="logo d-flex align-items-center me-auto">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets/img/logo.png" alt=""> -->
-            <img src="/assets/img/logo-main.png" alt="" width="100%">
+            <img src="{{ asset(profil_web()->logo) }}" alt="" width="100%">
         </a>
 
         <nav id="navmenu" class="navmenu">
@@ -150,7 +150,10 @@
                         <ul>
                             @if (auth()->user()->is_admin)
                                 <li><a class="dropdown-item" href="/kursus">Lihat Kursus</a></li>
-                                <li><a class="dropdown-item" href="/discord/data-role/view">Manage Roles</a></li>
+                                <li><a class="dropdown-item" href="/admin">Manage Web</a></li>
+                                @can('super_admin')
+                                    <li><a class="dropdown-item" href="/admin/dashboard">Manage Super Admin</a></li>
+                                @endcan
                             @endif
                             <li>
                                 <a href="#">

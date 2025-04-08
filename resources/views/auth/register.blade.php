@@ -9,8 +9,8 @@
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="/assets/img/logo.png" rel="icon">
-    <link href="/assets/img/logo.png" rel="apple-touch-icon">
+    <link href="{{ asset(profil_web()->logo_title) }}" rel="icon">
+    <link href="{{ asset(profil_web()->logo_title) }}" rel="apple-touch-icon">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -117,7 +117,7 @@
             @csrf
             <div class="container">
                 <a href="/">
-                    <img src="/assets/img/logo-main.png" alt="" width="150">
+                    <img src="{{ asset(profil_web()->logo) }}" alt="" width="150">
                 </a>
                 <h3 class="mt-3 text-white fw-bold">DAFTAR AKUN</h3>
 
