@@ -2,11 +2,13 @@
 
 use Midtrans\Config;
 use App\Models\Modul;
+use App\Models\Website;
 use Midtrans\Transaction;
 use App\Models\Keanggotaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\HomeController;
@@ -23,13 +25,12 @@ use App\Http\Controllers\Admin\PixelController;
 use App\Http\Controllers\Super\AdminController;
 use App\Http\Controllers\Auth\DiscordController;
 use App\Http\Controllers\Auth\RedirectController;
+use App\Http\Controllers\Super\WebsiteController;
 use App\Http\Controllers\Admin\GetUsersController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\ResearchController;
 use App\Http\Controllers\Admin\LanggananController;
 use App\Http\Controllers\Admin\KeanggotaanController;
-use App\Http\Controllers\Super\WebsiteController;
-use App\Models\Website;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -223,6 +224,15 @@ Route::middleware(['auth'])->group(
         })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
     }
 );
+
+Route::get('/test-email', function () {
+    Mail::raw('Ini adalah email test dari VPS!', function ($message) {
+        $message->to('alamat@emailtujuan.com')
+            ->subject('Test Email dari VPS');
+    });
+
+    return 'Email dikirim!';
+});
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
