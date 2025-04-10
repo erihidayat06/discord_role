@@ -14,7 +14,7 @@ class GetUsersController extends Controller
     {
 
         $guildId = pilih_guild(); // ID Server Discord
-        $botToken = env('DISCORD_BOT_TOKEN');
+        $botToken = profil_web()->discord_bot_token  ?? '';
         $roleId = $request->query('role_id');
 
 

@@ -119,6 +119,37 @@
                         </label>
                     </div>
 
+                    <hr>
+                    <h5>Discord</h5>
+                    <div class="mb-3">
+                        <label class="form-label">Discord Client ID</label>
+                        <input type="text" name="discord_client_id"
+                            class="form-control @error('discord_client_id') is-invalid @enderror"
+                            value="{{ old('discord_client_id', $profil->discord_client_id) }}">
+                        @error('discord_client_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Discord Client Secret</label>
+                        <input type="text" name="discord_client_secret"
+                            class="form-control @error('discord_client_secret') is-invalid @enderror"
+                            value="{{ old('discord_client_secret', $profil->discord_client_secret) }}">
+                        @error('discord_client_secret')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Discord Bot Token</label>
+                        <input type="text" name="discord_bot_token"
+                            class="form-control @error('discord_bot_token') is-invalid @enderror"
+                            value="{{ old('discord_bot_token', $profil->discord_bot_token) }}">
+                        @error('discord_bot_token')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+
                     <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
             </div>

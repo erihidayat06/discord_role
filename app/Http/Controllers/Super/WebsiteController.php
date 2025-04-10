@@ -16,13 +16,7 @@ class WebsiteController extends Controller
     {
         $websites = DB::table('websites')
             ->join('users', 'websites.user_id', '=', 'users.id')
-            ->select(
-                'websites.id',
-                'websites.domain as domain',
-                'users.name as user_name',
-                'users.email',
-                'users.no_tlp'
-            )
+            ->select('websites.*', 'users.name as user_name', 'users.email', 'users.no_tlp', 'websites.is_active')
             ->get();
 
 
@@ -47,6 +41,7 @@ class WebsiteController extends Controller
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'domain' => 'required|string|max:255|unique:websites,domain',
+
         ]);
 
         DB::table('websites')->insert([
@@ -89,6 +84,8 @@ class WebsiteController extends Controller
             'domain' => 'required|string|max:255|unique:websites,domain,' . $website->id,
         ]);
 
+
+
         $website->update([
             'user_id' => $request->user_id,
             'domain' => $request->domain,
@@ -105,5 +102,15 @@ class WebsiteController extends Controller
     {
         $website->delete();
         return redirect()->route('websites.index')->with('success', 'Website berhasil dihapus.');
+    }
+
+
+    public function toggle($id)
+    {
+        $website = Website::findOrFail($id);
+        $website->is_active = !$website->is_active;
+        $website->save();
+
+        return back()->with('success', 'Status website berhasil diperbarui.');
     }
 }

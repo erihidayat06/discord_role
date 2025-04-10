@@ -146,6 +146,7 @@ Route::middleware(['auth', 'admin.super'])->group(function () {
     Route::get('/admin/website/user', [AdminController::class, 'user']);
     Route::get('/admin/website/user-admin', [AdminController::class, 'admin']);
     Route::patch('/admin/users/{id}/toggle-admin', [AdminController::class, 'toggleAdmin'])->name('users.toggleAdmin');
+    Route::post('/websites/{id}/toggle', [WebsiteController::class, 'toggle'])->name('websites.toggle');
 });
 
 

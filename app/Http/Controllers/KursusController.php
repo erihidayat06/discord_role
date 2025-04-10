@@ -159,7 +159,7 @@ class KursusController extends Controller
     public function logout()
     {
         $guild_id = 1274717645236862976;
-        $bot_token = env('DISCORD_BOT_TOKEN');
+        $bot_token = profil_web()->discord_bot_token  ?? '';
         $user_id = auth()->user()->discord_id;
 
         User::where('id', auth()->user()->id)->update(['discord_active' => 0]);

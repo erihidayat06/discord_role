@@ -12,7 +12,7 @@ class AddRole
     public function handle($request, Closure $next)
     {
         $guild_id = pilih_guild();
-        $bot_token = env('DISCORD_BOT_TOKEN');
+        $bot_token = profil_web()->discord_bot_token  ?? '';
 
         // Gunakan cache agar hanya berjalan sekali sehari
         $cacheKey = 'remove_discord_roles_today';

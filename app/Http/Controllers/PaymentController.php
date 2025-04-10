@@ -138,7 +138,7 @@ class PaymentController extends Controller
             // Jika user mendapatkan role di Discord
             if ($keanggotaan->akses_role && $user->discord_id) {
                 $guild_id = 1274717645236862976;
-                $bot_token = env('DISCORD_BOT_TOKEN');
+                $bot_token = profil_web()->discord_bot_token  ?? '';
                 $role_id = '1287469825974603806'; // Role yang akan diberikan
                 $user->update(['discord_role' => $newExpired]);
 

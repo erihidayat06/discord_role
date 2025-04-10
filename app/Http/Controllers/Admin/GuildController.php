@@ -36,8 +36,8 @@ class GuildController extends Controller
     public function store(Request $request)
     {
 
-        $bot_id = env('DISCORD_CLIENT_ID'); // ID Bot
-        $bot_token = env('DISCORD_BOT_TOKEN'); // Token Bot
+        $bot_id = profil_web()->discord_client_id; // ID Bot
+        $bot_token = profil_web()->discord_bot_token ?? ''; // Token Bot
 
         $response = Http::withHeaders([
             'Authorization' => "Bot $bot_token",

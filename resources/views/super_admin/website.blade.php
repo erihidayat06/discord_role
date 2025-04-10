@@ -16,6 +16,8 @@
                         <th>Nomor</th>
                         <th>Email</th>
                         <th>Nama Website</th>
+                        <th>Status</th>
+
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -27,6 +29,24 @@
                             <td>{{ $website->no_tlp ?? '-' }}</td>
                             <td>{{ $website->email }}</td>
                             <td>{{ $website->domain }}</td>
+                            <td>
+                                @if ($website->is_active)
+                                    <form action="{{ route('websites.toggle', $website->id) }}" method="POST">
+                                        @csrf
+                                        <button class="btn btn-sm btn-success" type="submit" title="Klik untuk nonaktifkan">
+                                            Aktif
+                                        </button>
+                                    </form>
+                                @else
+                                    <form action="{{ route('websites.toggle', $website->id) }}" method="POST">
+                                        @csrf
+                                        <button class="btn btn-sm btn-secondary" type="submit" title="Klik untuk aktifkan">
+                                            Nonaktif
+                                        </button>
+                                    </form>
+                                @endif
+                            </td>
+
                             <td class="d-flex gap-2">
                                 <a href="{{ route('websites.edit', $website->id) }}" class="btn btn-sm btn-warning">
                                     Edit

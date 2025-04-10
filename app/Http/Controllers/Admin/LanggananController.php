@@ -62,7 +62,7 @@ class LanggananController extends Controller
     {
         $guildId = '1274717645236862976'; // Ganti dengan Guild ID server Discord
         $roleId = '1287469825974603806'; // Ganti dengan Role ID yang akan dihapus
-        $botToken = env('DISCORD_BOT_TOKEN');
+        $botToken = profil_web()->discord_bot_token  ?? '';
 
         Http::withHeaders([
             'Authorization' => "Bot $botToken",

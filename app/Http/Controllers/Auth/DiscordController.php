@@ -22,7 +22,7 @@ class DiscordController extends Controller
     {
         // Ambil token dan guild ID dari .env
         $guild_id = pilih_guild();
-        $bot_token = env('DISCORD_BOT_TOKEN');
+        $bot_token = profil_web()->discord_bot_token  ?? '';
         // Ambil daftar role dari API Discord
         $get_roles = Http::withHeaders([
             'Authorization' => "Bot $bot_token",
@@ -104,7 +104,7 @@ class DiscordController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             $guild_id = 1274717645236862976;
-            $bot_token = env('DISCORD_BOT_TOKEN');
+            $bot_token = profil_web()->discord_bot_token  ?? '';
             $user_id = $discord_id;
             $role_id = '1287469825974603806'; // Role yang akan diberikan
 
@@ -184,7 +184,7 @@ class DiscordController extends Controller
 
         // Join otomatis ke server Discord
         $guild_id = env('DISCORD_GUILD_ID'); // ID Server Discord
-        $bot_token = env('DISCORD_BOT_TOKEN'); // Bot Token
+        $bot_token = profil_web()->discord_bot_token  ?? ''; // Bot Token
 
 
         $joinResponse = Http::withHeaders([
@@ -213,7 +213,7 @@ class DiscordController extends Controller
     {
         // Join otomatis ke server Discord
         $guild_id = pilih_guild(); // ID Server Discord
-        $bot_token = env('DISCORD_BOT_TOKEN'); // Bot Token
+        $bot_token = profil_web()->discord_bot_token  ?? ''; // Bot Token
 
         // Validasi input dari request
         $request->validate([
@@ -244,7 +244,7 @@ class DiscordController extends Controller
     public function addRoleMultipleCreate()
     {
         $guild_id = pilih_guild(); // ID Server Discord
-        $bot_token = env('DISCORD_BOT_TOKEN'); // Bot Token
+        $bot_token = profil_web()->discord_bot_token  ?? ''; // Bot Token
         // Ambil daftar role dari Discord
         $get_roles = Http::withHeaders([
             'Authorization' => "Bot $bot_token",
@@ -267,7 +267,7 @@ class DiscordController extends Controller
     public function editRoleUSer(Request $request, UserRole $userRole)
     {
         $guild_id = pilih_guild(); // ID Server Discord
-        $bot_token = env('DISCORD_BOT_TOKEN'); // Bot Token
+        $bot_token = profil_web()->discord_bot_token  ?? ''; // Bot Token
 
         // Ambil semua user dari database (UserRole)
         $user_roles = UserRole::where('id_guild', $guild_id)->latest()->get();
@@ -362,7 +362,7 @@ class DiscordController extends Controller
     public function roleUser()
     {
         $guild_id = pilih_guild(); // ID Server Discord
-        $bot_token = env('DISCORD_BOT_TOKEN'); // Bot Token
+        $bot_token = profil_web()->discord_bot_token  ?? ''; // Bot Token
 
 
         // Ambil semua user dari database (UserRole)
