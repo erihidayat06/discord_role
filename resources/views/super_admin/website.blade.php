@@ -28,12 +28,18 @@
                             <td>{{ $website->user_name }}</td>
                             <td>{{ $website->no_tlp ?? '-' }}</td>
                             <td>{{ $website->email }}</td>
-                            <td>{{ $website->domain }}</td>
+                            <td>
+                                <a href="http://{{ $website->domain }}" target="_blank">
+                                    {{ $website->domain }}
+                                </a>
+                            </td>
+
                             <td>
                                 @if ($website->is_active)
                                     <form action="{{ route('websites.toggle', $website->id) }}" method="POST">
                                         @csrf
-                                        <button class="btn btn-sm btn-success" type="submit" title="Klik untuk nonaktifkan">
+                                        <button class="btn btn-sm btn-success" type="submit"
+                                            title="Klik untuk nonaktifkan">
                                             Aktif
                                         </button>
                                     </form>
