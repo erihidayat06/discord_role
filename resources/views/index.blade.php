@@ -849,7 +849,8 @@
             @elseif (!auth()->user()->hasVerifiedEmail())
                 href="{{ route('verification.notice') }}"
             @else
-                data-bs-toggle="modal" data-bs-target="#paymentModal{{ $keanggotaan->id }}" @endif
+                {{-- data-bs-toggle="modal" data-bs-target="#paymentModal{{ $keanggotaan->id }}" --}}
+                href="https://lynk.id/belajarsatupersen.id/LPn99wE/checkout" @endif
                                         class="text-decoration-none">
                                         <button class="custom-bergabung-border2"></button>
                                         <button class="custom-bergabung-border"></button>

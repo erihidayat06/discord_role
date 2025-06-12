@@ -30,8 +30,9 @@
                             <div class="text-center mt-auto">
                                 <div class="button-wrapper">
                                     <a {!! auth()->check()
-                                        ? 'data-bs-toggle="modal" data-bs-target="#paymentModal' . $keanggotaan->id . '"'
-                                        : 'href="/register"' !!} class="text-decoration-none">
+                                        ? 'href="https://lynk.id/belajarsatupersen.id/LPn99wE/checkout'
+                                        : //  'data-bs-toggle="modal" data-bs-target="#paymentModal' . $keanggotaan->id . '"'
+                                        'href="/register"' !!} class="text-decoration-none">
                                         <button class="custom-bergabung-border2"></button>
                                         <button class="custom-bergabung-border"></button>
                                         <button class="custom-bergabung text-spacing fs-6"
