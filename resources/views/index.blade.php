@@ -38,7 +38,7 @@
         <div class="video-container">
 
             <iframe class="m-0 p-0"
-                src="https://iframe.mediadelivery.net/play/453816/ec39cde0-ac6e-4abd-9c0b-99e3938f8393?autoplay=0&watermark={{ urlencode(env('BUNNY_STREAM_WATERMARK_URL')) }}"
+                src="https://iframe.mediadelivery.net/embed/453816/ec39cde0-ac6e-4abd-9c0b-99e3938f8393?autoplay=0&watermark={{ urlencode(env('BUNNY_STREAM_WATERMARK_URL')) }}"
                 width="100%" height="500" allow="fullscreen" frameborder="0" allowfullscreen disablePictureInPicture
                 referrerpolicy="no-referrer">
             </iframe>
