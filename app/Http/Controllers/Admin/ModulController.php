@@ -63,7 +63,7 @@ class ModulController extends Controller
             'judul' => 'required|string|max:255',
             'video' => 'required|string', // Terima ID video
         ]);
-        $libraryId = env('BUNNY_STREAM_LIBRARY_ID');
+        $libraryId = profil_web()->bunny_stream_library_id;
 
         // Ambil ID video dari request
         $videoUrl = "https://iframe.mediadelivery.net/embed/$libraryId/$request->video";
@@ -119,7 +119,7 @@ class ModulController extends Controller
             'video' => 'required|string', // Terima ID video
         ]);
 
-        $libraryId = env('BUNNY_STREAM_LIBRARY_ID');
+        $libraryId = profil_web()->bunny_stream_library_id;
 
         // Ambil ID video dari request
         $videoUrl = "https://iframe.mediadelivery.net/embed/$libraryId/$request->video";
