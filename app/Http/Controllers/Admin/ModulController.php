@@ -170,6 +170,7 @@ class ModulController extends Controller
             return redirect('/kelas/' . $modul->kelas_id)->with('success', 'Modul dan video berhasil dihapus!');
         } catch (\Exception $e) {
             DB::rollBack();
+            $modul->delete();
             return back()->with('error', 'Gagal menghapus modul! ' . $e->getMessage());
         }
     }
