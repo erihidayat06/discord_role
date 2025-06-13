@@ -11,6 +11,17 @@
                 margin-top: 30px !important;
             }
         }
+
+        .btn-whatsapp-gradient {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            border: none;
+        }
+
+        .btn-whatsapp-gradient:hover {
+            opacity: 0.9;
+            color: white;
+        }
     </style>
     <!-- Tombol WhatsApp dengan gradient & ukuran besar -->
     <!-- Tombol WhatsApp dengan Bootstrap dan gradient -->
