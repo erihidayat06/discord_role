@@ -12,6 +12,12 @@
             }
         }
     </style>
+    <!-- Tombol WhatsApp Fixed -->
+    <a href="https://api.whatsapp.com/send/?phone=%2B6285179663069&text=Halo+kak+Produk+Masih+ada%3F+https%3A%2F%2Flynk.id%2Fbelajarsatupersen.id&type=phone_number&app_absent=0"
+        target="_blank" class="btn btn-success btn-lg rounded-circle shadow"
+        style="position: fixed; bottom: 20px; right: 20px; z-index: 1050;">
+        <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
+    </a>
     <div class="container mt-6">
         <div class="text-center">
             <h1 class="text-white fw-bold text-title">Strategi Investasi Crypto Untuk</h1>
